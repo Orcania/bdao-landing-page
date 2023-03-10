@@ -1,13 +1,16 @@
 import React from "react";
 import Slider from "react-slick";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
-import { IconButton, Box, Text,Heading } from "@chakra-ui/react";
+//Chakra Imports
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { IconButton, Box, Text, Heading, Button } from "@chakra-ui/react";
+
+//Css imports
 import "../slider-section/slick-theme.css";
 import "../slider-section/slick.css";
 
-
 function PrevArrow(props) {
+  //Left navigational arrow of the slider
   const { className, onClick } = props;
   return (
     <IconButton
@@ -31,6 +34,7 @@ function PrevArrow(props) {
 }
 
 function NextArrow(props) {
+  //Right navigational arrow of the slider
   const { className, onClick } = props;
   return (
     <IconButton
@@ -53,6 +57,7 @@ function NextArrow(props) {
   );
 }
 function CustomDot(props) {
+  //Customized navigational dots below the slider
   const { onClick, active } = props;
   const activeClass = active ? "active" : "";
   return (
@@ -76,7 +81,28 @@ function CustomDot(props) {
 }
 
 const SliderSection = () => {
+  //Component integration
+  const sliderRef = React.useRef(null);
   const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [showText, setShowText] = React.useState({});
+
+  const handleReadMoreClick = (slideIndex) => {
+    //handling read more button
+    setShowText((prev) => ({
+      ...prev,
+      [slideIndex]: !prev[slideIndex],
+    }));
+  };
+
+  const handleSlideChange = (current, next) => {
+    setCurrentSlide(next);
+    setShowText((prev) => ({
+      ...prev,
+      [current]: false,
+      [next]: false,
+    }));
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -108,39 +134,111 @@ const SliderSection = () => {
         </ul>
       </div>
     ),
-    beforeChange: (current, next) => setCurrentSlide(next),
+    beforeChange: handleSlideChange,
   };
 
   return (
-    <Box borderWidth="1px" borderColor="gray" p="4" marginTop="100px" >
-      
-        <Slider {...settings}>
+    <Box borderWidth="1px" borderColor="gray" p="4" marginTop="100px">
+      <Slider ref={sliderRef} {...settings}>
         <Box p="20" textAlign="left">
-            <Heading as="h6" size="lg">What is REIT ?</Heading>
-            <Text marginTop="20px">
-              A REIT, or Real Estate Investment Trust, is a type of investment
-              company that owns and operates income-producing real estate
-              assets. REITs typically own a portfolio of properties that
-              generate rental income and subject to capital appreciation. REITs
-              distribute at least 90% of its taxable income to shareholders in
-              the form of dividends...
-            </Text>
-          </Box>
-          <Box p="20" textAlign="left">
-            <Heading as="h6" size="lg">How BDAO uses a DAO structure ?</Heading>
-            <Text marginTop="20px">
-            Under the DAO governance framework, the members acquire a democratic right to influence the strategic direction of the REIT’s expansion. Members can introduce lucrative real estate opportunities, exercise influence over portfolio development, asset disposal, Active Participant (AP) selection, and diversification proposals via innovative voting systems...
-            </Text>
-          </Box>
-          <Box p="20" textAlign="left">
-            <Heading as="h6" size="lg">How BDAO uses blockchain tech ?</Heading>
-            <Text marginTop="20px">
-            BDAO utilizes blockchain technology and crypto currencies to provide a platform applicable for capital raising via digital assets, dividend distribution, asset management, automated compliance, investor management, custodial systems, and transparency.
-            </Text>
-          </Box>
-        </Slider>
-      </Box>
-    
+          <Heading as="h6" size="lg">
+            What is REIT ?
+          </Heading>
+          <Text marginTop="20px">
+            A REIT, or Real Estate Investment Trust, is a type of investment
+            company that owns and operates income-producing real estate assets.
+            REITs typically own a portfolio of properties that generate rental
+            income and subject to capital appreciation. REITs distribute at
+            least 90% of its taxable income to shareholders in the form of
+            dividends
+          </Text>
+          {!showText[0] && (
+            <Button onClick={() => handleReadMoreClick(0)} mt="4">
+              Read more
+            </Button>
+          )}
+          {showText[0] && (
+            <>
+              <Text mt="4">
+                Vivamus ultricies augue a mauris imperdiet, quis convallis
+                sapien efficitur. Nam tristique ligula vel urna venenatis
+                malesuada. Nam commodo, arcu quis facilisis laoreet, neque magna
+                pulvinar sapien, id dignissim mauris quam in massa. Sed in
+                tellus commodo, congue velit eu, posuere metus. Fusce bibendum
+                commodo metus non varius. Nam nec leo eget nisl pharetra iaculis
+                vel eu augue. Aenean a lectus eu nisl finibus ultricies.
+                Vestibulum nec nisl vestibulum, egestas turpis sed, rutrum est.
+                Morbi sit amet
+              </Text>
+            </>
+          )}
+        </Box>
+        <Box p="20" textAlign="left">
+          <Heading as="h6" size="lg">
+            How BDAO uses a DAO structure ?
+          </Heading>
+          <Text marginTop="20px">
+            Under the DAO governance framework, the members acquire a democratic
+            right to influence the strategic direction of the REIT’s expansion.
+            Members can introduce lucrative real estate opportunities, exercise
+            influence over portfolio development, asset disposal, Active
+            Participant (AP) selection, and diversification proposals via
+            innovative voting systems
+          </Text>
+          {!showText[0] && (
+            <Button onClick={() => handleReadMoreClick(0)} mt="4">
+              Read more
+            </Button>
+          )}
+          {showText[0] && (
+            <>
+              <Text mt="4">
+                Vivamus ultricies augue a mauris imperdiet, quis convallis
+                sapien efficitur. Nam tristique ligula vel urna venenatis
+                malesuada. Nam commodo, arcu quis facilisis laoreet, neque magna
+                pulvinar sapien, id dignissim mauris quam in massa. Sed in
+                tellus commodo, congue velit eu, posuere metus. Fusce bibendum
+                commodo metus non varius. Nam nec leo eget nisl pharetra iaculis
+                vel eu augue. Aenean a lectus eu nisl finibus ultricies.
+                Vestibulum nec nisl vestibulum, egestas turpis sed, rutrum est.
+                Morbi sit amet
+              </Text>
+            </>
+          )}
+        </Box>
+        <Box p="20" textAlign="left">
+          <Heading as="h6" size="lg">
+            How BDAO uses blockchain tech ?
+          </Heading>
+          <Text marginTop="20px">
+            BDAO utilizes blockchain technology and crypto currencies to provide
+            a platform applicable for capital raising via digital assets,
+            dividend distribution, asset management, automated compliance,
+            investor management, custodial systems, and transparency.
+          </Text>
+          {!showText[0] && (
+            <Button onClick={() => handleReadMoreClick(0)} mt="4">
+              Read more
+            </Button>
+          )}
+          {showText[0] && (
+            <>
+              <Text mt="4">
+                Vivamus ultricies augue a mauris imperdiet, quis convallis
+                sapien efficitur. Nam tristique ligula vel urna venenatis
+                malesuada. Nam commodo, arcu quis facilisis laoreet, neque magna
+                pulvinar sapien, id dignissim mauris quam in massa. Sed in
+                tellus commodo, congue velit eu, posuere metus. Fusce bibendum
+                commodo metus non varius. Nam nec leo eget nisl pharetra iaculis
+                vel eu augue. Aenean a lectus eu nisl finibus ultricies.
+                Vestibulum nec nisl vestibulum, egestas turpis sed, rutrum est.
+                Morbi sit amet
+              </Text>
+            </>
+          )}
+        </Box>
+      </Slider>
+    </Box>
   );
 };
 
