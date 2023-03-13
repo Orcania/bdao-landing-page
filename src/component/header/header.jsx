@@ -8,7 +8,7 @@ const Header =()=> {
     <Box display="flex" justifyContent="center" alignItems="center">
       <Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} gap={6}>
         <GridItem justifyContent="center" alignItems="center">
-          <Box textAlign="left" display="flex" flexDirection="column" justifyContent="center" h="100%" marginLeft="50px">
+          <Box textAlign="left" display="flex" flexDirection="column" justifyContent="center" h="100%" ml={{ base: "0", md: "35" }}>
             <Heading as="h1" size="2xl" >Bricklayer DAO</Heading>
             <Text mt={4} >
               Bricklayer DAO is a REIT that operates on the blockchain and is governed by its token/coin holders
