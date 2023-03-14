@@ -9,19 +9,17 @@ import { Grid, GridItem, Image, Box } from "@chakra-ui/react";
 //Files imports
 import Header from "../src/component/header/header.jsx";
 import SliderSection from "./component/slider-section/slider";
-
+import Treasury from "./component/treasury-section/treasury";
 //Image imports
 import Magnifier from "../src/assets/images/magnifier.png";
 function App() {
   return (
     <ChakraProvider theme={customTheme}>
       <Header />
-     
-        <GridItem>
-          <SliderSection />
-        </GridItem>
-        
-      
+
+      <SliderSection />
+
+      <Treasury />
     </ChakraProvider>
   );
 }
