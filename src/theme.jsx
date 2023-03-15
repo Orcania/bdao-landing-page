@@ -2,8 +2,8 @@ import { extendTheme } from "@chakra-ui/react";
 
 const customTheme = extendTheme({
   fonts: {
-    body: "Open Sans, sans-serif",
-    heading: "Open Sans, sans-serif",
+    body:  "IBM Plex Mono, monospace",
+    heading: "IBM Plex Mono, monospace",
   },
 });
 

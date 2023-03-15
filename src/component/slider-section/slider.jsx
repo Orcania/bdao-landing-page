@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Slider from "react-slick";
 
 //Chakra Imports
@@ -24,52 +24,46 @@ import Magnifier from "../../assets/images/magnifier.png";
 import Earth from "../../assets/images/earth.png";
 import Phone from "../../assets/images/phone.png";
 
-function PrevArrow(props) {
-  //Left navigational arrow of the slider
-  const { className, onClick } = props;
-
-  return (
-    <IconButton
-      className={className}
-      aria-label="Previous slide"
-      icon={<ChevronLeftIcon />}
-      onClick={onClick}
-      position="absolute"
-      top="50%"
-      left={useBreakpointValue({ base: -10, md: 0 })}
-      transform="translateY(-50%)"
-      borderRadius="full"
-      borderStyle="solid"
-      borderColor="black"
-      borderWidth="1.5px"
-      bg="white"
-      color="black"
-      _hover={{ bg: "black", color: "white", borderColor: "white" }}
-    />
-  );
+function getNextSlideTitle(nextSlideIndex) {
+  switch (nextSlideIndex) {
+    case 0:
+      return "What is REIT?";
+    case 1:
+      return "How BDAO uses a DAO structure?";
+    case 2:
+      return "How BDAO uses blockchain tech?";
+    default:
+      return "";
+  }
 }
 
 function NextArrow(props) {
-  //Right navigational arrow of the slider
-  const { className, onClick } = props;
+  const { className, onClick, currentSlide, slideCount } = props;
+
+  const nextSlideIndex = (currentSlide + 1) % slideCount;
+  const nextSlideTitle = getNextSlideTitle(nextSlideIndex);
+
   return (
-    <IconButton
-      className={className}
-      aria-label="Next slide"
-      icon={<ChevronRightIcon />}
-      onClick={onClick}
-      position="absolute"
-      top="50%"
-      right={useBreakpointValue({ base: -10, md: 0 })}
-      transform="translateY(-50%)"
-      borderRadius="full"
-      borderWidth="1.5px"
-      borderStyle="solid"
-      borderColor="black"
-      bg="white"
-      color="black"
-      _hover={{ bg: "black", color: "white", borderColor: "white" }}
-    />
+    <Box>
+      <Text>{nextSlideTitle}</Text>
+      <IconButton
+        className={className}
+        aria-label="Next slide"
+        icon={<ChevronRightIcon />}
+        onClick={onClick}
+        position="absolute"
+        top="50%"
+        right={useBreakpointValue({ base: -10, md: 0 })}
+        transform="translateY(-50%)"
+        borderRadius="full"
+        borderWidth="1.5px"
+        borderStyle="solid"
+        borderColor="black"
+        bg="white"
+        color="black"
+        _hover={{ bg: "black", color: "white", borderColor: "white" }}
+      />
+    </Box>
   );
 }
 function CustomDot(props) {
@@ -127,8 +121,7 @@ const SliderSection = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
+    nextArrow: <NextArrow currentSlide={currentSlide} slideCount={3} />,
     customPaging: (i) => (
       <CustomDot
         onClick={() => setCurrentSlide(i)}
@@ -185,6 +178,8 @@ const SliderSection = () => {
                 <Button
                   onClick={() => handleReadMoreClick(slideIndex)}
                   mt={{ base: "2", md: "4" }}
+                  variant="link" textDecor="underline" color="black"
+                  transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}
                 >
                   Read more
                 </Button>
@@ -217,9 +212,9 @@ const SliderSection = () => {
           alt="Example image"
           objectFit="cover"
           order={1}
-          ml={{ base: "15%", md: 0 }}
+          ml={{ base: "20%", md: 0 }}
           mr={{ base: 0, md: "50%" }}
-          w={{ base: "70%", md: "100%" }}
+          w={{ base: "60%", md: "100%" }}
           bg="white"
           mb={{ base: "30px", md: 0 }}
         />

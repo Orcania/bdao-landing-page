@@ -3,23 +3,31 @@ import "./App.css";
 
 //Chakra imports
 import { ChakraProvider, Slider } from "@chakra-ui/react";
-import customTheme from "./theme";
-import { Grid, GridItem, Image, Box } from "@chakra-ui/react";
 
+import { Box, Flex, Center } from "@chakra-ui/react";
+
+
+//font import
+import customTheme from "./theme";
 //Files imports
 import Header from "../src/component/header/header.jsx";
 import SliderSection from "./component/slider-section/slider";
 import Treasury from "./component/treasury-section/treasury";
-//Image imports
-import Magnifier from "../src/assets/images/magnifier.png";
+
 function App() {
   return (
     <ChakraProvider theme={customTheme}>
-      <Header />
+      <Box mb="10%">
+        <Header />
+      </Box>
 
-      <SliderSection />
+      <Box mb="20%">
+        <SliderSection />
+      </Box>
 
-      <Treasury />
+      <Box>
+        <Treasury />
+      </Box>
     </ChakraProvider>
   );
 }

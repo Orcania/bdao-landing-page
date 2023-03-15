@@ -39,8 +39,23 @@ const Header =()=> {
           </Box>
         </GridItem>
         <GridItem>
-          <Image src={Brick} alt="Placeholder" maxWidth={["100%", "450px", "450px"]} margin={["50px 0 0 0", "50px 0 0 0", "50px 0 0 100px"]} />
-        </GridItem>
+  <Box
+    display="flex"
+    justifyContent="center"
+    alignItems="center"
+    width="100%"
+    height={isMobile ? "100%" : "100%"}
+  >
+    <Image
+      src={Brick}
+      alt="Placeholder"
+      width="100%"
+      height="100%"
+      objectFit="cover"
+      ml="20%"
+    />
+  </Box>
+</GridItem>
       </Grid>
     </Box>
   );
