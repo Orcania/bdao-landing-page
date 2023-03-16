@@ -13,8 +13,11 @@ import {
   Grid,
   GridItem,
   Image,
+  HStack,
+  Flex,
+  Link,
 } from "@chakra-ui/react";
-
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 //Css imports
 import "../slider-section/slick-theme.css";
 import "../slider-section/slick.css";
@@ -112,7 +115,7 @@ const SliderSection = () => {
       [next]: false,
     }));
   };
-
+  const slideCount = 3;
   const settings = {
     dots: true,
     infinite: true,
@@ -146,17 +149,29 @@ const SliderSection = () => {
     beforeChange: handleSlideChange,
   };
   const images = [Magnifier, Earth, Phone];
-
+  const getNextSlideTitle = () => {
+    const nextSlide = (currentSlide + 1) % slideCount;
+    let title = "";
+    if (nextSlide === 0) {
+      title = "What is REIT?";
+    } else if (nextSlide === 1) {
+      title = "How BDAO uses a DAO structure?";
+    } else if (nextSlide === 2) {
+      title = "How BDAO uses blockchain tech?";
+    }
+    return title;
+  };
   return (
-    <Box display="flex" flexDirection={{ base: "column-reverse", md: "row" }} >
+    <Box display="flex" flexDirection={{ base: "column-reverse", md: "row" }}>
+      
       <Box
         width={{ base: "100%", md: "70%" }}
         p={{ base: "4", md: "2" }}
         mt={{ base: "0", md: "100px" }}
         textAlign="left"
         borderWidth="1px"
-        
         borderColor="black"
+        
       >
         <Slider ref={sliderRef} {...settings}>
           {[0, 1, 2].map((slideIndex) => (
@@ -178,8 +193,11 @@ const SliderSection = () => {
                 <Button
                   onClick={() => handleReadMoreClick(slideIndex)}
                   mt={{ base: "2", md: "4" }}
-                  variant="link" textDecor="underline" color="black"
-                  transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}
+                  variant="link"
+                  textDecor="underline"
+                  color="black"
+                  transition="all 0.2s ease-in-out"
+                  _hover={{ color: "gray" }}
                 >
                   Read more
                 </Button>
@@ -203,10 +221,8 @@ const SliderSection = () => {
           ))}
         </Slider>
       </Box>
-      <Box
-        display={{ base: "flex", md: "block" }}
-        flexDirection={{ base: "row", md: "column" }}
-      >
+      
+      <Box textAlign="center" mt={{ base: "2", md: "0" }} >
         <Image
           src={images[currentSlide]}
           alt="Example image"
@@ -218,6 +234,34 @@ const SliderSection = () => {
           bg="white"
           mb={{ base: "30px", md: 0 }}
         />
+      </Box>
+      
+      <Box
+       width={{ base: "100%", md: "30%" }}
+       display="flex"
+       flexDirection="row"
+       alignItems="flex-end"
+       mt={{ base: "2", md: "0" }}
+      >
+        
+          <Button
+            onClick={() => {
+              const nextSlide = (currentSlide + 1) % slideCount;
+              setCurrentSlide(nextSlide);
+              sliderRef.current.slickNext();
+            }}
+            variant="link"
+            textDecor="underline"
+            color="black"
+            transition="all 0.2s ease-in-out"
+            _hover={{ color: "gray" }}
+          >
+            <HStack>
+              <span>Next: {getNextSlideTitle()}</span>
+              <ArrowForwardIcon boxSize={5} color="black" />
+            </HStack>
+          </Button>
+       
       </Box>
     </Box>
   );
