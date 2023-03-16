@@ -6,7 +6,6 @@ import { ChakraProvider, Slider } from "@chakra-ui/react";
 
 import { Box, Flex, Center } from "@chakra-ui/react";
 
-
 //font import
 import customTheme from "./theme";
 //Files imports
@@ -21,9 +20,9 @@ function App() {
         <Header />
       </Box>
 
-      <Box mb="20%">
+      <div>
         <SliderSection />
-      </Box>
+      </div>
 
       <Box>
         <Treasury />

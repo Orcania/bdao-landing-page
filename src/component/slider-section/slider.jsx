@@ -162,67 +162,74 @@ const SliderSection = () => {
     return title;
   };
   return (
-    <Box display="flex" flexDirection={{ base: "column-reverse", md: "row" }}>
-      
-      <Box
-        width={{ base: "100%", md: "70%" }}
-        p={{ base: "4", md: "2" }}
-        mt={{ base: "0", md: "100px" }}
-        textAlign="left"
-        borderWidth="1px"
-        borderColor="black"
-        
-      >
-        <Slider ref={sliderRef} {...settings}>
-          {[0, 1, 2].map((slideIndex) => (
-            <Box key={slideIndex} p={{ base: "4", md: "20" }} textAlign="left">
-              <Heading as="h6" size={{ base: "md", md: "lg" }}>
-                {slideIndex === 0 && "What is REIT?"}
-                {slideIndex === 1 && "How BDAO uses a DAO structure?"}
-                {slideIndex === 2 && "How BDAO uses blockchain tech?"}
-              </Heading>
-              <Text mt={{ base: "2", md: "4" }}>
-                {slideIndex === 0 &&
-                  "A REIT, or Real Estate Investment Trust, is a type of investment company that owns and operates income-producing real estate assets. REITs typically own a portfolio of properties that generate rental income and subject to capital appreciation. REITs distribute at least 90% of its taxable income to shareholders in the form of dividends"}
-                {slideIndex === 1 &&
-                  "Under the DAO governance framework, the members acquire a democratic right to influence the strategic direction of the REIT’s expansion. Members can introduce lucrative real estate opportunities, exercise influence over portfolio development, asset disposal, Active Participant (AP) selection, and diversification proposals via innovative voting systems"}
-                {slideIndex === 2 &&
-                  "BDAO utilizes blockchain technology and crypto currencies to provide a platform applicable for capital raising via digital assets, dividend distribution, asset management, automated compliance, investor management, custodial systems, and transparency."}
-              </Text>
-              {!showText[slideIndex] && (
-                <Button
-                  onClick={() => handleReadMoreClick(slideIndex)}
-                  mt={{ base: "2", md: "4" }}
-                  variant="link"
-                  textDecor="underline"
-                  color="black"
-                  transition="all 0.2s ease-in-out"
-                  _hover={{ color: "gray" }}
-                >
-                  Read more
-                </Button>
-              )}
-              {showText[slideIndex] && (
-                <>
-                  <Text mt={{ base: "2", md: "4" }}>
-                    Vivamus ultricies augue a mauris imperdiet, quis convallis
-                    sapien efficitur. Nam tristique ligula vel urna venenatis
-                    malesuada. Nam commodo, arcu quis facilisis laoreet, neque
-                    magna pulvinar sapien, id dignissim mauris quam in massa.
-                    Sed in tellus commodo, congue velit eu, posuere metus. Fusce
-                    bibendum commodo metus non varius. Nam nec leo eget nisl
-                    pharetra iaculis vel eu augue. Aenean a lectus eu nisl
-                    finibus ultricies. Vestibulum nec nisl vestibulum, egestas
-                    turpis sed, rutrum est. Morbi sit amet
-                  </Text>
-                </>
-              )}
-            </Box>
-          ))}
-        </Slider>
-      </Box>
-      
-      <Box textAlign="center" mt={{ base: "2", md: "0" }} >
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column-reverse",
+        justifyContent: "space-between",
+      }}
+    >
+      <div style={{ width: "70%" }}>
+        <div style={{ width: "100%", border: "1px solid black" }}>
+          <Slider ref={sliderRef} {...settings}>
+            {[0, 1, 2].map((slideIndex) => (
+              <Box
+                key={slideIndex}
+                p={{ base: "4", md: "20" }}
+                textAlign="left"
+              >
+                <Heading as="h6" size={{ base: "md", md: "lg" }}>
+                  {slideIndex === 0 && "What is REIT?"}
+                  {slideIndex === 1 && "How BDAO uses a DAO structure?"}
+                  {slideIndex === 2 && "How BDAO uses blockchain tech?"}
+                </Heading>
+                <Text mt={{ base: "2", md: "4" }}>
+                  {slideIndex === 0 &&
+                    "A REIT, or Real Estate Investment Trust, is a type of investment company that owns and operates income-producing real estate assets. REITs typically own a portfolio of properties that generate rental income and subject to capital appreciation. REITs distribute at least 90% of its taxable income to shareholders in the form of dividends"}
+                  {slideIndex === 1 &&
+                    "Under the DAO governance framework, the members acquire a democratic right to influence the strategic direction of the REIT’s expansion. Members can introduce lucrative real estate opportunities, exercise influence over portfolio development, asset disposal, Active Participant (AP) selection, and diversification proposals via innovative voting systems"}
+                  {slideIndex === 2 &&
+                    "BDAO utilizes blockchain technology and crypto currencies to provide a platform applicable for capital raising via digital assets, dividend distribution, asset management, automated compliance, investor management, custodial systems, and transparency."}
+                </Text>
+                {!showText[slideIndex] && (
+                  <Button
+                    onClick={() => handleReadMoreClick(slideIndex)}
+                    mt={{ base: "2", md: "4" }}
+                    variant="link"
+                    textDecor="underline"
+                    color="black"
+                    transition="all 0.2s ease-in-out"
+                    _hover={{ color: "gray" }}
+                  >
+                    Read more
+                  </Button>
+                )}
+                {showText[slideIndex] && (
+                  <>
+                    <Text mt={{ base: "2", md: "4" }}>
+                      Vivamus ultricies augue a mauris imperdiet, quis convallis
+                      sapien efficitur. Nam tristique ligula vel urna venenatis
+                      malesuada. Nam commodo, arcu quis facilisis laoreet, neque
+                      magna pulvinar sapien, id dignissim mauris quam in massa.
+                      Sed in tellus commodo, congue velit eu, posuere metus.
+                      Fusce bibendum commodo metus non varius. Nam nec leo eget
+                      nisl pharetra iaculis vel eu augue. Aenean a lectus eu
+                      nisl finibus ultricies. Vestibulum nec nisl vestibulum,
+                      egestas turpis sed, rutrum est. Morbi sit amet
+                    </Text>
+                  </>
+                )}
+              </Box>
+            ))}
+          </Slider>
+        </div>
+
+        <div className="" style={{ textAlign: "right" }}>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        </div>
+      </div>
+
+      <Box textAlign="center" mt={{ base: "2", md: "0" }}>
         <Image
           src={images[currentSlide]}
           alt="Example image"
@@ -235,35 +242,33 @@ const SliderSection = () => {
           mb={{ base: "30px", md: 0 }}
         />
       </Box>
-      
-      <Box
-       width={{ base: "100%", md: "30%" }}
-       display="flex"
-       flexDirection="row"
-       alignItems="flex-end"
-       mt={{ base: "2", md: "0" }}
+
+      {/* <Box
+        width={{ base: "100%", md: "30%" }}
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-end"
+        mt={{ base: "2", md: "0" }}
       >
-        
-          <Button
-            onClick={() => {
-              const nextSlide = (currentSlide + 1) % slideCount;
-              setCurrentSlide(nextSlide);
-              sliderRef.current.slickNext();
-            }}
-            variant="link"
-            textDecor="underline"
-            color="black"
-            transition="all 0.2s ease-in-out"
-            _hover={{ color: "gray" }}
-          >
-            <HStack>
-              <span>Next: {getNextSlideTitle()}</span>
-              <ArrowForwardIcon boxSize={5} color="black" />
-            </HStack>
-          </Button>
-       
-      </Box>
-    </Box>
+        <Button
+          onClick={() => {
+            const nextSlide = (currentSlide + 1) % slideCount;
+            setCurrentSlide(nextSlide);
+            sliderRef.current.slickNext();
+          }}
+          variant="link"
+          textDecor="underline"
+          color="black"
+          transition="all 0.2s ease-in-out"
+          _hover={{ color: "gray" }}
+        >
+          <HStack>
+            <span>Next: {getNextSlideTitle()}</span>
+            <ArrowForwardIcon boxSize={5} color="black" />
+          </HStack>
+        </Button>
+      </Box> */}
+    </div>
   );
 };
 
