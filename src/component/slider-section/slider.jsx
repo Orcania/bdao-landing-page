@@ -168,20 +168,20 @@ const SliderSection = () => {
         width={{ base: "100%", md: "70%" }}
         p={{ base: "4", md: "2" }}
         mt={{ base: "0", md: "100px" }}
-        textAlign="left"
-        borderWidth="1px"
-        borderColor="black"
+        textAlign={{ base: "center", md: "left" }}
+        borderWidth={{ base: "0", md: "1px" }}
+  borderColor={{ base: "transparent", md: "black" }}
         
       >
         <Slider ref={sliderRef} {...settings}>
           {[0, 1, 2].map((slideIndex) => (
             <Box key={slideIndex} p={{ base: "4", md: "20" }} textAlign="left">
-              <Heading as="h6" size={{ base: "md", md: "lg" }}>
+              <Heading as="h6" size={{ base: "md", md: "lg" }} textAlign={{ base: "center", md: "left" }}>
                 {slideIndex === 0 && "What is REIT?"}
                 {slideIndex === 1 && "How BDAO uses a DAO structure?"}
                 {slideIndex === 2 && "How BDAO uses blockchain tech?"}
               </Heading>
-              <Text mt={{ base: "2", md: "4" }}>
+              <Text mt={{ base: "2", md: "4" }} textAlign={{ base: "center", md: "left" }}>
                 {slideIndex === 0 &&
                   "A REIT, or Real Estate Investment Trust, is a type of investment company that owns and operates income-producing real estate assets. REITs typically own a portfolio of properties that generate rental income and subject to capital appreciation. REITs distribute at least 90% of its taxable income to shareholders in the form of dividends"}
                 {slideIndex === 1 &&
@@ -190,6 +190,7 @@ const SliderSection = () => {
                   "BDAO utilizes blockchain technology and crypto currencies to provide a platform applicable for capital raising via digital assets, dividend distribution, asset management, automated compliance, investor management, custodial systems, and transparency."}
               </Text>
               {!showText[slideIndex] && (
+                <Box textAlign={{ base: "center", md: "left" }}>
                 <Button
                   onClick={() => handleReadMoreClick(slideIndex)}
                   mt={{ base: "2", md: "4" }}
@@ -201,6 +202,7 @@ const SliderSection = () => {
                 >
                   Read more
                 </Button>
+                </Box>
               )}
               {showText[slideIndex] && (
                 <>
