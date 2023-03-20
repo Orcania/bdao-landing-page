@@ -13,6 +13,7 @@ import Header from "../src/component/header/header.jsx";
 import SliderSection from "./component/slider-section/slider";
 import Treasury from "./component/treasury-section/treasury";
 import Governed from "./component/governed-section/governed";
+import Staking from "./component/staking-section/staking";
 function App() {
   return (
     <ChakraProvider theme={customTheme}>
@@ -29,6 +30,9 @@ function App() {
       </div>
       <div>
         <Governed />
+      </div>
+      <div>
+        <Staking />
       </div>
     </ChakraProvider>
   );
