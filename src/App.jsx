@@ -14,6 +14,7 @@ import SliderSection from "./component/slider-section/slider";
 import Treasury from "./component/treasury-section/treasury";
 import Governed from "./component/governed-section/governed";
 import Staking from "./component/staking-section/staking";
+import Contact from "./component/contact-section/contact";
 function App() {
   return (
     <ChakraProvider theme={customTheme}>
@@ -33,6 +34,9 @@ function App() {
       </div>
       <div>
         <Staking />
+      </div>
+      <div>
+        <Contact />
       </div>
     </ChakraProvider>
   );
