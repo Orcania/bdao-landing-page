@@ -10,7 +10,7 @@ export default function StakingCard({ imageSrc, heading, text }) {
         transform: "scale(1.05)",
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
         transition: "all .2s ease-in-out",
-        
+        cursor:"pointer"
       }}
       w={{base:"70%",md:"100%"}}
 
