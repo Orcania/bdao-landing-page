@@ -66,7 +66,7 @@ const Header = () => {
             <Image
               src={Brick}
               alt="Placeholder"
-              width="100%"
+              width={{ base: "90%", md: "100%" }}
               height="100%"
               objectFit="cover"
               ml="20%"

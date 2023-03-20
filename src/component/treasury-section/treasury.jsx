@@ -23,7 +23,7 @@ const Treasury = () => {
   const imageDisplay = useBreakpointValue({ base: "block", md: "flex" });
 
   return (
-    <Box display={{ md: "flex" }} marginTop="10%">
+    <Box display={{ md: "flex" }} marginTop="20%">
       <Box display="flex" justifyContent="center" alignItems="center">
         <Image
           src={BalanceImg}
@@ -37,7 +37,7 @@ const Treasury = () => {
           mt={{ base: "30%", md: "0" }}
         />
       </Box>{" "}
-      <Box textAlign={{ base: "center", md: "left" }} marginTop="100px">
+      <Box textAlign={{ base: "center", md: "left" }} marginTop="100px" ml={{md:"10%"}}>
         <Heading as="h2" fontSize="2xl" mb="2">
           How the treasury works
         </Heading>
