@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useRef } from "react";
 import Slider from "react-slick";
 
 //Chakra Imports
@@ -29,77 +29,12 @@ import Phone from "../../assets/images/phone.png";
 
 import data from "./slider-data";
 
-function getNextSlideTitle(nextSlideIndex) {
-  switch (nextSlideIndex) {
-    case 0:
-      return "What is REIT?";
-    case 1:
-      return "How BDAO uses a DAO structure?";
-    case 2:
-      return "How BDAO uses blockchain tech?";
-    default:
-      return "";
-  }
-}
-
-function NextArrow(props) {
-  const { className, onClick, currentSlide, slideCount } = props;
-
-  const nextSlideIndex = (currentSlide + 1) % slideCount;
-  const nextSlideTitle = getNextSlideTitle(nextSlideIndex);
-
-  return (
-    <Box>
-      <Text>{nextSlideTitle}</Text>
-      <IconButton
-        className={className}
-        aria-label="Next slide"
-        icon={<ChevronRightIcon />}
-        onClick={onClick}
-        position="absolute"
-        top="50%"
-        right={useBreakpointValue({ base: -10, md: 0 })}
-        transform="translateY(-50%)"
-        borderRadius="full"
-        borderWidth="1.5px"
-        borderStyle="solid"
-        borderColor="black"
-        bg="white"
-        color="black"
-        _hover={{ bg: "black", color: "white", borderColor: "white" }}
-      />
-    </Box>
-  );
-}
-function CustomDot(props) {
-  //Customized navigational dots below the slider
-  const { onClick, active } = props;
-  const activeClass = active ? "active" : "";
-  return (
-    <button
-      onClick={onClick}
-      className={`custom-dot ${activeClass}`}
-      style={{
-        width: "10px",
-        height: "10px",
-        margin: "0 8px",
-        borderRadius: "50%",
-        borderWidth: "1px",
-        borderStyle: "solid",
-        borderColor: "black",
-
-        background: active ? "black" : "none",
-        marginTop: "30px",
-      }}
-    />
-  );
-}
-
 const SliderSection = () => {
   //Component integration
-  const sliderRef = React.useRef(null);
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const sliderRef = useRef(null); // Store a reference to the slider component
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [showText, setShowText] = React.useState({});
+  const [slider, setSlider] = useState(null); // Store a reference to the slider component
 
   const handleReadMoreClick = (slideIndex) => {
     //handling read more button
@@ -109,18 +44,13 @@ const SliderSection = () => {
     }));
   };
 
-  const handleSlideChange = (current, next) => {
-    setCurrentSlide(next);
-    setShowText((prev) => ({
-      ...prev,
-      [current]: false,
-      [next]: false,
-    }));
-  };
   const slideCount = 3;
-  
+
+  //list of images used here
   const images = [Magnifier, Earth, Phone];
+
   const getNextSlideTitle = () => {
+    //getting upcoming title
     const nextSlide = (currentSlide + 1) % slideCount;
     let title = "";
     if (nextSlide === 0) {
@@ -133,41 +63,40 @@ const SliderSection = () => {
     return title;
   };
 
-  const settings2 = {
-    dots: true,
+  const nextSlide = () => {
+    sliderRef.current.slickNext(); // Call the slickNext method to go to the next slide
+  };
+
+  //react-slick settings
+  const settings = {
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 7000,
-    nextArrow: <NextArrow currentSlide={currentSlide} slideCount={3} />,
-    customPaging: (i) => (
-      <CustomDot
-        onClick={() => setCurrentSlide(i)}
-        active={currentSlide === i}
-      />
-    ),
-    appendDots: (dots) => (
-      <div style={{ bottom: "-25px" }}>
-        <ul
-          style={{
-            margin: "0px",
-            padding: "0px",
-            listStyle: "none",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          {dots}
-        </ul>
-      </div>
-    ),
-    beforeChange: handleSlideChange,
+    beforeChange: (current, next) => setCurrentSlide(next),
   };
 
-  return (
+  const goToSlide = (id) => {
+    sliderRef.current.slickGoTo(id - 1); // Subtract 1 from the id before passing it to the slickGoTo method
+    setCurrentSlide(id - 1); // Update the current slide index
+  };
 
+  const slides = [
+    //slide indexes
+    {
+      id: 1,
+    },
+    {
+      id: 2,
+    },
+    {
+      id: 3,
+    },
+  ];
+  return (
     <div>
       <Box display="flex" flexDirection={{ base: "column-reverse", md: "row" }}>
         <Box
@@ -175,52 +104,94 @@ const SliderSection = () => {
           p={{ base: "4", md: "2" }}
           mt={{ base: "0", md: "100px" }}
           textAlign={{ base: "center", md: "left" }}
-          borderWidth={{ base: "0", md: "1px" }}
-          borderColor={{ base: "transparent", md: "black" }}
         >
-          <Slider {...settings2}>
-            {data.map((item, slideIndex) => (
-              <Box p={{ base: "4", md: "20" }} textAlign="left">
-                <Heading
-                  as="h6"
-                  size={{ base: "md", md: "lg" }}
-                  textAlign={{ base: "center", md: "left" }}
-                  mb="5%"
-                >
-                  {item.title}
-                </Heading>
-                <Text
-                  mt={{ base: "2", md: "4" }}
-                  textAlign={{ base: "center", md: "left" }}
-                >
-                  {item.description}
-                </Text>
-                {!showText[slideIndex] && (
-                  <Box >
-                   <Button
-                     onClick={() => handleReadMoreClick(slideIndex)}
-                     mt={{ base: "2", md: "4" }}
-                     variant="link"
-                     textDecor="underline"
-                     color="black"
-                    transition="all 0.2s ease-in-out"
-                     _hover={{ color: "gray" }}
-                     
-                   >
-                     Read more
-                   </Button>
-                   </Box>
-                 )}
-                 {showText[slideIndex] && (
-                   <>
-                     <Text mt={{ base: "2", md: "4" }}>
-                       {item.extraDescription}
-                     </Text>
-                   </>
-                 )}
-              </Box>
-            ))}
-          </Slider>
+          <Box
+            borderWidth={{ base: "0", md: "1px" }}
+            borderColor={{ base: "transparent", md: "black" }}
+          >
+            <Slider ref={sliderRef} {...settings}>
+              {data.map((item, slideIndex) => (
+                <Box p={{ base: "4", md: "20" }} textAlign="left">
+                  <Heading
+                    as="h6"
+                    size={{ base: "md", md: "lg" }}
+                    textAlign={{ base: "center", md: "left" }}
+                    mb="5%"
+                  >
+                    {item.title}
+                  </Heading>
+                  <Text
+                    mt={{ base: "2", md: "4" }}
+                    textAlign={{ base: "center", md: "left" }}
+                  >
+                    {item.description}
+                  </Text>
+                  {!showText[slideIndex] && (
+                    <Box
+                      display={{ base: "flex", md: "block" }}
+                      justifyContent={{ base: "center" }}
+                    >
+                      <Button
+                        onClick={() => handleReadMoreClick(slideIndex)}
+                        mt={{ base: "2", md: "4" }}
+                        variant="link"
+                        textDecor="underline"
+                        color="black"
+                        transition="all 0.2s ease-in-out"
+                        _hover={{ color: "gray" }}
+                      >
+                        Read more
+                      </Button>
+                    </Box>
+                  )}
+                  {showText[slideIndex] && (
+                    <>
+                      <Text mt={{ base: "2", md: "4" }}>
+                        {item.extraDescription}
+                      </Text>
+                    </>
+                  )}
+                </Box>
+              ))}
+            </Slider>
+          </Box>
+          <Box mt="10px">
+            <Box textAlign="right" width="50%" float={{base:"center", md:"right"}} display={{base:"none",md:"block"}} >
+              <Button
+                onClick={nextSlide}
+                variant="link"
+                textDecor="underline"
+                color="black"
+                transition="all 0.2s ease-in-out"
+                _hover={{ color: "gray" }}
+              >
+                <HStack>
+                  <span>Next: {getNextSlideTitle()}</span>
+                  <ArrowForwardIcon boxSize={5} color="black" />
+                </HStack>
+              </Button>
+            </Box>
+            <Box display="flex" width={{base:"100%", md:"50%"}}   justifyContent={{base:"center",md:"left"}}>
+              {slides.map((slide) => (
+                <div
+                  key={slide.id}
+                  style={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: "50%",
+                    borderWidth: "1px",
+                    borderColor: "black",
+
+                    backgroundColor:
+                      currentSlide === slide.id - 1 ? "black" : "white",
+                    margin: "5px 5px",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => goToSlide(slide.id)}
+                />
+              ))}
+            </Box>
+          </Box>
         </Box>
         <Box textAlign="center" mt={{ base: "2", md: "0" }}>
           <Image
@@ -236,32 +207,6 @@ const SliderSection = () => {
           />
         </Box>
       </Box>
-      <Box
-         width={{ base: "100%", md: "30%" }}
-         display="flex"
-         flexDirection="row"
-         alignItems="flex-end"
-         mt={{ base: "2", md: "0" }}
-       >
-         <Button
-           onClick={() => {
-             const nextSlide = (currentSlide + 1) % slideCount;
-             setCurrentSlide(nextSlide);
-             sliderRef.current.slickNext();
-           }}
-           variant="link"
-           textDecor="underline"
-           color="black"
-           transition="all 0.2s ease-in-out"
-           _hover={{ color: "gray" }}
-         >
-           <HStack>
-             <span>Next: {getNextSlideTitle()}</span>
-             <ArrowForwardIcon boxSize={5} color="black" />
-           </HStack>
-         </Button>
-         
-       </Box>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import "./App.css";
 //Chakra imports
 import { ChakraProvider, Slider } from "@chakra-ui/react";
 
-import { Box, Flex, Center } from "@chakra-ui/react";
+import { Box, Flex, Center, Container } from "@chakra-ui/react";
 
 //font import
 import customTheme from "./theme";
@@ -18,27 +18,30 @@ import Contact from "./component/contact-section/contact";
 function App() {
   return (
     <ChakraProvider theme={customTheme}>
-      <Box mb="10%">
-        <Header />
+    <Header />
+
+   
+      <Box mb={10}>
+        <SliderSection />
       </Box>
 
-      <div>
-        <SliderSection />
-      </div>
-
-      <div>
+      <Box mb={20}>
         <Treasury />
-      </div>
-      <div>
+      </Box>
+
+      <Box mb={10}>
         <Governed />
-      </div>
-      <div>
+      </Box>
+
+      <Box mb={10}>
         <Staking />
-      </div>
-      <div>
+      </Box>
+
+      <Box mb={10}>
         <Contact />
-      </div>
-    </ChakraProvider>
+      </Box>
+   
+  </ChakraProvider>
   );
 }
 

@@ -6,3 +6,15 @@
   padding: 2rem;
 
 }
+.section {
+  margin-top: 60px; /* Adds space between sections */
+  display: flex;
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center; /* Centers the content vertically */
+  height: 100vh; /* Sets the height of each section to 100% of the viewport */
+}
+
+/* Applies margin to the top of the first section to push it down from the header */
+.section:first-child {
+  margin-top: 100px;
+}
