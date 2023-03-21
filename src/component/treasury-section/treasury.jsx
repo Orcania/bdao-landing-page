@@ -23,7 +23,7 @@ const Treasury = () => {
   const imageDisplay = useBreakpointValue({ base: "block", md: "flex" });
 
   return (
-    <Box display={{ md: "flex" }} marginTop="20%">
+    <Box display={{ md: "flex" }} marginTop="20%" mb="100px">
       <Box display="flex" justifyContent="center" alignItems="center">
         <Image
           src={BalanceImg}

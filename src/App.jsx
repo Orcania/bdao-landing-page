@@ -25,7 +25,7 @@ function App() {
         <SliderSection />
       </Box>
 
-      <Box mb={20}>
+      <Box mb={40}>
         <Treasury />
       </Box>
 
@@ -37,7 +37,7 @@ function App() {
         <Staking />
       </Box>
 
-      <Box mb={10}>
+      <Box>
         <Contact />
       </Box>
    
