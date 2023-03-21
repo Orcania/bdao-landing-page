@@ -112,7 +112,7 @@ function App() {
         <Staking />
       </Box>
 
-      <Box mb="22%">
+      <Box >
         <Contact />
       </Box>
 
