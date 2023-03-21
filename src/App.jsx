@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 //Chakra imports
@@ -57,10 +57,35 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const headerPos = headerRef.current.offsetTop - window.innerHeight / 2;
+      const sliderPos = sliderRef.current.offsetTop - window.innerHeight / 2;
+      const treasuryPos = treasuryRef.current.offsetTop - window.innerHeight / 2;
+      const governedPos = governedRef.current.offsetTop - window.innerHeight / 2;
+
+      if (window.scrollY >= headerPos && window.scrollY < sliderPos) {
+        setCurrentSlide(0);
+      } else if (window.scrollY >= sliderPos && window.scrollY < treasuryPos) {
+        setCurrentSlide(1);
+      } else if (window.scrollY >= treasuryPos && window.scrollY < governedPos) {
+        setCurrentSlide(2);
+      } else if (window.scrollY >= governedPos) {
+        setCurrentSlide(3);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <ChakraProvider theme={customTheme}>
       <div ref={headerRef}>
-        <Box mb={40} mt="10%">
+        <Box mb={40} >
           <Header />
         </Box>
       </div>
