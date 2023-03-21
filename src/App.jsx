@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 //Chakra imports
-import { ChakraProvider, Slider } from "@chakra-ui/react";
+import { ChakraProvider, color, Slider } from "@chakra-ui/react";
 
 import { Box, Flex, Center, Container } from "@chakra-ui/react";
 
@@ -130,6 +130,7 @@ function App() {
           borderWidth="2px"
           borderColor="black"
           backgroundColor={currentSlide === 0 ? "black" : "white"}
+          _hover={{backgroundColor:"#CDCDCD"}}
           mb={2}
           onClick={() => handleButtonClick(0)}
         />
@@ -138,6 +139,7 @@ function App() {
           borderRadius="0"
           borderWidth="2px"
           borderColor="black"
+          _hover={{backgroundColor:"#CDCDCD"}}
           backgroundColor={currentSlide === 1 ? "black" : "white"}
           mb={2}
           onClick={() => handleButtonClick(1)}
@@ -147,6 +149,7 @@ function App() {
           borderRadius="0"
           borderWidth="2px"
           borderColor="black"
+          _hover={{backgroundColor:"#CDCDCD"}}
           backgroundColor={currentSlide === 2 ? "black" : "white"}
           mb={2}
           onClick={() => handleButtonClick(2)}
@@ -156,6 +159,7 @@ function App() {
           borderRadius="0"
           borderWidth="2px"
           borderColor="black"
+          _hover={{backgroundColor:"#CDCDCD"}}
           backgroundColor={currentSlide === 3 ? "black" : "white"}
           mb={2}
           onClick={() => handleButtonClick(3)}
