@@ -105,14 +105,15 @@ const SliderSection = () => {
           mt={{ base: "0", md: "100px" }}
           textAlign={{ base: "center", md: "left" }}
         >
-          <Box
+          <Box 
+          border
             borderWidth={{ base: "0", md: "1px" }}
             borderColor={{ base: "transparent", md: "black" }}
             borderRadius={4}
           >
             <Slider ref={sliderRef} {...settings}>
               {data.map((item, slideIndex) => (
-                <Box p={{ base: "4", md: "20" }} textAlign="left">
+                <Box p={{ base: "4", md: "20" }} textAlign="left"> 
                   <Heading
                     as="h6"
                     size={{ base: "md", md: "lg" }}
@@ -194,7 +195,7 @@ const SliderSection = () => {
             </Box>
           </Box>
         </Box>
-        <Box textAlign="center" mt={{ base: "2", md: "0" }}>
+        <Box textAlign="center" mt={{ base: "2", md: "6% " }}>
           <Image
             src={images[currentSlide]}
             alt="Example image"

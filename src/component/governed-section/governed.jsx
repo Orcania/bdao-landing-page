@@ -16,7 +16,7 @@ const Governed = () => {
     const imageDisplay = useBreakpointValue({ base: "block", md: "flex" });
 
   return (
-    <Box  display={{base:"flex", md: "flex" }} justifyContent="center" mt={{base:"30%",md:"10%"}}>
+    <Box  display={{base:"flex", md: "flex" }} justifyContent="center">
       <Flex
     flexDirection={{ base: "column-reverse", md: "row" }} // Set the flexDirection
     width="100%"
@@ -69,14 +69,15 @@ const Governed = () => {
           </Box>
         )}
       </Box>
+     
+      </Flex>
       <Box justifyContent="center"
       alignItems="center"
       mt={{ base: "2rem", md: "0" }}
       ml={{base:"25%",md:"0"}}
       w={{ base: "60vw", md: "100vw" }}>
-      <Image  src={GovernedImg} alt="Treasury Image" w="100%" h="auto"  />
+      <Image  src={GovernedImg} alt="Treasury Image" w="100%"   />
       </Box>
-      </Flex>
     </Box>
 
   );

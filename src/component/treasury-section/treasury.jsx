@@ -28,8 +28,8 @@ const Treasury = () => {
         <Image
           src={BalanceImg}
           alt="Treasury Image"
-          w={{ base: "60vw", md: "100vw" }}
-          h="100%"
+          w={{ base: "60vw", md: "200vw" }}
+          h="auto"
           mr={{ md: "4" }}
           ml={{ base: "0", md: "0" }}
           display={imageDisplay}

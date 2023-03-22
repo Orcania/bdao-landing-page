@@ -44,7 +44,7 @@ const Header = () => {
                 borderRadius="none"
                 _hover={{ bg: "black", color: "white" }}
                 size="lg"
-                width="2000px"
+                width={{md:"2000px"}}
                 h="8vh" 
                 maxWidth={["50%", "200px", "200px"]}
                 padding={["8px 20px", "12px 40px", "12px 40px"]}

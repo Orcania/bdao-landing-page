@@ -15,8 +15,8 @@ export default function StakingCard({ imageSrc, heading, text }) {
       w={{base:"70%",md:"100%"}}
       maxWidth="50vw"
      
-maxHeight="70vh"
-h="100vh"
+maxHeight={{base:"auto",md:"70vh"}}
+h={{base:"auto",md:"100vh"}}
     >
       <CardHeader>
         <Box display="flex" justifyContent="center" alignItems="center" h="200px" position="relative">
