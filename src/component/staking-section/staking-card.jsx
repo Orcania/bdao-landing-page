@@ -5,7 +5,7 @@ export default function StakingCard({ imageSrc, heading, text }) {
     <Card
       border="1px solid gray"
       textAlign="center"
-      borderRadius={0}
+      borderRadius={3}
       _hover={{
         transform: "scale(1.05)",
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
@@ -13,7 +13,10 @@ export default function StakingCard({ imageSrc, heading, text }) {
         cursor:"pointer"
       }}
       w={{base:"70%",md:"100%"}}
-
+      maxWidth="50vw"
+     
+maxHeight="70vh"
+h="100vh"
     >
       <CardHeader>
         <Box display="flex" justifyContent="center" alignItems="center" h="200px" position="relative">

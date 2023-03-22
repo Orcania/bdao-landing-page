@@ -15,8 +15,8 @@ import {
 
 const Contact = () => {
   return (
-    <Box mt="30%" mb="10%"  ml={{base:"20%",md:"none"}}>
-      <Box>
+    <Box mt="30%" mb="10%"   w="100%" >
+      <Box >
         <Text color="gray">Have any questions ?</Text>
       </Box>
       <br />

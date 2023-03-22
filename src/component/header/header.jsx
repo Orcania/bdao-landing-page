@@ -40,14 +40,17 @@ const Header = () => {
                 bg="white"
                 color="black"
                 borderWidth="2px"
+                borderColor="black"
                 borderRadius="none"
                 _hover={{ bg: "black", color: "white" }}
                 size="lg"
-                maxWidth={["50%", "170px", "170px"]}
+                width="2000px"
+                h="8vh" 
+                maxWidth={["50%", "200px", "200px"]}
                 padding={["8px 20px", "12px 40px", "12px 40px"]}
                 marginTop={["50px", "100px", "100px"]}
               >
-                Launch App
+                <Text>Launch app</Text>
                 <Box display="inline-block" position="relative" top="2px">
                   <FaArrowRight style={{ marginLeft: "8px" }} />
                 </Box>

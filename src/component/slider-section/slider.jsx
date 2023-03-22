@@ -108,6 +108,7 @@ const SliderSection = () => {
           <Box
             borderWidth={{ base: "0", md: "1px" }}
             borderColor={{ base: "transparent", md: "black" }}
+            borderRadius={4}
           >
             <Slider ref={sliderRef} {...settings}>
               {data.map((item, slideIndex) => (

@@ -4,7 +4,7 @@ import "./App.css";
 //Chakra imports
 import { ChakraProvider, color, Slider } from "@chakra-ui/react";
 
-import { Box, Flex, Center, Container } from "@chakra-ui/react";
+import { Box, Flex, Center, Container,useMediaQuery  } from "@chakra-ui/react";
 
 //font import
 import customTheme from "./theme";
