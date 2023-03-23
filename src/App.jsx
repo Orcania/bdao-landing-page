@@ -24,14 +24,19 @@ function App() {
   const treasuryRef = useRef(null);
   const governedRef = useRef(null);
 
+  const [hoveredButton, setHoveredButton] = useState(-1);
+
+  
   const handleButtonClick = (index) => {
     setCurrentSlide(index);
+    setHoveredButton(index);
+
 
     switch (index) {
       case 0:
         headerRef.current.scrollIntoView({
           behavior: "smooth",
-          block: "center",
+          
         });
         break;
       case 1:
@@ -56,6 +61,16 @@ function App() {
         break;
     }
   };
+  const handleButtonHover = (index) => {
+    setHoveredButton(index);
+  };
+
+  const handleButtonLeave = () => {
+    setHoveredButton(-2);
+  };
+
+  const buttonSize = 3; // Define the base size of the buttons
+  const activeButtonSize = 4; // Define the size of the active button
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,20 +99,21 @@ function App() {
 
   return (
     <ChakraProvider theme={customTheme}>
-      <div ref={headerRef}>
-        <Box mb={40} >
+      <Box display="flex" justifyContent="center" flexDirection="column" >
+      <div ref={headerRef} >
+        <Box mb={40} mt="10%" h="100vh" >
           <Header />
         </Box>
       </div>
 
       <div ref={sliderRef}>
-        <Box mb="40%">
+        <Box h="100vh">
           <SliderSection />
         </Box>
       </div>
 
       <div ref={treasuryRef}>
-        <Box mb="30%">
+        <Box mb="30%" mt={{base:"70%",md:0}}>
           <Treasury />
         </Box>
       </div>
@@ -123,47 +139,73 @@ function App() {
         transform="translateY(-50%)"
         display="flex"
         flexDirection="column"
-      >
+        w="100px"
+alignItems="center"      >
         <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth="2px"
-          borderColor="black"
-          backgroundColor={currentSlide === 0 ? "black" : "white"}
-          _hover={{backgroundColor:"#CDCDCD"}}
-          mb={2}
-          onClick={() => handleButtonClick(0)}
+           size="lg"
+           borderRadius="0"
+           borderWidth="2px"
+           borderColor="black"
+           backgroundColor={currentSlide === 0 ? "white" : "white"}
+           _hover={{ backgroundColor: hoveredButton === 0 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+           _active={{ backgroundColor: "black", transform: "scale(1)" }}
+           mb={2}
+           onClick={() => handleButtonClick(0)}
+           onMouseEnter={() => handleButtonHover(0)}
+           onMouseLeave={handleButtonLeave}
+           w={`${hoveredButton === 0 || currentSlide === 0 ? activeButtonSize : buttonSize}rem`}
+           h={`${hoveredButton === 0 || currentSlide === 0 ? activeButtonSize : buttonSize}rem`}
+           transition="all 0.2s ease-in-out"
+        />
+        <Button
+           size="lg"
+           borderRadius="0"
+           borderWidth="2px"
+           borderColor="black"
+           backgroundColor={currentSlide === 1 ? "white" : "white"}
+           _hover={{ backgroundColor: hoveredButton === 1 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+           _active={{ backgroundColor: "black", transform: "scale(1)" }}
+           mb={2}
+           onClick={() => handleButtonClick(1)}
+           onMouseEnter={() => handleButtonHover(1)}
+           onMouseLeave={handleButtonLeave}
+           w={`${hoveredButton === 1 || currentSlide === 1 ? activeButtonSize : buttonSize}rem`}
+           h={`${hoveredButton === 1 || currentSlide === 1 ? activeButtonSize : buttonSize}rem`}
+           transition="all 0.2s ease-in-out"
         />
         <Button
           size="lg"
           borderRadius="0"
           borderWidth="2px"
           borderColor="black"
-          _hover={{backgroundColor:"#CDCDCD"}}
-          backgroundColor={currentSlide === 1 ? "black" : "white"}
-          mb={2}
-          onClick={() => handleButtonClick(1)}
-        />
-        <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth="2px"
-          borderColor="black"
-          _hover={{backgroundColor:"#CDCDCD"}}
-          backgroundColor={currentSlide === 2 ? "black" : "white"}
+          backgroundColor={currentSlide === 2 ? "white" : "transparent"}
+          _hover={{ backgroundColor: hoveredButton === 2 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+          _active={{ backgroundColor: "black", transform: "scale(1)" }}
           mb={2}
           onClick={() => handleButtonClick(2)}
+          onMouseEnter={() => handleButtonHover(2)}
+          onMouseLeave={handleButtonLeave}
+          w={`${hoveredButton === 2 || currentSlide === 2 ? activeButtonSize : buttonSize}rem`}
+          h={`${hoveredButton === 2 || currentSlide === 2 ? activeButtonSize : buttonSize}rem`}
+          transition="all 0.2s ease-in-out"
         />
         <Button
           size="lg"
           borderRadius="0"
           borderWidth="2px"
           borderColor="black"
-          _hover={{backgroundColor:"#CDCDCD"}}
-          backgroundColor={currentSlide === 3 ? "black" : "white"}
+          _hover={{ backgroundColor: hoveredButton === 3 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+          _hover={{ backgroundColor: hoveredButton === 3 ? "white" : "#CDCDCD", transform: "scale(1.1)" }}
+          _active={{ backgroundColor: "black", transform: "scale(1)" }}
           mb={2}
           onClick={() => handleButtonClick(3)}
+          onMouseEnter={() => handleButtonHover(3)}
+          onMouseLeave={handleButtonLeave}
+          w={`${hoveredButton === 3 || currentSlide === 3 ? activeButtonSize : buttonSize}rem`}
+          h={`${hoveredButton === 3 || currentSlide === 3 ? activeButtonSize : buttonSize}rem`}
+          transition="all 0.2s ease-in-out"
         />
+      </Box>
       </Box>
     </ChakraProvider>
   );

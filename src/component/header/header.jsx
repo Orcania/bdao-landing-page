@@ -18,7 +18,7 @@ const Header = () => {
   const isMobile = useBreakpointValue({ base: true, md: false });
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center">
+    <Box display="flex" justifyContent="center" alignItems="center" >
       <Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)"]} gap={6}>
         <GridItem justifyContent="center" alignItems="center">
           <Box
@@ -27,10 +27,10 @@ const Header = () => {
             justifyContent="center"
             h="100%"
           >
-            <Heading as="h1" size="2xl" textAlign={texts}>
+            <Heading as="h1" fontWeight="bold" fontSize="50px" textAlign={texts}>
               Bricklayer DAO
             </Heading>
-            <Text mt={4} textAlign={texts}>
+            <Text mt={4} textAlign={texts} lineHeight="1.2em" fontWeight="bold">
               Bricklayer DAO is a REIT that operates on the blockchain and is
               governed by its token/coin holders
             </Text>
@@ -45,7 +45,7 @@ const Header = () => {
                 _hover={{ bg: "black", color: "white" }}
                 size="lg"
                 width={{md:"2000px"}}
-                h="8vh" 
+                h="6vh" 
                 maxWidth={["50%", "200px", "200px"]}
                 padding={["8px 20px", "12px 40px", "12px 40px"]}
                 marginTop={["50px", "100px", "100px"]}

@@ -98,25 +98,29 @@ const SliderSection = () => {
   ];
   return (
     <div>
-      <Box display="flex" flexDirection={{ base: "column-reverse", md: "row" }}>
+      <Box
+        display="flex"
+        flexDirection={{ base: "column-reverse", md: "row" }}
+        w="auto"
+      >
         <Box
           width={{ base: "100%", md: "70%" }}
           p={{ base: "4", md: "2" }}
           mt={{ base: "0", md: "100px" }}
           textAlign={{ base: "center", md: "left" }}
         >
-          <Box 
-          border
+          <Box
+            border
             borderWidth={{ base: "0", md: "1px" }}
             borderColor={{ base: "transparent", md: "black" }}
             borderRadius={4}
           >
             <Slider ref={sliderRef} {...settings}>
               {data.map((item, slideIndex) => (
-                <Box p={{ base: "4", md: "20" }} textAlign="left"> 
+                <Box p={{ base: "4", md: "20" }} textAlign="left">
                   <Heading
-                    as="h6"
-                    size={{ base: "md", md: "lg" }}
+                    as="h1"
+                    fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                     mb="5%"
                   >
@@ -125,6 +129,8 @@ const SliderSection = () => {
                   <Text
                     mt={{ base: "2", md: "4" }}
                     textAlign={{ base: "center", md: "left" }}
+                    lineHeight="1.2em"
+                    fontWeight="bold"
                   >
                     {item.description}
                   </Text>
@@ -135,10 +141,17 @@ const SliderSection = () => {
                     >
                       <Button
                         onClick={() => handleReadMoreClick(slideIndex)}
-                        mt={{ base: "2", md: "4" }}
                         variant="link"
                         textDecor="underline"
+                        textDecorationThickness="2px"
+                        textUnderlineOffset="4px"
                         color="black"
+                        fontWeight="bold"
+                        fontSize={{ base: "md", md: "20px" }}
+                        ml={{ base: "0", md: "0" }}
+                        mx="auto"
+                        mt={{ base: "30px", md: "30" }}
+                        display={{ base: "block", md: "block" }}
                         transition="all 0.2s ease-in-out"
                         _hover={{ color: "gray" }}
                       >
@@ -148,7 +161,11 @@ const SliderSection = () => {
                   )}
                   {showText[slideIndex] && (
                     <>
-                      <Text mt={{ base: "2", md: "4" }}>
+                      <Text
+                        mt={{ base: "2", md: "4" }}
+                        lineHeight="1.2em"
+                        fontWeight="bold"
+                      >
                         {item.extraDescription}
                       </Text>
                     </>
@@ -158,7 +175,12 @@ const SliderSection = () => {
             </Slider>
           </Box>
           <Box mt="10px">
-            <Box textAlign="right" width="50%" float={{base:"center", md:"right"}} display={{base:"none",md:"block"}} >
+            <Box
+              textAlign="right"
+              width="50%"
+              float={{ base: "center", md: "right" }}
+              display={{ base: "none", md: "block" }}
+            >
               <Button
                 onClick={nextSlide}
                 variant="link"
@@ -166,23 +188,33 @@ const SliderSection = () => {
                 color="black"
                 transition="all 0.2s ease-in-out"
                 _hover={{ color: "gray" }}
+                textDecorationThickness="2px"
+                textUnderlineOffset="4px"
+                fontWeight="bold"
+                fontSize={{ base: "md", md: "20px" }}
               >
                 <HStack>
-                  <span>Next: {getNextSlideTitle()}</span>
+                  <span>
+                    <Text>Next: {getNextSlideTitle()}</Text>
+                  </span>
                   <ArrowForwardIcon boxSize={5} color="black" />
                 </HStack>
               </Button>
             </Box>
-            <Box display="flex" width={{base:"100%", md:"50%"}}   justifyContent={{base:"center",md:"left"}}>
+            <Box
+              display="flex"
+              width={{ base: "100%", md: "50%" }}
+              justifyContent={{ base: "center", md: "left" }}
+            >
               {slides.map((slide) => (
                 <div
                   key={slide.id}
                   style={{
-                    width: 10,
-                    height: 10,
+                    width: 15,
+                    height: 15,
                     borderRadius: "50%",
                     borderWidth: "1px",
-                    borderColor: "black",
+                    borderColor: "gray",
 
                     backgroundColor:
                       currentSlide === slide.id - 1 ? "black" : "white",
@@ -195,17 +227,34 @@ const SliderSection = () => {
             </Box>
           </Box>
         </Box>
-        <Box textAlign="center" mt={{ base: "2", md: "6% " }}>
+        <Box
+          alignItems="center"
+          mt={{ base: "2", md: "0 " }}
+          display="flex"
+          justifyContent="center"
+        >
           <Image
-            src={images[currentSlide]}
+            src={
+              currentSlide === 2 ? images[currentSlide] : images[currentSlide]
+            }
             alt="Example image"
             objectFit="cover"
             order={1}
             ml={{ base: "20%", md: 0 }}
-            mr={{ base: 0, md: "50%" }}
+            mr={{ base: 0, md: "0" }}
             w={{ base: "60%", md: "100%" }}
             bg="white"
             mb={{ base: "30px", md: 0 }}
+            mt={
+              currentSlide === 2
+                ? { base: "0", md: "0" }
+                : { base: "0", md: "20%" }
+            }
+            boxSize={
+              currentSlide === 2
+                ? {  md: "600px" }
+                : { md: "380px" }
+            }
           />
         </Box>
       </Box>

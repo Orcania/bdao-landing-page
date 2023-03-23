@@ -12,8 +12,8 @@ const customTheme = extendTheme({
         fontWeight: "medium", // set the font weight to medium
       },
       h1: {
-        fontSize: "2xl", // set the font size for h1 elements
-        fontWeight: "bold", // set the font weight to bold
+        fontSize: "300px", // set the font size for h1 elements
+        fontWeight: "405", // set the font weight to bold
       },
       h2: {
         fontSize: "xl", // set the font size for h2 elements

@@ -16,7 +16,7 @@ const Governed = () => {
     const imageDisplay = useBreakpointValue({ base: "block", md: "flex" });
 
   return (
-    <Box  display={{base:"flex", md: "flex" }} justifyContent="center">
+    <Box  display={{base:"flex", md: "flex" }} justifyContent="center" mt={{base:"30%",md:"10%"}}>
       <Flex
     flexDirection={{ base: "column-reverse", md: "row" }} // Set the flexDirection
     width="100%"
@@ -29,7 +29,7 @@ const Governed = () => {
     w={{base:"100%"}}
     mx={{ md: "auto" }}
    >
-        <Heading as="h2" fontSize="2xl" mb="2">
+        <Heading as="h1" fontWeight="bold" mb="8">
         How is BDAO goverened sustained
         </Heading>
         <Box display="flex"
@@ -37,47 +37,38 @@ const Governed = () => {
           justifyContent={{ base: "left", md: "space-between" }}
           alignItems={{ base: "left", md: "center" }}
           >
-        <Text mb={{ base: "4", md: "0" }} >
+        <Text mb={{ base: "4", md: "0" }} lineHeight="1.2em" fontWeight="bold">
         Bricklayer DAO is governed by elected active participants (AP) who hold executive and decision-making roles to benefit the BRICK holders’ value.  APs will provide managerial guidance which will be transparent in nature.  
           {showMore || (
-            <Button variant="link" textDecor="underline" color="black" onClick={handleShowMore} ml={{ base: "0", md: "0" }} mx="auto" mt={{ base: "30px", md: "0" }} display={{ base: "block", md: "block" }} transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}>
-               Read More
-            </Button>
+           <Button variant="link" textDecor="underline" textDecorationThickness="2px" textUnderlineOffset="4px" color="black" fontWeight="bold" fontSize={{ base: "md", md: "20px" }} onClick={handleShowMore} ml={{ base: "0", md: "0" }} mx="auto" mt={{ base: "30px", md: "30" }} display={{ base: "block", md: "block" }} transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}>
+           Read More
+        </Button>
           )}
         </Text>
         </Box>
         {showMore && (
           <Box>
-          <Text mb="4">
+          <Text mb="4" lineHeight="1.2em" fontWeight="bold">
             Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
             libero, id varius lectus mauris vitae tellus. In sollicitudin
             pharetra metus a lacinia. Donec ac odio nunc. Integer interdum
             feugiat mi, vitae dapibus enim eleifend sed. Suspendisse in justo
             finibus, rutrum turpis ac, posuere lacus.
           </Text>
-          <Button  variant="link"
-              color="black"
-              onClick={handleShowMore}
-              display="block"
-              textDecor="underline"
-              transition="all 0.2s ease-in-out"
-              _hover={{ color: "gray" }}
-              ml={{ base: "0", md: "0" }}
-              mx={{ base: "auto", md: "0" }}>
-              Read Less
-            </Button>
+          <Button variant="link" textDecor="underline" textDecorationThickness="2px" textUnderlineOffset="4px" color="black" fontWeight="bold" fontSize={{ base: "md", md: "20px" }} onClick={handleShowMore} ml={{ base: "0", md: "0" }} mx="auto" mt={{ base: "30px", md: "30" }} display={{ base: "block", md: "block" }} transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}>
+           Read Less
+        </Button>
           </Box>
         )}
       </Box>
-     
-      </Flex>
       <Box justifyContent="center"
       alignItems="center"
       mt={{ base: "2rem", md: "0" }}
-      ml={{base:"25%",md:"0"}}
-      w={{ base: "60vw", md: "100vw" }}>
-      <Image  src={GovernedImg} alt="Treasury Image" w="100%"   />
+      ml={{base:"25%",md:"5%"}}
+      w={{ base: "70vw", md: "80vw" }}>
+      <Image  src={GovernedImg} alt="Treasury Image" w="100%" h="auto"  />
       </Box>
+      </Flex>
     </Box>
 
   );
