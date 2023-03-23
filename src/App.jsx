@@ -195,7 +195,6 @@ alignItems="center"      >
           borderWidth="2px"
           borderColor="black"
           _hover={{ backgroundColor: hoveredButton === 3 ? "transparent" : "transparent", transform: "scale(1.1)" }}
-          _hover={{ backgroundColor: hoveredButton === 3 ? "white" : "#CDCDCD", transform: "scale(1.1)" }}
           _active={{ backgroundColor: "black", transform: "scale(1)" }}
           mb={2}
           onClick={() => handleButtonClick(3)}
