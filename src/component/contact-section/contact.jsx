@@ -28,7 +28,7 @@ const Contact = () => {
       <Box display="flex">
         <Box w="30%">
           <Input
-            borderRadius="0"
+            borderRadius="3px"
             focusBorderColor="black"
             borderColor="black"
             borderWidth="2px"
@@ -37,7 +37,7 @@ const Contact = () => {
         </Box>
         <Box ml="3%" w="30%" borderColor="black">
           <Input
-            borderRadius="0"
+            borderRadius="3px"
             focusBorderColor="black"
             borderWidth="2px"
             placeholder="Type Here..."
@@ -46,8 +46,8 @@ const Contact = () => {
       </Box>
       <Box w="63%" borderColor="black" mt="3%">
         <Textarea
-          borderRadius="0"
-          focusBorderColor="black"
+            borderRadius="3px"
+            focusBorderColor="black"
           placeholder="What’s on your mind..."
           size="lg"
           h="20vh"
@@ -62,7 +62,7 @@ const Contact = () => {
             bg="white"
             color="black"
             borderWidth="2px"
-            borderRadius="none"
+            borderRadius="3px"
             borderColor="black"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
@@ -84,7 +84,7 @@ const Contact = () => {
             bg="white"
             color="black"
             borderWidth="1.5px"
-            borderRadius="none"
+            borderRadius="3px"
             borderColor="#CBCBCB"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
