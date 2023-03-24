@@ -165,6 +165,7 @@ const SliderSection = () => {
                         mt={{ base: "2", md: "4" }}
                         lineHeight="1.2em"
                         fontWeight="bold"
+                        textAlign={{ base: "center", md: "left" }}
                       >
                         {item.extraDescription}
                       </Text>
@@ -174,33 +175,8 @@ const SliderSection = () => {
               ))}
             </Slider>
           </Box>
-          <Box mt="10px">
-            <Box
-              textAlign="right"
-              width="50%"
-              float={{ base: "center", md: "right" }}
-              display={{ base: "none", md: "block" }}
-            >
-              <Button
-                onClick={nextSlide}
-                variant="link"
-                textDecor="underline"
-                color="black"
-                transition="all 0.2s ease-in-out"
-                _hover={{ color: "gray" }}
-                textDecorationThickness="2px"
-                textUnderlineOffset="4px"
-                fontWeight="bold"
-                fontSize={{ base: "md", md: "20px" }}
-              >
-                <HStack>
-                  <span>
-                    <Text>Next: {getNextSlideTitle()}</Text>
-                  </span>
-                  <ArrowForwardIcon boxSize={5} color="black" />
-                </HStack>
-              </Button>
-            </Box>
+          <Box mt="10px" display="flex" flexDirection="row">
+            
             <Box
               display="flex"
               width={{ base: "100%", md: "50%" }}
@@ -225,6 +201,34 @@ const SliderSection = () => {
                 />
               ))}
             </Box>
+            <Box
+              textAlign="right"
+              width="50%"
+              justifyContent="flex-end"
+              float={{ base: "center", md: "right" }}
+              display={{ base: "none", md: "block" }}
+              
+            >
+              <Button
+                onClick={nextSlide}
+                variant="link"
+                textDecor="underline"
+                color="black"
+                transition="all 0.2s ease-in-out"
+                _hover={{ color: "gray" }}
+                textDecorationThickness="2px"
+                textUnderlineOffset="4px"
+                fontWeight="bold"
+                fontSize={{ base: "md", md: "20px" }}
+              >
+                <HStack>
+                  <span>
+                    <Text fontSize="90%">Next: {getNextSlideTitle()}</Text>
+                  </span>
+                  <ArrowForwardIcon boxSize={5} color="black" />
+                </HStack>
+              </Button>
+            </Box>
           </Box>
         </Box>
         <Box
@@ -240,7 +244,7 @@ const SliderSection = () => {
             alt="Example image"
             objectFit="cover"
             order={1}
-            ml={{ base: "20%", md: 0 }}
+            ml={{ base: "0", md: 0 }}
             mr={{ base: 0, md: "0" }}
             w={{ base: "60%", md: "100%" }}
             bg="white"

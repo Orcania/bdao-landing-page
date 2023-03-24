@@ -4,7 +4,7 @@ import "./App.css";
 //Chakra imports
 import { ChakraProvider, color, Slider } from "@chakra-ui/react";
 
-import { Box, Flex, Center, Container,useMediaQuery  } from "@chakra-ui/react";
+import { Box, Flex, Center, Container, useMediaQuery } from "@chakra-ui/react";
 
 //font import
 import customTheme from "./theme";
@@ -26,17 +26,15 @@ function App() {
 
   const [hoveredButton, setHoveredButton] = useState(-1);
 
-  
   const handleButtonClick = (index) => {
     setCurrentSlide(index);
     setHoveredButton(index);
-
 
     switch (index) {
       case 0:
         headerRef.current.scrollIntoView({
           behavior: "smooth",
-          
+          block:"center"
         });
         break;
       case 1:
@@ -76,14 +74,19 @@ function App() {
     const handleScroll = () => {
       const headerPos = headerRef.current.offsetTop - window.innerHeight / 2;
       const sliderPos = sliderRef.current.offsetTop - window.innerHeight / 2;
-      const treasuryPos = treasuryRef.current.offsetTop - window.innerHeight / 2;
-      const governedPos = governedRef.current.offsetTop - window.innerHeight / 2;
+      const treasuryPos =
+        treasuryRef.current.offsetTop - window.innerHeight / 2;
+      const governedPos =
+        governedRef.current.offsetTop - window.innerHeight / 2;
 
       if (window.scrollY >= headerPos && window.scrollY < sliderPos) {
         setCurrentSlide(0);
       } else if (window.scrollY >= sliderPos && window.scrollY < treasuryPos) {
         setCurrentSlide(1);
-      } else if (window.scrollY >= treasuryPos && window.scrollY < governedPos) {
+      } else if (
+        window.scrollY >= treasuryPos &&
+        window.scrollY < governedPos
+      ) {
         setCurrentSlide(2);
       } else if (window.scrollY >= governedPos) {
         setCurrentSlide(3);
@@ -99,113 +102,185 @@ function App() {
 
   return (
     <ChakraProvider theme={customTheme}>
-      <Box display="flex" justifyContent="center" flexDirection="column" >
-      <div ref={headerRef} >
-        <Box mb={40} mt="10%" h="100vh" >
-          <Header />
-        </Box>
-      </div>
-
-      <div ref={sliderRef}>
-        <Box h="100vh">
-          <SliderSection />
-        </Box>
-      </div>
-
-      <div ref={treasuryRef}>
-        <Box mb="30%" mt={{base:"70%",md:0}}>
-          <Treasury />
-        </Box>
-      </div>
-
-      <div ref={governedRef}>
-        <Box mb={10}>
-          <Governed />
-        </Box>
-      </div>
-
-      <Box mb={5}>
-        <Staking />
-      </Box>
-
-      <Box >
-        <Contact />
-      </Box>
-
       <Box
+        display={{ base: "block", md: "flex" }}
+        justifyContent={{ base: "block", md: "center" }}
+        flexDirection={{ base: "none", md: "column" }}
+      >
+        <Box
+          display={{ base: "block", md: "flex" }}
+          justifyContent={{ base: "block", md: "center" }}
+          flexDirection={{ base: "column", md: "none" }}
+          width={{ base: "100%", md: "95%" }}
+        >
+          <Flex align="center" justify="center" h="100vh">
+            <div ref={headerRef}>
+              <Box>
+                <Header />
+              </Box>
+            </div>
+          </Flex>
+
+          <div ref={sliderRef}>
+            <Box h="100vh" mb={{ base: "300px", md: 0 }}>
+              <SliderSection />
+            </Box>
+          </div>
+
+          <div ref={treasuryRef}>
+            <Box mt={{ base: "auto", md: 0 }}>
+              <Treasury />
+            </Box>
+          </div>
+
+          <div ref={governedRef}>
+            <Box mb={10}>
+              <Governed />
+            </Box>
+          </div>
+
+          <Box mb={5}>
+            <Staking />
+          </Box>
+
+          <Box alignItems="center" justify="center">
+            <Contact />
+          </Box>
+        </Box>
+      </Box>
+      <Flex
+        direction={{ base: "row", md: "column" }}
+        top={{ base: "5%", md: "50%" }}
+        left={{ base: "45%", md: "90%" }}
+        justifyContent={{ base: "center", md: "flex-end" }}
+        textAlign="center"
+        width="10%"
         position="fixed"
-        top="50%"
-        right="10px"
         transform="translateY(-50%)"
         display="flex"
-        flexDirection="column"
-        w="100px"
-alignItems="center"      >
+        alignItems="center"
+        mr="20px"
+        mb={{base:"10px",md:0}}
+      >
         <Button
-           size="lg"
-           borderRadius="0"
-           borderWidth="2px"
-           borderColor="black"
-           backgroundColor={currentSlide === 0 ? "white" : "white"}
-           _hover={{ backgroundColor: hoveredButton === 0 ? "transparent" : "transparent", transform: "scale(1.1)" }}
-           _active={{ backgroundColor: "black", transform: "scale(1)" }}
-           mb={2}
-           onClick={() => handleButtonClick(0)}
-           onMouseEnter={() => handleButtonHover(0)}
-           onMouseLeave={handleButtonLeave}
-           w={`${hoveredButton === 0 || currentSlide === 0 ? activeButtonSize : buttonSize}rem`}
-           h={`${hoveredButton === 0 || currentSlide === 0 ? activeButtonSize : buttonSize}rem`}
-           transition="all 0.2s ease-in-out"
-        />
-        <Button
-           size="lg"
-           borderRadius="0"
-           borderWidth="2px"
-           borderColor="black"
-           backgroundColor={currentSlide === 1 ? "white" : "white"}
-           _hover={{ backgroundColor: hoveredButton === 1 ? "transparent" : "transparent", transform: "scale(1.1)" }}
-           _active={{ backgroundColor: "black", transform: "scale(1)" }}
-           mb={2}
-           onClick={() => handleButtonClick(1)}
-           onMouseEnter={() => handleButtonHover(1)}
-           onMouseLeave={handleButtonLeave}
-           w={`${hoveredButton === 1 || currentSlide === 1 ? activeButtonSize : buttonSize}rem`}
-           h={`${hoveredButton === 1 || currentSlide === 1 ? activeButtonSize : buttonSize}rem`}
-           transition="all 0.2s ease-in-out"
+          size="lg"
+          borderRadius="0"
+          borderWidth={currentSlide === 0 ? "4px" : "3px"}
+
+          borderColor="black"
+          backgroundColor={currentSlide === 0 ? "white" : "transparent"}
+          _hover={{
+            backgroundColor:
+              hoveredButton === 0 ? "transparent" : "transparent",
+            
+          }}
+          _active={{ backgroundColor: "black", transform: "scale(1)" }}
+          mb={8}
+          onClick={() => handleButtonClick(0)}
+          onMouseEnter={() => handleButtonHover(0)}
+          onMouseLeave={handleButtonLeave}
+          w={`${
+            hoveredButton === 0 || currentSlide === 0
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          h={`${
+            hoveredButton === 0 || currentSlide === 0
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          transition="all 0.2s ease-in-out"
         />
         <Button
           size="lg"
           borderRadius="0"
-          borderWidth="2px"
+          borderWidth={currentSlide === 1 ? "4px" : "3px"}
           borderColor="black"
+          ml={{base:"20px",md:0}}
+
+          _hover={{
+            backgroundColor:
+              hoveredButton === 1 ? "transparent" : "transparent",
+              
+          }}
+          _active={{ backgroundColor: "black", transform: "scale(1)",borderRadius:"10px" }}
+          mb={8}
+          onClick={() => handleButtonClick(1)}
+          onMouseEnter={() => handleButtonHover(1)}
+          onMouseLeave={handleButtonLeave}
           backgroundColor={currentSlide === 2 ? "white" : "transparent"}
-          _hover={{ backgroundColor: hoveredButton === 2 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+
+          w={`${
+            hoveredButton === 1 || currentSlide === 1
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          h={`${
+            hoveredButton === 1 || currentSlide === 1
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          transition="all 0.2s ease-in-out"
+        />
+        <Button
+          size="lg"
+          borderRadius="0"
+          borderWidth={currentSlide === 2 ? "4px" : "3px"}
+          borderColor="black"
+          ml={{base:"20px",md:0}}
+
+          backgroundColor={currentSlide === 2 ? "white" : "transparent"}
+          _hover={{
+            backgroundColor:
+              hoveredButton === 2 ? "transparent" : "transparent",
+          }}
           _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={2}
+          mb={8}
           onClick={() => handleButtonClick(2)}
           onMouseEnter={() => handleButtonHover(2)}
           onMouseLeave={handleButtonLeave}
-          w={`${hoveredButton === 2 || currentSlide === 2 ? activeButtonSize : buttonSize}rem`}
-          h={`${hoveredButton === 2 || currentSlide === 2 ? activeButtonSize : buttonSize}rem`}
+          w={`${
+            hoveredButton === 2 || currentSlide === 2
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          h={`${
+            hoveredButton === 2 || currentSlide === 2
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
           transition="all 0.2s ease-in-out"
         />
         <Button
           size="lg"
           borderRadius="0"
-          borderWidth="2px"
+          borderWidth={currentSlide === 3 ? "4px" : "3px"}
           borderColor="black"
-          _hover={{ backgroundColor: hoveredButton === 3 ? "transparent" : "transparent", transform: "scale(1.1)" }}
+          ml={{base:"20px",md:0}}
+          backgroundColor={currentSlide === 3 ? "white" : "transparent"}
+
+          _hover={{
+            backgroundColor:
+              hoveredButton === 3 ? "transparent" : "transparent",
+          }}
           _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={2}
+          mb={8}
           onClick={() => handleButtonClick(3)}
           onMouseEnter={() => handleButtonHover(3)}
           onMouseLeave={handleButtonLeave}
-          w={`${hoveredButton === 3 || currentSlide === 3 ? activeButtonSize : buttonSize}rem`}
-          h={`${hoveredButton === 3 || currentSlide === 3 ? activeButtonSize : buttonSize}rem`}
+          w={`${
+            hoveredButton === 3 || currentSlide === 3
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
+          h={`${
+            hoveredButton === 3 || currentSlide === 3
+              ? activeButtonSize
+              : buttonSize
+          }rem`}
           transition="all 0.2s ease-in-out"
         />
-      </Box>
-      </Box>
+      </Flex>{" "}
     </ChakraProvider>
   );
 }

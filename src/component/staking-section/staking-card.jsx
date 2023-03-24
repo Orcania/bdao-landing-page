@@ -10,23 +10,22 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-export default function StakingCard({ imageSrc, heading, text }) {
+export default function StakingCard({ imageSrc, heading, text,ml }) {
   return (
     <Card
-      border="1px solid gray"
-      textAlign="center"
-      borderRadius={3}
-      _hover={{
-        transform: "scale(1.05)",
-        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
-        transition: "all .2s ease-in-out",
-        cursor: "pointer",
-      }}
-      w={{ base: "70%", md: "100%" }}
-      maxWidth="50vw"
-      maxHeight={{ base: "auto", md: "70vh" }}
-      h={{ base: "auto", md: "55vh" }}
-      p={{base:"0", md:"1"}}
+    border="1px solid gray"
+  textAlign="center"
+  borderRadius={3}
+    ml={{base:"0",md:{ml}}}
+  transition="transform 0.2s ease-in-out"
+  _hover={{
+    transform: "translateY(-15px)",
+    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
+    cursor: "pointer",
+  }}
+  w={{ base: "70%", md: "100%" }}
+  maxWidth="100%px"
+  h={{ base: "auto", md: "auto" }}
     >
       <CardHeader>
         <Box
