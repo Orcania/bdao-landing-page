@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 //Chakra imports
-import { ChakraProvider, color, Slider } from "@chakra-ui/react";
+import { ChakraProvider, Tooltip } from "@chakra-ui/react";
 
 import { Box, Flex, Center, Container, useMediaQuery } from "@chakra-ui/react";
 
@@ -34,7 +34,7 @@ function App() {
       case 0:
         headerRef.current.scrollIntoView({
           behavior: "smooth",
-          block:"center"
+          block: "center",
         });
         break;
       case 1:
@@ -160,127 +160,99 @@ function App() {
         display="flex"
         alignItems="center"
         mr="20px"
-        mb={{base:"10px",md:0}}
+        mb={{ base: "10px", md: 0 }}
       >
-        <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth={currentSlide === 0 ? "4px" : "3px"}
-          borderheight={currentSlide === 0 ? "4px" : "3px"}
-
-          borderColor="black"
-          backgroundColor={currentSlide === 0 ? "white" : "transparent"}
-          _hover={{
-            backgroundColor:
-              hoveredButton === 0 ? "transparent" : "transparent",
-            
-          }}
-          _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={8}
-          onClick={() => handleButtonClick(0)}
-          onMouseEnter={() => handleButtonHover(0)}
-          onMouseLeave={handleButtonLeave}
-          w={`${
-            hoveredButton === 0 || currentSlide === 0
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          h={`${
-            hoveredButton === 0 || currentSlide === 0
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          transition="all 0.2s ease-in-out"
-        />
-        <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth={currentSlide === 1 ? "4px" : "3px"}
-          borderColor="black"
-          ml={{base:"20px",md:0}}
-
-          _hover={{
-            backgroundColor:
-              hoveredButton === 1 ? "transparent" : "transparent",
-              
-          }}
-          _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={8}
-          onClick={() => handleButtonClick(1)}
-          onMouseEnter={() => handleButtonHover(1)}
-          onMouseLeave={handleButtonLeave}
-          backgroundColor={currentSlide === 2 ? "white" : "transparent"}
-
-          w={`${
-            hoveredButton === 1 || currentSlide === 1
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          h={`${
-            hoveredButton === 1 || currentSlide === 1
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          transition="all 0.2s ease-in-out"
-        />
-        <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth={currentSlide === 2 ? "4px" : "3px"}
-          borderColor="black"
-          ml={{base:"20px",md:0}}
-
-          backgroundColor={currentSlide === 2 ? "white" : "transparent"}
-          _hover={{
-            backgroundColor:
-              hoveredButton === 2 ? "transparent" : "transparent",
-          }}
-          _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={8}
-          onClick={() => handleButtonClick(2)}
-          onMouseEnter={() => handleButtonHover(2)}
-          onMouseLeave={handleButtonLeave}
-          w={`${
-            hoveredButton === 2 || currentSlide === 2
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          h={`${
-            hoveredButton === 2 || currentSlide === 2
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          transition="all 0.2s ease-in-out"
-        />
-        <Button
-          size="lg"
-          borderRadius="0"
-          borderWidth={currentSlide === 3 ? "4px" : "3px"}
-          borderColor="black"
-          ml={{base:"20px",md:0}}
-          backgroundColor={currentSlide === 3 ? "white" : "transparent"}
-
-          _hover={{
-            backgroundColor:
-              hoveredButton === 3 ? "transparent" : "transparent",
-          }}
-          _active={{ backgroundColor: "black", transform: "scale(1)" }}
-          mb={8}
-          onClick={() => handleButtonClick(3)}
-          onMouseEnter={() => handleButtonHover(3)}
-          onMouseLeave={handleButtonLeave}
-          w={`${
-            hoveredButton === 3 || currentSlide === 3
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          h={`${
-            hoveredButton === 3 || currentSlide === 3
-              ? activeButtonSize
-              : buttonSize
-          }rem`}
-          transition="all 0.2s ease-in-out"
-        />
+        <Tooltip label="Brick Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 0 ? "4px" : "3px"}
+            borderColor="black"
+            backgroundColor={currentSlide === 0 ? "white" : "transparent"}
+            _hover={{
+              backgroundColor:
+                hoveredButton === 0 ? "transparent" : "transparent",
+            }}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(0)}
+            onMouseEnter={() => handleButtonHover(0)}
+            onMouseLeave={handleButtonLeave}
+            size={{
+              base: `${currentSlide === 0 ? "md" : "sm"}`,
+              md: `${currentSlide === 0 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide === 0 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
+        <Tooltip label="Slider Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 1 ? "4px" : "3px"}
+            borderColor="black"
+            ml={{ base: "20px", md: 0 }}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(1)}
+            onMouseEnter={() => handleButtonHover(1)}
+            onMouseLeave={handleButtonLeave}
+            backgroundColor={currentSlide === 2 ? "white" : "transparent"}
+            size={{
+              base: `${currentSlide === 1 ? "md" : "sm"}`,
+              md: `${currentSlide === 1 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide === 1 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
+        <Tooltip label="Treasury Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 2 ? "4px" : "3px"}
+            borderColor="black"
+            ml={{ base: "20px", md: 0 }}
+            backgroundColor={currentSlide === 2 ? "white" : "transparent"}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(2)}
+            onMouseEnter={() => handleButtonHover(2)}
+            onMouseLeave={handleButtonLeave}
+            size={{
+              base: `${currentSlide === 2 ? "md" : "sm"}`,
+              md: `${currentSlide === 2 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide === 2 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
+        <Tooltip label="Governed Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 3 ? "4px" : "3px"}
+            borderColor="black"
+            ml={{ base: "20px", md: 0 }}
+            backgroundColor={currentSlide === 3 ? "white" : "transparent"}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(3)}
+            onMouseEnter={() => handleButtonHover(3)}
+            onMouseLeave={handleButtonLeave}
+            size={{
+              base: `${currentSlide === 3 ? "md" : "sm"}`,
+              md: `${currentSlide === 3 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide === 3 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
       </Flex>{" "}
     </ChakraProvider>
   );

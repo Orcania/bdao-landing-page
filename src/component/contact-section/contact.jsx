@@ -25,7 +25,7 @@ const Contact = () => {
       </Box>
       <br />
       <br />
-      <Box display="flex">
+      <Box display="flex"  flexDir={{base:"column", md:"row"}}>
         <Box w={{base:"100%",md:"30%"}}>
           <Input
             borderRadius="3px"
@@ -35,7 +35,7 @@ const Contact = () => {
             placeholder="Ex : jacktent@gmail.com"
           ></Input>
         </Box>
-        <Box ml="3%" w={{base:"100%",md:"30%"}} borderColor="black">
+        <Box ml={{base:0, md:"3%"}} w={{base:"100%",md:"30%"}} mt={{base:"20px",md:0}} borderColor="black">
           <Input
             borderRadius="3px"
             focusBorderColor="black"
@@ -44,7 +44,7 @@ const Contact = () => {
           ></Input>
         </Box>
       </Box>
-      <Box w={{base:"100%",md:"63%"}} borderColor="black" mt="3%">
+      <Box w={{base:"100%",md:"63%"}} borderColor="black" mt={{base:"20px",md:"3%"}}>
         <Textarea
             borderRadius="3px"
             focusBorderColor="black"
@@ -55,8 +55,8 @@ const Contact = () => {
           resize="none"
         ></Textarea>
       </Box>
-      <Box display="flex" mt="-5%"  >
-        <Box>
+      <Box display="flex" mt="-5%" flexDirection="row"   >
+        
           <Button
             mt={4}
             bg="white"
@@ -78,8 +78,8 @@ const Contact = () => {
               <ChevronRightIcon style={{ marginLeft: "8px" }} />
             </Box>
           </Button>
-        </Box>
-        <Box ml={{base:"0",md:"1%"}}>
+        
+        <Box ml={{base:"10px",md:"10px"}}>
           <IconButton
             mt={4}
             bg="white"
@@ -95,7 +95,6 @@ const Contact = () => {
             justifyContent="center"
             w="0px"
             p="-10px"
-            left={{base:"-28vw",md:0}}
             icon={<EmailIcon />}
           >
           </IconButton>
