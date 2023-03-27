@@ -112,7 +112,7 @@ const SliderSection = () => {
           <Box
             border
             borderWidth={{ base: "0", md: "1px" }}
-            borderColor={{ base: "transparent", md: "black" }}
+            borderColor={{ base: "transparent", md: "#AEAEAE" }}
             borderRadius={4}
           >
             <Slider ref={sliderRef} {...settings}>

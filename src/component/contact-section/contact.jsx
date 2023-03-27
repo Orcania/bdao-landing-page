@@ -17,7 +17,7 @@ const Contact = () => {
   return (
     <Box mt="30%" mb="10%"   w="100%" >
       <Box >
-        <Text color="gray">Have any questions ?</Text>
+        <Text color="#B3B3B3">Have any questions ?</Text>
       </Box>
       <br />
       <Box>
@@ -26,7 +26,7 @@ const Contact = () => {
       <br />
       <br />
       <Box display="flex">
-        <Box w="30%">
+        <Box w={{base:"100%",md:"30%"}}>
           <Input
             borderRadius="3px"
             focusBorderColor="black"
@@ -35,7 +35,7 @@ const Contact = () => {
             placeholder="Ex : jacktent@gmail.com"
           ></Input>
         </Box>
-        <Box ml="3%" w="30%" borderColor="black">
+        <Box ml="3%" w={{base:"100%",md:"30%"}} borderColor="black">
           <Input
             borderRadius="3px"
             focusBorderColor="black"
@@ -44,7 +44,7 @@ const Contact = () => {
           ></Input>
         </Box>
       </Box>
-      <Box w="63%" borderColor="black" mt="3%">
+      <Box w={{base:"100%",md:"63%"}} borderColor="black" mt="3%">
         <Textarea
             borderRadius="3px"
             focusBorderColor="black"
@@ -66,6 +66,7 @@ const Contact = () => {
             borderColor="black"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
+            w={{base:"60vw",md:"100%"}}
             maxWidth={["50%", "170px", "170px"]}
             padding={["8px 20px", "12px 40px", "12px 40px"]}
             marginTop={["50px", "100px", "100px"]}
@@ -78,7 +79,7 @@ const Contact = () => {
             </Box>
           </Button>
         </Box>
-        <Box ml="1%">
+        <Box ml={{base:"0",md:"1%"}}>
           <IconButton
             mt={4}
             bg="white"
@@ -94,6 +95,7 @@ const Contact = () => {
             justifyContent="center"
             w="0px"
             p="-10px"
+            left={{base:"-28vw",md:0}}
             icon={<EmailIcon />}
           >
           </IconButton>

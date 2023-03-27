@@ -166,6 +166,7 @@ function App() {
           size="lg"
           borderRadius="0"
           borderWidth={currentSlide === 0 ? "4px" : "3px"}
+          borderheight={currentSlide === 0 ? "4px" : "3px"}
 
           borderColor="black"
           backgroundColor={currentSlide === 0 ? "white" : "transparent"}
@@ -203,7 +204,7 @@ function App() {
               hoveredButton === 1 ? "transparent" : "transparent",
               
           }}
-          _active={{ backgroundColor: "black", transform: "scale(1)",borderRadius:"10px" }}
+          _active={{ backgroundColor: "black", transform: "scale(1)" }}
           mb={8}
           onClick={() => handleButtonClick(1)}
           onMouseEnter={() => handleButtonHover(1)}
