@@ -31,7 +31,7 @@ const Contact = () => {
             borderRadius="3px"
             focusBorderColor="black"
             borderColor="black"
-            borderWidth="2px"
+            borderWidth={3}
             placeholder="Ex : jacktent@gmail.com"
           ></Input>
         </Box>
@@ -39,7 +39,7 @@ const Contact = () => {
           <Input
             borderRadius="3px"
             focusBorderColor="black"
-            borderWidth="2px"
+            borderWidth={3}
             placeholder="Type Here..."
           ></Input>
         </Box>
@@ -51,7 +51,7 @@ const Contact = () => {
           placeholder="What’s on your mind..."
           size="lg"
           h="20vh"
-          borderWidth="2px"
+          borderWidth={3}
           resize="none"
         ></Textarea>
       </Box>
@@ -61,7 +61,7 @@ const Contact = () => {
             mt={4}
             bg="white"
             color="black"
-            borderWidth="2px"
+            borderWidth={3}
             borderRadius="3px"
             borderColor="black"
             _hover={{ bg: "black", color: "white" }}
@@ -84,9 +84,9 @@ const Contact = () => {
             mt={4}
             bg="white"
             color="black"
-            borderWidth="1.5px"
+            borderWidth={3}
             borderRadius="3px"
-            borderColor="#CBCBCB"
+            borderColor="#B5B6C7"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
             maxWidth={["50%", "170px", "170px"]}

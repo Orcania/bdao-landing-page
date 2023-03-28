@@ -13,9 +13,9 @@ import {
 export default function StakingCard({ imageSrc, heading, text, ml }) {
   return (
     <Card
-      border="1px solid gray"
+      border="3px solid gray"
       textAlign="center"
-      borderRadius={3}
+      borderRadius={4}
       borderColor="#AEAEAE"
       ml={{ base: "0", md: { ml } }}
       transition="transform 0.2s ease-in-out"

@@ -111,7 +111,7 @@ const SliderSection = () => {
         >
           <Box
             border
-            borderWidth={{ base: "0", md: "1px" }}
+            borderWidth={{ base: "0", md: 3 }}
             borderColor={{ base: "transparent", md: "#AEAEAE" }}
             borderRadius={4}
           >
@@ -120,6 +120,7 @@ const SliderSection = () => {
                 <Box p={{ base: "4", md: "20" }} textAlign="left">
                   <Heading
                     as="h1"
+                    size="lg"
                     fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                     mb="5%"
