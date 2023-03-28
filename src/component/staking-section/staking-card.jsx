@@ -24,7 +24,7 @@ export default function StakingCard({ imageSrc, heading, text, ml }) {
         boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.3)",
         cursor: "pointer",
       }}
-      w={{ base: "70%", md: "100%" }}
+      w={{ base: "100%", md: "100%" }}
       maxWidth="100%px"
       h={{ base: "auto", md: "auto" }}
     >
