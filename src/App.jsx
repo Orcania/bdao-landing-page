@@ -6,6 +6,9 @@ import { ChakraProvider, Tooltip } from "@chakra-ui/react";
 
 import { Box, Flex, Center, Container, useMediaQuery } from "@chakra-ui/react";
 
+//react-scroll imports
+import { Link, Element } from "react-scroll";
+
 //font import
 import customTheme from "./theme";
 //Files imports
@@ -16,6 +19,7 @@ import Governed from "./component/governed-section/governed";
 import Staking from "./component/staking-section/staking";
 import Contact from "./component/contact-section/contact";
 import { Button } from "@chakra-ui/react";
+import Slider from "react-slick";
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -24,7 +28,16 @@ function App() {
   const treasuryRef = useRef(null);
   const governedRef = useRef(null);
 
+  const [currentSection, setCurrentSection] = useState(1);
+
   const [hoveredButton, setHoveredButton] = useState(-1);
+  const sections = useRef([
+    "section1",
+    "section2",
+    "section3",
+    "section4",
+    "section5",
+  ]);
 
   const handleButtonClick = (index) => {
     setCurrentSlide(index);
@@ -100,6 +113,30 @@ function App() {
     };
   }, []);
 
+  const handleWheelScroll = (event) => {
+    event.preventDefault();
+
+    const delta = event.deltaY;
+
+    if (delta > 0 && currentSection < 6) {
+      const nextSection = currentSection + 1;
+      window.scrollTo({ top: document.querySelector(`#section${nextSection}`).offsetTop, behavior: 'smooth' });
+      setCurrentSection(nextSection);
+    } else if (delta < 0 && currentSection > 1) {
+      const previousSection = currentSection - 1;
+      window.scrollTo({ top: document.querySelector(`#section${previousSection}`).offsetTop, behavior: 'smooth' });
+      setCurrentSection(previousSection);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('wheel', handleWheelScroll, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheelScroll);
+  }, [currentSection]);
+
+  const handleSectionChange = (sectionNumber) => {
+    setCurrentSection(sectionNumber);
+  };
   return (
     <ChakraProvider theme={customTheme}>
       <Box
@@ -114,38 +151,64 @@ function App() {
           width={{ base: "100%", md: "95%" }}
         >
           <Flex align="center" justify="center" h="100vh">
-            <div ref={headerRef}>
+            <div id="section1" ref={headerRef}>
               <Box>
-                <Header />
+                <Element name="section1">
+                  <div>
+                    <Header />
+                  </div>
+                </Element>
               </Box>
             </div>
           </Flex>
 
-          <div ref={sliderRef}>
+          <div id="section2" ref={sliderRef}>
             <Box h="100vh" mb={{ base: "300px", md: 0 }}>
-              <SliderSection />
+              <Element name="section2">
+                <div>
+                  <SliderSection />
+                </div>
+              </Element>
             </Box>
           </div>
 
-          <div ref={treasuryRef}>
+          <div id="section3" ref={treasuryRef}>
             <Box mt={{ base: "auto", md: 0 }}>
-              <Treasury />
+              <Element name="section3">
+                <div>
+                  <Treasury />
+                </div>
+              </Element>
             </Box>
           </div>
 
-          <div ref={governedRef}>
+          <div id="section4" ref={governedRef}>
             <Box mb={10}>
-              <Governed />
+              <Element name="section4">
+                <div>
+                  <Governed />
+                </div>
+              </Element>
             </Box>
           </div>
-
-          <Box mb={5}>
-            <Staking />
-          </Box>
-
-          <Box alignItems="center" justify="center">
-            <Contact />
-          </Box>
+          <div id="section5">
+            <Box mb={5}>
+              <Element name="section5">
+                <div>
+                  <Staking />
+                </div>
+              </Element>
+            </Box>
+          </div>
+          <div id="section6">
+            <Box alignItems="center" justify="center">
+              <Element name="section6">
+                <div>
+                  <Contact />
+                </div>
+              </Element>
+            </Box>
+          </div>
         </Box>
       </Box>
       <Flex
