@@ -13,10 +13,20 @@ import { FaArrowRight } from "react-icons/fa";
 import React from "react";
 import Brick from "../../assets/images/brick.png";
 
-const Header = () => {
+const Header = (content) => {
   const texts = useBreakpointValue({ base: "center", md: "left" });
   const isMobile = useBreakpointValue({ base: true, md: false });
-
+  const handleButtonHover = (event) => {
+    const cursor = document.querySelector(".cursor");
+    const cursor2 = document.querySelector(".cursor2");
+    if (event.type === "mouseenter") {
+      cursor.classList.add("cursor-gray");
+      cursor2.classList.add("cursor2-gray");
+    } else {
+      cursor.classList.remove("cursor-gray");
+      cursor2.classList.remove("cursor2-gray");
+    }
+  };
   return (
     <Box
       display="flex"
@@ -41,6 +51,7 @@ const Header = () => {
           </Text>
           <Flex justify={isMobile ? "center" : "flex-start"}>
             <Button
+            className={content}
               mt={4}
               bg="white"
               color="black"
@@ -54,6 +65,8 @@ const Header = () => {
               maxWidth={["50%", "200px", "200px"]}
               padding={["8px 20px", "12px 40px", "25px 40px"]}
               marginTop={["50px", "100px", "100px"]}
+              onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
             >
               Launch app
               <Box display="inline-block" position="relative" top="2px">

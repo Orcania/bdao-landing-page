@@ -6,9 +6,6 @@ import { ChakraProvider, Tooltip } from "@chakra-ui/react";
 
 import { Box, Flex, Center, Container, useMediaQuery } from "@chakra-ui/react";
 
-//react-scroll imports
-import { Link, Element } from "react-scroll";
-
 //font import
 import customTheme from "./theme";
 //Files imports
@@ -19,7 +16,6 @@ import Governed from "./component/governed-section/governed";
 import Staking from "./component/staking-section/staking";
 import Contact from "./component/contact-section/contact";
 import { Button } from "@chakra-ui/react";
-import Slider from "react-slick";
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -28,16 +24,9 @@ function App() {
   const treasuryRef = useRef(null);
   const governedRef = useRef(null);
 
-  const [currentSection, setCurrentSection] = useState(1);
+  const [scrollDirection, setScrollDirection] = useState(""); //setting a scroll direction according to user's direction of scroll
 
   const [hoveredButton, setHoveredButton] = useState(-1);
-  const sections = useRef([
-    "section1",
-    "section2",
-    "section3",
-    "section4",
-    "section5",
-  ]);
 
   const handleButtonClick = (index) => {
     setCurrentSlide(index);
@@ -72,12 +61,23 @@ function App() {
         break;
     }
   };
-  const handleButtonHover = (index) => {
+  
+  const handleButtonHover = (index,event) => {
     setHoveredButton(index);
+    const cursor = document.querySelector(".cursor");
+    const cursor2 = document.querySelector(".cursor2");
+    if (event.type === "mouseenter") {
+      cursor.classList.add("cursor-gray");
+      cursor2.classList.add("cursor2-gray");
+    } 
   };
 
   const handleButtonLeave = () => {
     setHoveredButton(-2);
+    const cursor = document.querySelector(".cursor");
+  const cursor2 = document.querySelector(".cursor2");
+  cursor.classList.remove("cursor-gray");
+  cursor2.classList.remove("cursor2-gray");
   };
 
   const buttonSize = 3; // Define the base size of the buttons
@@ -113,30 +113,15 @@ function App() {
     };
   }, []);
 
-  const handleWheelScroll = (event) => {
-    event.preventDefault();
-
-    const delta = event.deltaY;
-
-    if (delta > 0 && currentSection < 6) {
-      const nextSection = currentSection + 1;
-      window.scrollTo({ top: document.querySelector(`#section${nextSection}`).offsetTop, behavior: 'smooth' });
-      setCurrentSection(nextSection);
-    } else if (delta < 0 && currentSection > 1) {
-      const previousSection = currentSection - 1;
-      window.scrollTo({ top: document.querySelector(`#section${previousSection}`).offsetTop, behavior: 'smooth' });
-      setCurrentSection(previousSection);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener('wheel', handleWheelScroll, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheelScroll);
-  }, [currentSection]);
-
-  const handleSectionChange = (sectionNumber) => {
-    setCurrentSection(sectionNumber);
-  };
+    var cursor = document.querySelector(".cursor");
+    var cursor2 = document.querySelector(".cursor2");
+    document.addEventListener("mousemove", function (e) {
+      cursor.style.cssText = cursor2.style.cssText =
+        "left: " + e.clientX + "px; top: " + e.clientY + "px;";
+    });
+  }, []);
+  
   return (
     <ChakraProvider theme={customTheme}>
       <Box
@@ -150,64 +135,40 @@ function App() {
           flexDirection={{ base: "column", md: "none" }}
           width={{ base: "100%", md: "95%" }}
         >
-          <Flex align="center" justify="center" h="100vh">
-            <div id="section1" ref={headerRef}>
-              <Box>
-                <Element name="section1">
-                  <div>
-                    <Header />
-                  </div>
-                </Element>
+          <div >
+            <Flex align="center" justify="center" h="100vh">
+              <div ref={headerRef} className="section">
+                <Box>
+                  <Header />
+                </Box>
+              </div>
+            </Flex>
+
+            <div ref={sliderRef} className="section">
+              <Box h="100vh" mb={{ base: "300px", md: 0 }}>
+                <SliderSection />
               </Box>
             </div>
-          </Flex>
 
-          <div id="section2" ref={sliderRef}>
-            <Box h="100vh" mb={{ base: "300px", md: 0 }}>
-              <Element name="section2">
-                <div>
-                  <SliderSection />
-                </div>
-              </Element>
-            </Box>
-          </div>
+            <div ref={treasuryRef} className="section">
+              <Box mt={{ base: "auto", md: 0 }}>
+                <Treasury />
+              </Box>
+            </div>
 
-          <div id="section3" ref={treasuryRef}>
-            <Box mt={{ base: "auto", md: 0 }}>
-              <Element name="section3">
-                <div>
-                  <Treasury />
-                </div>
-              </Element>
-            </Box>
-          </div>
-
-          <div id="section4" ref={governedRef}>
-            <Box mb={10}>
-              <Element name="section4">
-                <div>
-                  <Governed />
-                </div>
-              </Element>
-            </Box>
-          </div>
-          <div id="section5">
-            <Box mb={5}>
-              <Element name="section5">
-                <div>
-                  <Staking />
-                </div>
-              </Element>
-            </Box>
-          </div>
-          <div id="section6">
-            <Box alignItems="center" justify="center">
-              <Element name="section6">
-                <div>
-                  <Contact />
-                </div>
-              </Element>
-            </Box>
+            <div ref={governedRef} className="section">
+              <Box mb={10}>
+                <Governed />
+              </Box>
+            </div>
+            
+              <Box mb={5}>
+                <Staking />
+              </Box>
+            
+              <Box alignItems="center" justify="center">
+                <Contact />
+              </Box>
           </div>
         </Box>
       </Box>
@@ -238,7 +199,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(0)}
-            onMouseEnter={() => handleButtonHover(0)}
+            onMouseEnter={(event) => handleButtonHover(0,event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 0 ? "md" : "sm"}`,
@@ -259,9 +220,9 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(1)}
-            onMouseEnter={() => handleButtonHover(1)}
+            onMouseEnter={(event) => handleButtonHover(1,event)}
             onMouseLeave={handleButtonLeave}
-            backgroundColor={currentSlide === 2 ? "white" : "transparent"}
+            backgroundColor={currentSlide === 1 ? "white" : "transparent"}
             size={{
               base: `${currentSlide === 1 ? "md" : "sm"}`,
               md: `${currentSlide === 1 ? "lg" : "md"}`,
@@ -282,7 +243,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(2)}
-            onMouseEnter={() => handleButtonHover(2)}
+            onMouseEnter={(event) => handleButtonHover(2,event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 2 ? "md" : "sm"}`,
@@ -304,7 +265,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(3)}
-            onMouseEnter={() => handleButtonHover(3)}
+            onMouseEnter={(event) => handleButtonHover(3,event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 3 ? "md" : "sm"}`,
@@ -317,6 +278,8 @@ function App() {
           />
         </Tooltip>
       </Flex>{" "}
+      <div className="cursor" display={{base:'none'}}></div>
+      <div className="cursor2"display={{base:'none'}}></div>
     </ChakraProvider>
   );
 }

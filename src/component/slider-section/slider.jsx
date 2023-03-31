@@ -78,7 +78,17 @@ const SliderSection = () => {
     autoplaySpeed: 7000,
     beforeChange: (current, next) => setCurrentSlide(next),
   };
-
+  const handleButtonHover = (event) => {
+    const cursor = document.querySelector(".cursor");
+    const cursor2 = document.querySelector(".cursor2");
+    if (event.type === "mouseenter") {
+      cursor.classList.add("cursor-gray");
+      cursor2.classList.add("cursor2-gray");
+    } else {
+      cursor.classList.remove("cursor-gray");
+      cursor2.classList.remove("cursor2-gray");
+    }
+  };
   const goToSlide = (id) => {
     sliderRef.current.slickGoTo(id - 1); // Subtract 1 from the id before passing it to the slickGoTo method
     setCurrentSlide(id - 1); // Update the current slide index
@@ -124,6 +134,8 @@ const SliderSection = () => {
                     fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                     mb="5%"
+                    onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
                   >
                     {item.title}
                   </Heading>
@@ -132,6 +144,8 @@ const SliderSection = () => {
                     textAlign={{ base: "center", md: "left" }}
                     lineHeight="1.2em"
                     fontWeight="bold"
+                    onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
                   >
                     {item.description}
                   </Text>
@@ -155,6 +169,8 @@ const SliderSection = () => {
                         display={{ base: "block", md: "block" }}
                         transition="all 0.2s ease-in-out"
                         _hover={{ color: "gray" }}
+                        onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
                       >
                         Read more
                       </Button>
@@ -167,6 +183,8 @@ const SliderSection = () => {
                         lineHeight="1.2em"
                         fontWeight="bold"
                         textAlign={{ base: "center", md: "left" }}
+                        onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
                       >
                         {item.extraDescription}
                       </Text>
@@ -182,6 +200,7 @@ const SliderSection = () => {
               display="flex"
               width={{ base: "100%", md: "50%" }}
               justifyContent={{ base: "center", md: "left" }}
+              
             >
               {slides.map((slide) => (
                 <div
@@ -221,6 +240,8 @@ const SliderSection = () => {
                 textUnderlineOffset="4px"
                 fontWeight="bold"
                 fontSize={{ base: "md", md: "20px" }}
+                onMouseEnter={handleButtonHover}
+              onMouseLeave={handleButtonHover}
               >
                 <HStack>
                   <span>

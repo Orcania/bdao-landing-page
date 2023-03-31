@@ -14,6 +14,17 @@ import {
 } from "@chakra-ui/react";
 
 const Contact = () => {
+  const handleButtonHover = (event) => {
+    const cursor = document.querySelector(".cursor");
+    const cursor2 = document.querySelector(".cursor2");
+    if (event.type === "mouseenter") {
+      cursor.classList.add("cursor-gray");
+      cursor2.classList.add("cursor2-gray");
+    } else {
+      cursor.classList.remove("cursor-gray");
+      cursor2.classList.remove("cursor2-gray");
+    }
+  };
   return (
     <Box mt="30%" mb="10%"   w="100%" >
       <Box >
@@ -33,6 +44,8 @@ const Contact = () => {
             borderColor="black"
             borderWidth={3}
             placeholder="Ex : jacktent@gmail.com"
+            onMouseEnter={handleButtonHover}
+            onMouseLeave={handleButtonHover}
           ></Input>
         </Box>
         <Box ml={{base:0, md:"3%"}} w={{base:"100%",md:"30%"}} mt={{base:"20px",md:0}} borderColor="black">
@@ -41,6 +54,8 @@ const Contact = () => {
             focusBorderColor="black"
             borderWidth={3}
             placeholder="Type Here..."
+            onMouseEnter={handleButtonHover}
+            onMouseLeave={handleButtonHover}
           ></Input>
         </Box>
       </Box>
@@ -53,11 +68,15 @@ const Contact = () => {
           h="20vh"
           borderWidth={3}
           resize="none"
+          onMouseEnter={handleButtonHover}
+          onMouseLeave={handleButtonHover}
         ></Textarea>
       </Box>
       <Box display="flex" mt="-5%" flexDirection="row"   >
         
           <Button
+           onMouseEnter={handleButtonHover}
+           onMouseLeave={handleButtonHover}
             mt={4}
             bg="white"
             color="black"
@@ -81,6 +100,8 @@ const Contact = () => {
         
         <Box ml={{base:"10px",md:"10px"}}>
           <IconButton
+           onMouseEnter={handleButtonHover}
+           onMouseLeave={handleButtonHover}
             mt={4}
             bg="white"
             color="black"

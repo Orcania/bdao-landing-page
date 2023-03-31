@@ -11,8 +11,22 @@ import {
 } from "@chakra-ui/react";
 
 export default function StakingCard({ imageSrc, heading, text, ml }) {
+  const handleButtonHover = (event) => {
+    const cursor = document.querySelector(".cursor");
+    const cursor2 = document.querySelector(".cursor2");
+    if (event.type === "mouseenter") {
+      cursor.classList.add("cursor-gray");
+      cursor2.classList.add("cursor2-gray");
+    } else {
+      cursor.classList.remove("cursor-gray");
+      cursor2.classList.remove("cursor2-gray");
+    }
+  };
   return (
     <Card
+    onMouseEnter={handleButtonHover}
+    onMouseLeave={handleButtonHover}
+    
       border="3px solid gray"
       textAlign="center"
       borderRadius={4}

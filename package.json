@@ -9,6 +9,7 @@
     "preview": "vite preview --port 8080"
   },
   "dependencies": {
+    "@ap.cx/react-fullpage": "^0.3.0",
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.5.1",
     "@emotion/react": "^11.10.6",
@@ -20,9 +21,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
     "react-intersection-observer": "^9.4.3",
-    "react-scroll": "^1.8.9",
-    "react-scroll-snap": "^1.0.0",
-    "react-slick": "^0.29.0"
+    "react-slick": "^0.29.0",
+    "scrollama": "^3.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",

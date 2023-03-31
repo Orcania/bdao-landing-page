@@ -14,7 +14,17 @@ const Governed = () => {
     };
 
     const imageDisplay = useBreakpointValue({ base: "block", md: "flex" });
-
+    const handleButtonHover = (event) => {
+      const cursor = document.querySelector(".cursor");
+      const cursor2 = document.querySelector(".cursor2");
+      if (event.type === "mouseenter") {
+        cursor.classList.add("cursor-gray");
+        cursor2.classList.add("cursor2-gray");
+      } else {
+        cursor.classList.remove("cursor-gray");
+        cursor2.classList.remove("cursor2-gray");
+      }
+    };
   return (
     <Box  display={{base:"flex", md: "flex" }} justifyContent="center" mt={{base:"30%",md:"10%"}}>
       <Flex
@@ -28,6 +38,8 @@ const Governed = () => {
     flexDirection="column"
     w={{base:"100%"}}
     mx={{ md: "auto" }}
+    onMouseEnter={handleButtonHover}
+    onMouseLeave={handleButtonHover}
    >
         <Heading as="h1" fontWeight="bold" mb="8">
         How is BDAO goverened sustained
