@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
-
+import "./style.scss";
+import "./index.js";
 //Chakra imports
 import { ChakraProvider, Tooltip } from "@chakra-ui/react";
 
@@ -61,57 +62,27 @@ function App() {
         break;
     }
   };
-  
-  const handleButtonHover = (index,event) => {
+
+  const handleButtonHover = (index, event) => {
     setHoveredButton(index);
     const cursor = document.querySelector(".cursor");
     const cursor2 = document.querySelector(".cursor2");
     if (event.type === "mouseenter") {
       cursor.classList.add("cursor-gray");
       cursor2.classList.add("cursor2-gray");
-    } 
+    }
   };
 
   const handleButtonLeave = () => {
     setHoveredButton(-2);
     const cursor = document.querySelector(".cursor");
-  const cursor2 = document.querySelector(".cursor2");
-  cursor.classList.remove("cursor-gray");
-  cursor2.classList.remove("cursor2-gray");
+    const cursor2 = document.querySelector(".cursor2");
+    cursor.classList.remove("cursor-gray");
+    cursor2.classList.remove("cursor2-gray");
   };
 
   const buttonSize = 3; // Define the base size of the buttons
   const activeButtonSize = 4; // Define the size of the active button
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const headerPos = headerRef.current.offsetTop - window.innerHeight / 2;
-      const sliderPos = sliderRef.current.offsetTop - window.innerHeight / 2;
-      const treasuryPos =
-        treasuryRef.current.offsetTop - window.innerHeight / 2;
-      const governedPos =
-        governedRef.current.offsetTop - window.innerHeight / 2;
-
-      if (window.scrollY >= headerPos && window.scrollY < sliderPos) {
-        setCurrentSlide(0);
-      } else if (window.scrollY >= sliderPos && window.scrollY < treasuryPos) {
-        setCurrentSlide(1);
-      } else if (
-        window.scrollY >= treasuryPos &&
-        window.scrollY < governedPos
-      ) {
-        setCurrentSlide(2);
-      } else if (window.scrollY >= governedPos) {
-        setCurrentSlide(3);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     var cursor = document.querySelector(".cursor");
@@ -121,7 +92,7 @@ function App() {
         "left: " + e.clientX + "px; top: " + e.clientY + "px;";
     });
   }, []);
-  
+
   return (
     <ChakraProvider theme={customTheme}>
       <Box
@@ -135,40 +106,53 @@ function App() {
           flexDirection={{ base: "column", md: "none" }}
           width={{ base: "100%", md: "95%" }}
         >
-          <div >
+          <div>
+                              <section className="section sec1">
+
             <Flex align="center" justify="center" h="100vh">
               <div ref={headerRef} className="section">
                 <Box>
-                  <Header />
+                    <Header />
                 </Box>
               </div>
             </Flex>
+            </section>
+
+            <section className="section sec2">
 
             <div ref={sliderRef} className="section">
               <Box h="100vh" mb={{ base: "300px", md: 0 }}>
-                <SliderSection />
+                  <SliderSection />
               </Box>
             </div>
+            </section>
 
-            <div ref={treasuryRef} className="section">
-              <Box mt={{ base: "auto", md: 0 }}>
-                <Treasury />
-              </Box>
-            </div>
+            <section className="section sec3">
+              <div ref={treasuryRef} className="section">
+                <Box mt={{ base: "auto", md: 0 }}>
+                  <Treasury />
+                </Box>
+              </div>
+            </section>
 
-            <div ref={governedRef} className="section">
-              <Box mb={10}>
-                <Governed />
-              </Box>
-            </div>
-            
+            <section className="section sec4">
+              <div ref={governedRef} className="section">
+                <Box mb={10}>
+                  <Governed />
+                </Box>
+              </div>
+            </section>
+            <section className="section sec5">
               <Box mb={5}>
                 <Staking />
               </Box>
-            
-              <Box alignItems="center" justify="center">
+            </section>
+
+            <Box alignItems="center" justify="center">
+              <section className="section sec6">
                 <Contact />
-              </Box>
+              </section>
+            </Box>
           </div>
         </Box>
       </Box>
@@ -199,7 +183,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(0)}
-            onMouseEnter={(event) => handleButtonHover(0,event)}
+            onMouseEnter={(event) => handleButtonHover(0, event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 0 ? "md" : "sm"}`,
@@ -220,7 +204,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(1)}
-            onMouseEnter={(event) => handleButtonHover(1,event)}
+            onMouseEnter={(event) => handleButtonHover(1, event)}
             onMouseLeave={handleButtonLeave}
             backgroundColor={currentSlide === 1 ? "white" : "transparent"}
             size={{
@@ -243,7 +227,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(2)}
-            onMouseEnter={(event) => handleButtonHover(2,event)}
+            onMouseEnter={(event) => handleButtonHover(2, event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 2 ? "md" : "sm"}`,
@@ -265,7 +249,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(3)}
-            onMouseEnter={(event) => handleButtonHover(3,event)}
+            onMouseEnter={(event) => handleButtonHover(3, event)}
             onMouseLeave={handleButtonLeave}
             size={{
               base: `${currentSlide === 3 ? "md" : "sm"}`,
@@ -278,8 +262,8 @@ function App() {
           />
         </Tooltip>
       </Flex>{" "}
-      <div className="cursor" display={{base:'none'}}></div>
-      <div className="cursor2"display={{base:'none'}}></div>
+      <div className="cursor" display={{ base: "none" }}></div>
+      <div className="cursor2" display={{ base: "none" }}></div>
     </ChakraProvider>
   );
 }
