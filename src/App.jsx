@@ -93,29 +93,27 @@ function App() {
     });
   }, []);
 
-  const sec1Ref = useRef('.sec1');
-  const sec2Ref = useRef('.sec2');
-  const sec3Ref = useRef('.sec3');
-  const sec4Ref = useRef('.sec4');
-  const sec5Ref = useRef('.sec5');
-  const sec6Ref = useRef('.sec6');
+  const sec1Ref = useRef(".sec1");
+  const sec2Ref = useRef(".sec2");
+  const sec3Ref = useRef(".sec3");
+  const sec4Ref = useRef(".sec4");
+  const sec5Ref = useRef(".sec5");
+  const sec6Ref = useRef(".sec6");
 
   const sections = [sec1Ref, sec2Ref, sec3Ref, sec4Ref, sec5Ref, sec6Ref];
 
-  const [currentSection, setCurrentSection] = useState(sec1Ref.current);
-
-  
+  const [currentSection, setCurrentSection] = useState(sec1Ref);
 
   const handleScroll = () => {
-    const sections = document.querySelectorAll('section');
-    for (const section of sections) {
+    // const sections = document.querySelectorAll("section");
+
+    for (const s of sections) {
       if (
-        section.offsetTop <= window.pageYOffset &&
-        section.offsetTop + section.offsetHeight > window.pageYOffset
+        s.current.offsetTop <= window.pageYOffset &&
+        s.current.offsetTop + s.current.offsetHeight > window.pageYOffset
       ) {
-        setCurrentSection(section);
+        setCurrentSection(s);
       }
-      console.log(section.offsetTop)
     }
   };
 
@@ -138,31 +136,28 @@ function App() {
 
     // scroll
     window.scrollTo({
-      top: targetBounds.y + window.scrollY ,
-      behavior: 'smooth',
+      top: targetBounds.y + window.scrollY,
+      behavior: "smooth",
     });
-    console.log("Wheel");
-
-
   };
 
   useEffect(() => {
     // add event listener for scroll event
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     // cleanup function to remove event listener when component unmounts
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   useEffect(() => {
     // add event listener for wheel event
-    window.addEventListener('wheel', handleWheel);
+    window.addEventListener("wheel", handleWheel);
 
     // cleanup function to remove event listener when component unmounts
     return () => {
-      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener("wheel", handleWheel);
     };
   }, [currentSection]);
 
