@@ -93,12 +93,12 @@ function App() {
     });
   }, []);
 
-  const sec1Ref = useRef('.sec1');
-  const sec2Ref = useRef('.sec2');
-  const sec3Ref = useRef('.sec3');
-  const sec4Ref = useRef('.sec4');
-  const sec5Ref = useRef('.sec5');
-  const sec6Ref = useRef('.sec6');
+  const sec1Ref = useRef(null);
+  const sec2Ref = useRef(null);
+  const sec3Ref = useRef(null);
+  const sec4Ref = useRef(null);
+  const sec5Ref = useRef(null);
+  const sec6Ref = useRef(null);
 
   const sections = [sec1Ref, sec2Ref, sec3Ref, sec4Ref, sec5Ref, sec6Ref];
 
@@ -113,9 +113,9 @@ function App() {
         section.offsetTop <= window.pageYOffset &&
         section.offsetTop + section.offsetHeight > window.pageYOffset
       ) {
-        setCurrentSection(section);
+        setCurrentSection(sec6Ref);
       }
-      console.log(section.offsetTop)
+      console.log("scroll")
     }
   };
 
