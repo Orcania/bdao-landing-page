@@ -31,17 +31,17 @@ btn.forEach((btn) => {
     // get bounds of target
     const targetBounds = target.getBoundingClientRect();
 
-    console.log(targetBounds);
+    data.isAnimating = true;
 
-    // // get bounds
-    // const nextBounds = sec2.getBoundingClientRect();
+    // scroll
+    const currentScroll = window.scrollY;
+    const targetScroll = targetBounds.y + currentScroll;
+    document.body.style.transform = `translateY(-${targetScroll}px)`;
 
-    // console.log(nextBounds);
-
-    window.scrollTo({
-      top: targetBounds.y + window.scrollY,
-      behavior: 'smooth',
-    });
+    // re-enable event listener after animation
+    setTimeout(() => {
+      data.isAnimating = false;
+    }, 1000);
   });
 });
 

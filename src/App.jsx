@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import "./style.scss";
-import "./index.js";
+// import "./index.js";
 //Chakra imports
 import { ChakraProvider, Tooltip } from "@chakra-ui/react";
 
@@ -93,6 +93,79 @@ function App() {
     });
   }, []);
 
+  const sec1Ref = useRef('.sec1');
+  const sec2Ref = useRef('.sec2');
+  const sec3Ref = useRef('.sec3');
+  const sec4Ref = useRef('.sec4');
+  const sec5Ref = useRef('.sec5');
+  const sec6Ref = useRef('.sec6');
+
+  const sections = [sec1Ref, sec2Ref, sec3Ref, sec4Ref, sec5Ref, sec6Ref];
+
+  const [currentSection, setCurrentSection] = useState(sec1Ref.current);
+
+  
+
+  const handleScroll = () => {
+    const sections = document.querySelectorAll('section');
+    for (const section of sections) {
+      if (
+        section.offsetTop <= window.pageYOffset &&
+        section.offsetTop + section.offsetHeight > window.pageYOffset
+      ) {
+        setCurrentSection(section);
+      }
+      console.log(section.offsetTop)
+    }
+  };
+
+  const handleWheel = (e) => {
+    // get direction
+    const deltaY = e.deltaY;
+    const dir = Math.sign(deltaY);
+
+    // convert to array and find index
+    const idx = sections.indexOf(currentSection);
+
+    // using direction find next section
+    const nextIdx = idx + dir;
+
+    // check for out of bounds sections
+    if (nextIdx < 0 || nextIdx >= sections.length) return;
+
+    // get target dimensions and bounds
+    const targetBounds = sections[nextIdx].current.getBoundingClientRect();
+
+    // scroll
+    window.scrollTo({
+      top: targetBounds.y + window.scrollY ,
+      behavior: 'smooth',
+    });
+    console.log("Wheel");
+
+
+  };
+
+  useEffect(() => {
+    // add event listener for scroll event
+    window.addEventListener('scroll', handleScroll);
+
+    // cleanup function to remove event listener when component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    // add event listener for wheel event
+    window.addEventListener('wheel', handleWheel);
+
+    // cleanup function to remove event listener when component unmounts
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [currentSection]);
+
   return (
     <ChakraProvider theme={customTheme}>
       <Box
@@ -107,27 +180,25 @@ function App() {
           width={{ base: "100%", md: "95%" }}
         >
           <div>
-                              <section className="section sec1">
-
-            <Flex align="center" justify="center" h="100vh">
-              <div ref={headerRef} className="section">
-                <Box>
+            <section ref={sec1Ref} className="section sec1">
+              <Flex align="center" justify="center" h="100vh">
+                <div ref={headerRef} className="section">
+                  <Box>
                     <Header />
+                  </Box>
+                </div>
+              </Flex>
+            </section>
+
+            <section ref={sec2Ref} className="section sec2">
+              <div ref={sliderRef} className="section">
+                <Box h="100vh" mb={{ base: "300px", md: 0 }}>
+                  <SliderSection />
                 </Box>
               </div>
-            </Flex>
             </section>
 
-            <section className="section sec2">
-
-            <div ref={sliderRef} className="section">
-              <Box h="100vh" mb={{ base: "300px", md: 0 }}>
-                  <SliderSection />
-              </Box>
-            </div>
-            </section>
-
-            <section className="section sec3">
+            <section ref={sec3Ref} className="section sec3">
               <div ref={treasuryRef} className="section">
                 <Box mt={{ base: "auto", md: 0 }}>
                   <Treasury />
@@ -135,24 +206,24 @@ function App() {
               </div>
             </section>
 
-            <section className="section sec4">
+            <section ref={sec4Ref} className="section sec4">
               <div ref={governedRef} className="section">
                 <Box mb={10}>
                   <Governed />
                 </Box>
               </div>
             </section>
-            <section className="section sec5">
+            <section ref={sec5Ref} className="section sec5">
               <Box mb={5}>
                 <Staking />
               </Box>
             </section>
 
-            <Box alignItems="center" justify="center">
-              <section className="section sec6">
+            <section ref={sec6Ref} className="section sec6">
+              <Box alignItems="center" justify="center">
                 <Contact />
-              </section>
-            </Box>
+              </Box>
+            </section>
           </div>
         </Box>
       </Box>
