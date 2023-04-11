@@ -111,7 +111,9 @@ const handleScroll = () => {
       s.current.offsetTop + s.current.offsetHeight > window.pageYOffset
     ) {
       setCurrentSection(s);
+      setCurrentSlide(sections.indexOf(s));
     }
+    
   }
 };
 
@@ -147,7 +149,33 @@ useEffect(() => {
   };
 }, [currentSection]);
 
-
+const buttonStyle = (index) => {
+  if (currentSlide === index) {
+    return {
+      borderWidth: "4px",
+      backgroundColor: "white",
+      size: { base: "md", md: "lg" },
+      h: { md: "3.5rem" },
+    };
+  } else if (hoveredButton === index) {
+    return {
+      borderWidth: "3px",
+      backgroundColor: "transparent",
+      _hover: { backgroundColor: "transparent" },
+      size: { base: "sm", md: "md" },
+      h: { md: "2.5rem" },
+      transition: "all 0.2s ease-in-out",
+    };
+  } else {
+    return {
+      borderWidth: "3px",
+      backgroundColor: "transparent",
+      size: { base: "sm", md: "md" },
+      h: { md: "2.5rem" },
+      transition: "all 0.2s ease-in-out",
+    };
+  }
+};
   return (
     <ChakraProvider theme={customTheme}>
       
