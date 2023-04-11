@@ -94,103 +94,72 @@ function App() {
   }, []);
 
   const sec1Ref = useRef(null);
-  const sec2Ref = useRef(null);
-  const sec3Ref = useRef(null);
-  const sec4Ref = useRef(null);
-  const sec5Ref = useRef(null);
-  const sec6Ref = useRef(null);
+const sec2Ref = useRef(null);
+const sec3Ref = useRef(null);
+const sec4Ref = useRef(null);
+const sec5Ref = useRef(null);
+const sec6Ref = useRef(null);
 
-  const sections = [sec1Ref, sec2Ref, sec3Ref, sec4Ref, sec5Ref, sec6Ref];
+const sections = [sec1Ref, sec2Ref, sec3Ref, sec4Ref, sec5Ref, sec6Ref];
 
-  const [currentSection, setCurrentSection] = useState(sec1Ref.current);
+const [currentSection, setCurrentSection] = useState(sec1Ref);
 
-  
-
-  const handleScroll = () => {
-    const sections = document.querySelectorAll('section');
-    for (const section of sections) {
-      if (
-        section.offsetTop <= window.pageYOffset &&
-        section.offsetTop + section.offsetHeight > window.pageYOffset
-      ) {
-        setCurrentSection(sec6Ref);
-      }
-      console.log("scroll")
+const handleScroll = () => {
+  for (const s of sections) {
+    if (
+      s.current.offsetTop <= window.pageYOffset &&
+      s.current.offsetTop + s.current.offsetHeight > window.pageYOffset
+    ) {
+      setCurrentSection(s);
     }
+  }
+};
+
+const handleWheel = (e) => {
+  e.preventDefault();
+  const dir = Math.sign(e.deltaY);
+
+  let nextIdx = sections.indexOf(currentSection) + dir;
+  if (nextIdx < 0) nextIdx = 0;
+  if (nextIdx >= sections.length) nextIdx = sections.length - 1;
+
+  const targetBounds = sections[nextIdx].current.getBoundingClientRect();
+
+  window.scrollTo({
+    top: targetBounds.top + window.pageYOffset,
+    behavior: "smooth",
+  });
+};
+
+useEffect(() => {
+  window.addEventListener("scroll", handleScroll);
+
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
   };
+}, []);
 
-  const handleWheel = (e) => {
-    // get direction
-    const deltaY = e.deltaY;
-    const dir = Math.sign(deltaY);
+useEffect(() => {
+  window.addEventListener("wheel", handleWheel, { passive: false });
 
-    // convert to array and find index
-    const idx = sections.indexOf(currentSection);
-
-    // using direction find next section
-    const nextIdx = idx + dir;
-
-    // check for out of bounds sections
-    if (nextIdx < 0 || nextIdx >= sections.length) return;
-
-    // get target dimensions and bounds
-    const targetBounds = sections[nextIdx].current.getBoundingClientRect();
-
-    // scroll
-    window.scrollTo({
-      top: targetBounds.y + window.scrollY ,
-      behavior: 'smooth',
-    });
-    console.log("Wheel");
-
-
+  return () => {
+    window.removeEventListener("wheel", handleWheel);
   };
+}, [currentSection]);
 
-  useEffect(() => {
-    // add event listener for scroll event
-    window.addEventListener('scroll', handleScroll);
-
-    // cleanup function to remove event listener when component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    // add event listener for wheel event
-    window.addEventListener('wheel', handleWheel);
-
-    // cleanup function to remove event listener when component unmounts
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, [currentSection]);
 
   return (
     <ChakraProvider theme={customTheme}>
-      <Box
-        display={{ base: "block", md: "flex" }}
-        justifyContent={{ base: "block", md: "center" }}
-        flexDirection={{ base: "none", md: "column" }}
-      >
-        <Box
-          display={{ base: "block", md: "flex" }}
-          justifyContent={{ base: "block", md: "center" }}
-          flexDirection={{ base: "column", md: "none" }}
-          width={{ base: "100%", md: "95%" }}
-        >
-          <div>
-            <section ref={sec1Ref} className="section sec1">
+      
+            <section ref={sec1Ref} className="section sec1" >
               <Flex align="center" justify="center" h="100vh">
                 <div ref={headerRef} className="section">
-                  <Box>
                     <Header />
-                  </Box>
                 </div>
               </Flex>
             </section>
 
-            <section ref={sec2Ref} className="section sec2">
+            <section ref={sec2Ref} className="section sec2" data-scroll-distance="100%">
               <div ref={sliderRef} className="section">
                 <Box h="100vh" mb={{ base: "300px", md: 0 }}>
                   <SliderSection />
@@ -198,7 +167,7 @@ function App() {
               </div>
             </section>
 
-            <section ref={sec3Ref} className="section sec3">
+            <section ref={sec3Ref} className="section sec3" data-scroll-distance="150%">
               <div ref={treasuryRef} className="section">
                 <Box mt={{ base: "auto", md: 0 }}>
                   <Treasury />
@@ -206,27 +175,25 @@ function App() {
               </div>
             </section>
 
-            <section ref={sec4Ref} className="section sec4">
-              <div ref={governedRef} className="section">
-                <Box mb={10}>
+            <section ref={sec4Ref} className="section sec4" data-scroll-distance="200%">
+              <div ref={governedRef} className="section" >
+                
                   <Governed />
-                </Box>
+                
               </div>
             </section>
-            <section ref={sec5Ref} className="section sec5">
+            <section ref={sec5Ref} className="section sec5" data-scroll-distance="150%">
               <Box mb={5}>
                 <Staking />
               </Box>
             </section>
 
-            <section ref={sec6Ref} className="section sec6">
+            <section ref={sec6Ref} className="section sec6" data-scroll-distance="100%">
               <Box alignItems="center" justify="center">
                 <Contact />
               </Box>
             </section>
-          </div>
-        </Box>
-      </Box>
+        
       <Flex
         direction={{ base: "row", md: "column" }}
         top={{ base: "5%", md: "50%" }}

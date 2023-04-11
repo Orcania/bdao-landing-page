@@ -11,8 +11,14 @@
 }
 body {
   cursor: none;
-  overflow: show;
+  
 }
+::-webkit-scrollbar {
+  
+  display: none;
+}
+
+
 .container {
   height: 100vh;
   overflow-y: scroll;
