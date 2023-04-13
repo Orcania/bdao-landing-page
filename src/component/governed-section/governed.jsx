@@ -38,6 +38,7 @@ const Governed = () => {
     flexDirection="column"
     w={{base:"100%"}}
     mx={{ md: "auto" }}
+    marginTop={{md:"20%"}}
    >
         <Heading as="h1" fontWeight="bold" mb="8">
         How is BDAO goverened sustained
@@ -73,7 +74,7 @@ const Governed = () => {
       </Box>
       <Box justifyContent="center"
       alignItems="center"
-      mt={{ base: "2rem", md: "0" }}
+      mt={{ base: "2rem", md: "20%" }}
       ml={{base:"25%",md:"5%"}}
       w={{ base: "70vw", md: "80vw" }}>
       <Image  src={GovernedImg} alt="Treasury Image" w="100%" h="auto"  />

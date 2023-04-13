@@ -124,6 +124,7 @@ const SliderSection = () => {
             borderWidth={{ base: "0", md: 3 }}
             borderColor={{ base: "transparent", md: "#AEAEAE" }}
             borderRadius={4}
+            marginTop={{md:"20%"}}
           >
             <Slider ref={sliderRef} {...settings}>
               {data.map((item, slideIndex) => (

@@ -34,8 +34,8 @@ const Treasury = () => {
     }
   };
   return (
-    <Box display={{ md: "flex" }} marginTop="20%" >
-      <Box display="flex" justifyContent="center" alignItems="center">
+    <Box display={{ md: "flex" }}  >
+      <Box  justifyContent="center" alignItems="center" marginTop={{md:"20%"}}>
         <Image
           src={BalanceImg}
           alt="Treasury Image"
@@ -48,7 +48,8 @@ const Treasury = () => {
           mt={{ base: "30%", md: "0" }}
         />
       </Box>{" "}
-      <Box textAlign={{ base: "center", md: "left" }} marginTop="100px" ml={{md:"10%"}} >
+      <Box textAlign={{ base: "center", md: "left" }} ml={{md:"10%"}}  marginTop={{md:"20%"}}
+             >
         <Heading as="h1" fontWeight="bold" mb="2" >
           How the treasury works
         </Heading>

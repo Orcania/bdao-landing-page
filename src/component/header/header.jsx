@@ -34,13 +34,14 @@ const Header = (content) => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box width={isMobile ? "100%" : "50%"}>
+      <Box width={isMobile ? "100%" : "50%"} marginTop={{md:"10%"}}>
         <Box
           display="flex"
           flexDirection="column"
           justifyContent="center"
           h="100%"
           textAlign={isMobile ? "center" : "left"}
+          
         >
           <Heading as="h1" fontWeight="bold" fontSize="50px" textAlign={texts}>
             Bricklayer DAO
@@ -74,7 +75,7 @@ const Header = (content) => {
           </Flex>
         </Box>
       </Box>
-      <Box width={isMobile ? "100%" : "50%"}>
+      <Box width={isMobile ? "100%" : "50%"} marginTop={{md:"10%"}}>
         <Box
           display="flex"
           justifyContent="center"

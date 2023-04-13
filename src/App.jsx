@@ -63,10 +63,6 @@ function App() {
     }
   };
 
-  
-
-  
-
   const sec1Ref = useRef(null);
   const sec2Ref = useRef(null);
   const sec3Ref = useRef(null);
@@ -79,32 +75,28 @@ function App() {
   const [currentSection, setCurrentSection] = useState(sec1Ref);
 
   const handleScroll = () => {
+    const scrollY = window.pageYOffset;
     for (const s of sections) {
-      if (
-        s.current.offsetTop <= window.pageYOffset &&
-        s.current.offsetTop + s.current.offsetHeight > window.pageYOffset
-      ) {
+      const bounds = s.current.getBoundingClientRect();
+      console.log("Bounds for section", s.current.id, bounds);
+      if (bounds.top <= 0 && bounds.bottom >= 0) {
         setCurrentSection(s);
-        setCurrentSlide(sections.indexOf(s)); //for animating the navigation boxes on scroll
+        setCurrentSlide(sections.indexOf(s));
+        break;
       }
     }
   };
-
   const handleWheel = (e) => {
     e.preventDefault();
-  const dir = Math.sign(e.deltaY);
-
-  let nextIdx = sections.indexOf(currentSection) + dir;
-  if (nextIdx < 0) nextIdx = 0;
-  if (nextIdx >= sections.length) nextIdx = sections.length - 1;
-
-  const targetBounds = sections[nextIdx].current.getBoundingClientRect();
-  const offsetY = targetBounds.top + targetBounds.height / 2 - window.innerHeight / 2;
-
-  window.scrollTo({
-    top: window.pageYOffset + offsetY,
-    behavior: "smooth",
-  });
+    const dir = Math.sign(e.deltaY);
+    console.log("Current section:", currentSection);
+  
+    let nextIdx = sections.indexOf(currentSection) + dir;
+    if (nextIdx < 0) nextIdx = 0;
+    if (nextIdx >= sections.length) nextIdx = sections.length ;
+    console.log("This is the nexIdx value: ", nextIdx);
+  
+    sections[nextIdx].current.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -151,16 +143,16 @@ function App() {
     }
   };
   return (
-    <ChakraProvider theme={customTheme} >
-        <section ref={sec1Ref} className="section sec1">
-          <Flex align="center" justify="center" h="100vh">
-            <Box>
-              <div ref={headerRef} className="section">
-                <Header />
-              </div>
-            </Box>
-          </Flex>
-        </section>
+    <ChakraProvider theme={customTheme}>
+      <section ref={sec1Ref} className="section sec1">
+        <Flex align="center" justify="center" h="100vh">
+          <Box>
+            <div ref={headerRef} className="section">
+              <Header />
+            </div>
+          </Box>
+        </Flex>
+      </section>
       <section
         ref={sec2Ref}
         className="section sec2"
@@ -177,11 +169,11 @@ function App() {
         className="section sec3"
         data-scroll-distance="150%"
       >
-          <div ref={treasuryRef} className="section">
-            <Box mt={{ base: "auto", md: 0 }} >
-              <Treasury />
-            </Box>
-          </div>
+        <div ref={treasuryRef} className="section">
+          <Box mt={{ base: "auto", md: 0 }}>
+            <Treasury />
+          </Box>
+        </div>
       </section>
       <section
         ref={sec4Ref}
@@ -237,7 +229,6 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(0)}
-            
             size={{
               base: `${currentSlide === 0 ? "md" : "sm"}`,
               md: `${currentSlide === 0 ? "lg" : "md"}`,
@@ -257,7 +248,6 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(1)}
-            
             backgroundColor={currentSlide === 1 ? "transparent" : "transparent"}
             size={{
               base: `${currentSlide === 1 ? "md" : "sm"}`,
@@ -279,7 +269,6 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(2)}
-            
             size={{
               base: `${currentSlide === 2 ? "md" : "sm"}`,
               md: `${currentSlide === 2 ? "lg" : "md"}`,
@@ -300,7 +289,6 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(3)}
-            
             size={{
               base: `${currentSlide === 3 ? "md" : "sm"}`,
               md: `${currentSlide === 3 ? "lg" : "md"}`,
@@ -312,7 +300,6 @@ function App() {
           />
         </Tooltip>
       </Flex>{" "}
-      
     </ChakraProvider>
   );
 }
