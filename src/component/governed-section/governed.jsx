@@ -38,8 +38,6 @@ const Governed = () => {
     flexDirection="column"
     w={{base:"100%"}}
     mx={{ md: "auto" }}
-    onMouseEnter={handleButtonHover}
-    onMouseLeave={handleButtonHover}
    >
         <Heading as="h1" fontWeight="bold" mb="8">
         How is BDAO goverened sustained

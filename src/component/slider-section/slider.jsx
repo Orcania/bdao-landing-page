@@ -134,8 +134,6 @@ const SliderSection = () => {
                     fontWeight="bold"
                     textAlign={{ base: "center", md: "left" }}
                     mb="5%"
-                    onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
                   >
                     {item.title}
                   </Heading>
@@ -144,8 +142,6 @@ const SliderSection = () => {
                     textAlign={{ base: "center", md: "left" }}
                     lineHeight="1.2em"
                     fontWeight="bold"
-                    onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
                   >
                     {item.description}
                   </Text>
@@ -169,8 +165,6 @@ const SliderSection = () => {
                         display={{ base: "block", md: "block" }}
                         transition="all 0.2s ease-in-out"
                         _hover={{ color: "gray" }}
-                        onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
                       >
                         Read more
                       </Button>
@@ -183,8 +177,6 @@ const SliderSection = () => {
                         lineHeight="1.2em"
                         fontWeight="bold"
                         textAlign={{ base: "center", md: "left" }}
-                        onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
                       >
                         {item.extraDescription}
                       </Text>
@@ -209,11 +201,12 @@ const SliderSection = () => {
                     width: 15,
                     height: 15,
                     borderRadius: "50%",
-                    borderWidth: "1px",
+                    borderWidth: "2px",
                     borderColor: "gray",
+                    borderStyle: "solid", // Add this to make the border visible
 
                     backgroundColor:
-                      currentSlide === slide.id - 1 ? "black" : "white",
+                      currentSlide === slide.id - 1 ? "black" : "transparent",
                     margin: "5px 5px",
                     cursor: "pointer",
                   }}
@@ -240,8 +233,6 @@ const SliderSection = () => {
                 textUnderlineOffset="4px"
                 fontWeight="bold"
                 fontSize={{ base: "md", md: "20px" }}
-                onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
               >
                 <HStack>
                   <span>
@@ -281,6 +272,8 @@ const SliderSection = () => {
                 ? {  md: "600px" }
                 : { md: "380px" }
             }
+            backgroundColor="transparent"
+
           />
         </Box>
       </Box>

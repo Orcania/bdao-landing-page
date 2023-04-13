@@ -24,13 +24,12 @@ export default function StakingCard({ imageSrc, heading, text, ml }) {
   };
   return (
     <Card
-    onMouseEnter={handleButtonHover}
-    onMouseLeave={handleButtonHover}
     
       border="3px solid gray"
       textAlign="center"
       borderRadius={4}
       borderColor="#AEAEAE"
+      backgroundColor="transparent"
       ml={{ base: "0", md: { ml } }}
       transition="transform 0.2s ease-in-out"
       _hover={{

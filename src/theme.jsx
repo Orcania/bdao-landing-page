@@ -10,6 +10,7 @@ const customTheme = extendTheme({
       body: {
         fontSize: "20px", // set the font size for the body element
         fontWeight: "medium", // set the font weight to medium
+        
       },
       h1: {
         fontSize: "300px", // set the font size for h1 elements

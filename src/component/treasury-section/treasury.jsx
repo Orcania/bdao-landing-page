@@ -48,8 +48,7 @@ const Treasury = () => {
           mt={{ base: "30%", md: "0" }}
         />
       </Box>{" "}
-      <Box textAlign={{ base: "center", md: "left" }} marginTop="100px" ml={{md:"10%"}} onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}>
+      <Box textAlign={{ base: "center", md: "left" }} marginTop="100px" ml={{md:"10%"}} >
         <Heading as="h1" fontWeight="bold" mb="2" >
           How the treasury works
         </Heading>

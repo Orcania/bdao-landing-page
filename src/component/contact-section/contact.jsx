@@ -44,8 +44,6 @@ const Contact = () => {
             borderColor="black"
             borderWidth={3}
             placeholder="Ex : jacktent@gmail.com"
-            onMouseEnter={handleButtonHover}
-            onMouseLeave={handleButtonHover}
           ></Input>
         </Box>
         <Box ml={{base:0, md:"3%"}} w={{base:"100%",md:"30%"}} mt={{base:"20px",md:0}} borderColor="black">
@@ -54,8 +52,6 @@ const Contact = () => {
             focusBorderColor="black"
             borderWidth={3}
             placeholder="Type Here..."
-            onMouseEnter={handleButtonHover}
-            onMouseLeave={handleButtonHover}
           ></Input>
         </Box>
       </Box>
@@ -68,21 +64,18 @@ const Contact = () => {
           h="20vh"
           borderWidth={3}
           resize="none"
-          onMouseEnter={handleButtonHover}
-          onMouseLeave={handleButtonHover}
         ></Textarea>
       </Box>
       <Box display="flex" mt="-5%" flexDirection="row"   >
         
           <Button
-           onMouseEnter={handleButtonHover}
-           onMouseLeave={handleButtonHover}
             mt={4}
             bg="white"
             color="black"
             borderWidth={3}
             borderRadius="3px"
             borderColor="black"
+            backgroundColor="transparent"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
             w={{base:"60vw",md:"100%"}}
@@ -93,21 +86,20 @@ const Contact = () => {
             justifyContent="center"
           >
             Send
-            <Box display="inline-block" position="relative" top="0px">
-              <ChevronRightIcon style={{ marginLeft: "8px" }} />
+            <Box display="inline-block" position="relative" top="0px" >
+              <ChevronRightIcon style={{ marginLeft: "8px", }} />
             </Box>
           </Button>
         
         <Box ml={{base:"10px",md:"10px"}}>
           <IconButton
-           onMouseEnter={handleButtonHover}
-           onMouseLeave={handleButtonHover}
             mt={4}
             bg="white"
             color="black"
             borderWidth={3}
             borderRadius="3px"
             borderColor="#B5B6C7"
+            backgroundColor="transparent"
             _hover={{ bg: "black", color: "white" }}
             size="lg"
             maxWidth={["50%", "170px", "170px"]}

@@ -53,7 +53,7 @@ const Header = (content) => {
             <Button
             className={content}
               mt={4}
-              bg="white"
+              bg="transparent"
               color="black"
               borderWidth={3}
               borderColor="black"
@@ -65,8 +65,6 @@ const Header = (content) => {
               maxWidth={["50%", "200px", "200px"]}
               padding={["8px 20px", "12px 40px", "25px 40px"]}
               marginTop={["50px", "100px", "100px"]}
-              onMouseEnter={handleButtonHover}
-              onMouseLeave={handleButtonHover}
             >
               Launch app
               <Box display="inline-block" position="relative" top="2px">

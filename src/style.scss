@@ -7,6 +7,65 @@ body {
   margin: 0;
 
 }
+.section {
+  height: 100vh;
+}
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-centered {
+  align-items: center;
+}
+.sec1 {
+
+  .sec_container {
+    height: 100%;
+    padding: 2rem;
+
+    .asd {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+.sec3 {
+
+  .sec_container {
+    height: 100%;
+    padding: 2rem;
+
+    .asd {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
+.sec4 {
+
+  .sec_container {
+    height: 100%;
+    padding: 2rem;
+
+    .asd {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+}
 
 .container {
   position: fixed;
