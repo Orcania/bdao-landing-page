@@ -1,11 +1,14 @@
-@import 'primeflex/primeflex.css';
-
-
+@import "primeflex/primeflex.css";
 
 html,
 body {
   margin: 0;
 
+  background-color: unset !important;
+  background-image: url(bg/bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .section {
   height: 100vh;
@@ -78,5 +81,3 @@ body {
 .section {
   height: 100vh;
 }
-
-
