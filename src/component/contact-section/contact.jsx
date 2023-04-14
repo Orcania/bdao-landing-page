@@ -26,7 +26,7 @@ const Contact = () => {
     }
   };
   return (
-    <Box mt={{base:"150vh",md:"30%"}} mb={{base:0,md:"10%"}}  alignItems="center" w="100%" >
+    <Box mt={{base:"250vh",md:0}} mb={{base:"50%",md:"10%"}}  alignItems="center" w="100%" >
       <Box >
         <Text color="#B3B3B3" >Have any questions ?</Text>
       </Box>

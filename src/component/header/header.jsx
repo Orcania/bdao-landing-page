@@ -34,7 +34,7 @@ const Header = (content) => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box width={isMobile ? "100%" : "50%"} marginTop={{md:"10%"}}>
+      <Box width={isMobile ? "100%" : "50%"} >
         <Box
           display="flex"
           flexDirection="column"
@@ -75,7 +75,7 @@ const Header = (content) => {
           </Flex>
         </Box>
       </Box>
-      <Box width={isMobile ? "100%" : "50%"} marginTop={{md:"10%"}}>
+      <Box width={isMobile ? "100%" : "50%"}>
         <Box
           display="flex"
           justifyContent="center"

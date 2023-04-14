@@ -35,7 +35,7 @@ const Treasury = () => {
   };
   return (
     <Box display={{ md: "flex" }}  >
-      <Box  justifyContent="center" alignItems="center" marginTop={{md:"20%"}}>
+      <Box  justifyContent="center" alignItems="center" marginTop={{md:"10%"}}>
         <Image
           src={BalanceImg}
           alt="Treasury Image"

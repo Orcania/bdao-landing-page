@@ -29,7 +29,7 @@ const Staking = () => {
       columns={[1, null, 3]}
       gap={6}
       justifyItems="center"
-      mt="100%"
+      mt={{base:"100%",md:0}}
     >
 
       <StakingCard imageSrc={Wallet}

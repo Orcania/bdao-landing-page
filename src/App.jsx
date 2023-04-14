@@ -94,12 +94,12 @@ function App() {
   const handleWheel = (e) => {
     e.preventDefault();
     const dir = Math.sign(e.deltaY);
-  
+
     let nextIdx = sections.indexOf(currentSection) + dir;
-    console.log("This is the CURRENT SECTION:",currentSection)
+    console.log("This is the CURRENT SECTION:", currentSection);
     if (nextIdx < 0) nextIdx = 0;
-    if (nextIdx >= sections.length) nextIdx = sections.length ;
-  
+    if (nextIdx >= sections.length) nextIdx = sections.length;
+
     sections[nextIdx].current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -148,70 +148,85 @@ function App() {
   };
   return (
     <ChakraProvider theme={customTheme}>
-      <section ref={sec1Ref} className="section sec1">
-        <Flex align="center" justify="center" h="100vh">
-          <Box>
-            <div ref={headerRef} className="section">
-              <Header />
-            </div>
+      <Box>
+        <section ref={sec1Ref} className="section sec1">
+          <Box className="sec_container">
+            <Box className="asd">
+              <Box className="asdf">
+                <div ref={headerRef}>
+                  <Header />
+                </div>
+              </Box>
+            </Box>
           </Box>
-        </Flex>
-      </section>
-      <section
-        ref={sec2Ref}
-        className="section sec2"
-        data-scroll-distance="100%"
-      >
-        <div ref={sliderRef} className="section">
-          <Box h="100vh" mb={{ base: "300px", md: 0 }}>
-            <SliderSection />
-          </Box>
-        </div>
-      </section>
-      <Box marginTop={{base:"100%",md:0}}>
-      <section
-        ref={sec3Ref}
-        className="section sec3"
-        data-scroll-distance="150%"
-      >
-        <div ref={treasuryRef} className="section">
-          <Box mt={{ base: "auto", md: "40%" }}>
-            <Treasury />
-          </Box>
-        </div>
-      </section>
+        </section>
       </Box>
-      <Box marginTop={{base:"100%",md:0}}>
-
-      <section
-        ref={sec4Ref}
-        className="section sec4"
-        data-scroll-distance="200%"
-      >
-        <div ref={governedRef} className="section">
-          <Governed />
-        </div>
-      </section>
+      <Box>
+        <section
+          ref={sec2Ref}
+          className="section sec2"
+          data-scroll-distance="100%"
+        >
+          <div ref={sliderRef} className="section">
+            <Box h="100vh" mb={{ base: "300px", md: 0 }}>
+              <SliderSection />
+            </Box>
+          </div>
+        </section>
       </Box>
-      
-      <section
-        ref={sec5Ref}
-        className="section sec5"
-        data-scroll-distance="150%"
-      >
-        <Box mb={5}>
-          <Staking />
-        </Box>
-      </section>
-      <Box >
-      <section
-        ref={sec6Ref}
-        className="section sec6"
-      >
-        <Box alignItems="center" justify="center" marginTop={{base:0,md:"60%"}}>
-          <Contact />
-        </Box>
-      </section>
+      <Box marginTop={{ base: "100%", md: 0 }}>
+        <section
+          ref={sec3Ref}
+          className="section sec3"
+          data-scroll-distance="150%"
+        >
+          <Box className="sec_container">
+            <Box className="asd">
+              <Box ref={treasuryRef} className="asdf">
+                <Treasury />
+              </Box>
+            </Box>
+          </Box>
+        </section>
+      </Box>
+      <Box>
+        <section
+          ref={sec4Ref}
+          className="section sec4"
+          data-scroll-distance="200%"
+        >
+          <div ref={governedRef} className="section">
+            <Box className="sec_container">
+              <Box className="asd">
+                <Box className="asdf">
+                  <Governed />
+                </Box>
+              </Box>
+            </Box>
+          </div>
+        </section>
+      </Box>
+      <Box>
+        <section ref={sec5Ref} className="section sec5">
+          <Box className="sec_container" height={{base:"150%",md:"100%"}}>
+            <Box className="asd">
+              <Box className="asdf">
+                <Staking />
+              </Box>
+            </Box>
+          </Box>
+        </section>
+      </Box>
+      <Box>
+        <section ref={sec6Ref} className="section sec6">
+          <Box className="sec_container">
+            <Box className="asd">
+              <Box className="asdf">
+                <Contact />
+              </Box>
+            </Box>
+          </Box>
+        </section>
       </Box>
       <Flex
         direction={{ base: "row", md: "column" }}
