@@ -34,7 +34,7 @@ const Governed = () => {
     }
   };
   return (
-    <Box display={{ base: "flex", md: "flex" }} justifyContent="center">
+    <Box display={{ base: "flex", md: "flex" }} justifyContent="center" >
       <Flex
         flexDirection={{ base: "column-reverse", md: "row" }} // Set the flexDirection
         width="100%"

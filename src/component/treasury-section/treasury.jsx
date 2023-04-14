@@ -42,7 +42,7 @@ const Treasury = () => {
           w={{ base: "60vw", md: "200vw" }}
           h="auto"
           mr={{ md: "4" }}
-          ml={{ base: "10vw", md: "0" }}
+          ml={{ base: "0", md: "0" }}
           display={imageDisplay}
           mb={{ base: "30px", md: "0" }}
           mt={{ base: "30%", md: "0" }}
@@ -75,8 +75,8 @@ const Treasury = () => {
           </Text>
         </Box>
         {showMore && (
-          <>
-            <Text mb="4" lineHeight="1.2em" fontWeight="bold">
+          <Box mb={{base:"100vh",md:0}}>
+            <Text  lineHeight="1.2em" fontWeight="bold">
               Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
               libero, id varius lectus mauris vitae tellus. In sollicitudin
               pharetra metus a lacinia. Donec ac odio nunc. Integer interdum
@@ -86,7 +86,7 @@ const Treasury = () => {
             <Button variant="link" textDecor="underline" textDecorationThickness="2px" textUnderlineOffset="4px" color="black" fontWeight="bold" fontSize={{ base: "md", md: "20px" }} onClick={handleShowMore} ml={{ base: "0", md: "0" }} mx="auto" mt={{ base: "30px", md: "30" }} display={{ base: "block", md: "block" }} transition="all 0.2s ease-in-out" _hover={{ color: "gray" }}>
            Read Less
         </Button>
-          </>
+          </Box>
         )}
       </Box>
     </Box>

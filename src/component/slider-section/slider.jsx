@@ -115,7 +115,7 @@ const SliderSection = () => {
       >
         <Box
           width={{ base: "100%", md: "70%" }}
-          p={{ base: "4", md: "2" }}
+          p={{ base: "0", md: "2" }}
           mt={{ base: "0", md: "100px" }}
           textAlign={{ base: "center", md: "left" }}
         >
@@ -260,7 +260,8 @@ const SliderSection = () => {
             order={1}
             ml={{ base: "0", md: 0 }}
             mr={{ base: 0, md: "0" }}
-            w={{ base: "60%", md: "100%" }}
+            w={{ base: "30vw", md: "100%" }}
+            maxWidth={{base:"65vw"}}
             bg="white"
             mb={{ base: "30px", md: 0 }}
             mt={
