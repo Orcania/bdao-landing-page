@@ -26,12 +26,12 @@ const Contact = () => {
     }
   };
   return (
-    <Box mt={{base:"100vh",md:"30%"}} mb={{base:0,md:"10%"}}   w="100%" >
+    <Box mt={{base:"150vh",md:"30%"}} mb={{base:0,md:"10%"}}  alignItems="center" w="100%" >
       <Box >
-        <Text color="#B3B3B3">Have any questions ?</Text>
+        <Text color="#B3B3B3" >Have any questions ?</Text>
       </Box>
       <br />
-      <Box>
+      <Box >
         <Heading as="h1">Contact us</Heading>
       </Box>
       <br />

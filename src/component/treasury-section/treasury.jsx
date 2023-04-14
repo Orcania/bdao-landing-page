@@ -42,9 +42,9 @@ const Treasury = () => {
           w={{ base: "60vw", md: "200vw" }}
           h="auto"
           mr={{ md: "4" }}
-          ml={{ base: "0", md: "0" }}
+          ml={{ base: "10vw", md: "0" }}
           display={imageDisplay}
-          mb={{ base: "-60px", md: "0" }}
+          mb={{ base: "30px", md: "0" }}
           mt={{ base: "30%", md: "0" }}
         />
       </Box>{" "}

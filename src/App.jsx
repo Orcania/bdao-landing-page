@@ -76,10 +76,15 @@ function App() {
 
   const handleScroll = () => {
     const scrollY = window.pageYOffset;
+    const docHeight = document.documentElement.scrollHeight;
+    const winHeight = window.innerHeight;
+    const scrollPos = scrollY + winHeight / 2;
     for (const s of sections) {
       const bounds = s.current.getBoundingClientRect();
-      console.log("Bounds for section", s.current.id, bounds);
-      if (bounds.top <= 0 && bounds.bottom >= 0) {
+      const margin = parseInt(getComputedStyle(s.current).marginTop);
+      const top = bounds.top + scrollY - margin;
+      const bottom = bounds.bottom + scrollY - margin;
+      if (scrollPos >= top && scrollPos < bottom) {
         setCurrentSection(s);
         setCurrentSlide(sections.indexOf(s));
         break;
@@ -89,12 +94,11 @@ function App() {
   const handleWheel = (e) => {
     e.preventDefault();
     const dir = Math.sign(e.deltaY);
-    console.log("Current section:", currentSection);
   
     let nextIdx = sections.indexOf(currentSection) + dir;
+    console.log("This is the CURRENT SECTION:",currentSection)
     if (nextIdx < 0) nextIdx = 0;
     if (nextIdx >= sections.length) nextIdx = sections.length ;
-    console.log("This is the nexIdx value: ", nextIdx);
   
     sections[nextIdx].current.scrollIntoView({ behavior: "smooth" });
   };
@@ -164,17 +168,21 @@ function App() {
           </Box>
         </div>
       </section>
+      <Box marginTop={{base:"100%",md:0}}>
       <section
         ref={sec3Ref}
         className="section sec3"
         data-scroll-distance="150%"
       >
         <div ref={treasuryRef} className="section">
-          <Box mt={{ base: "auto", md: 0 }}>
+          <Box mt={{ base: "auto", md: "40%" }}>
             <Treasury />
           </Box>
         </div>
       </section>
+      </Box>
+      <Box marginTop={{base:"100%",md:0}}>
+
       <section
         ref={sec4Ref}
         className="section sec4"
@@ -184,6 +192,8 @@ function App() {
           <Governed />
         </div>
       </section>
+      </Box>
+      
       <section
         ref={sec5Ref}
         className="section sec5"
@@ -193,15 +203,16 @@ function App() {
           <Staking />
         </Box>
       </section>
+      <Box >
       <section
         ref={sec6Ref}
         className="section sec6"
-        data-scroll-distance="100%"
       >
-        <Box alignItems="center" justify="center">
+        <Box alignItems="center" justify="center" marginTop={{base:0,md:"60%"}}>
           <Contact />
         </Box>
       </section>
+      </Box>
       <Flex
         direction={{ base: "row", md: "column" }}
         top={{ base: "5%", md: "50%" }}
