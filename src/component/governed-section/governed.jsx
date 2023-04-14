@@ -90,8 +90,8 @@ const Governed = () => {
             </Text>
           </Box>
           {showMore && (
-            <Box>
-              <Text mb="4" lineHeight="1.2em" fontWeight="bold">
+            <Box mb={{base:"40vh",md:0}}>
+              <Text  lineHeight="1.2em" fontWeight="bold">
                 Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
                 libero, id varius lectus mauris vitae tellus. In sollicitudin
                 pharetra metus a lacinia. Donec ac odio nunc. Integer interdum
