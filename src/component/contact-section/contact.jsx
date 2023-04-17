@@ -45,7 +45,7 @@ const Contact = () => {
             borderColor="black"
             borderWidth={3}
             height="50px"
-            placeholder="Email: johny@gmail.com"
+            placeholder="example@gmail.com"
           ></Input>
         </Box>
         <Box ml={{base:0, md:"3%"}} w={{base:"100%",md:"30%"}} mt={{base:"20px",md:0}} borderColor="black">
@@ -55,7 +55,7 @@ const Contact = () => {
             focusBorderColor="black"
             borderWidth={3}
             height="50px"
-            placeholder="Topic"
+            placeholder="Type here..."
           ></Input>
         </Box>
       </Box>
