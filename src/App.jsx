@@ -148,7 +148,7 @@ function App() {
   };
   return (
     <ChakraProvider theme={customTheme}>
-      <Box>
+      <Box mt={{base:"-20vh"}}>
         <section ref={sec1Ref} className="section sec1">
           <Box className="sec_container">
             <Box className="asd">
@@ -174,7 +174,7 @@ function App() {
           </div>
         </section>
       </Box>
-      <Box marginTop={{ base: "100%", md: 0 }}>
+      <Box marginTop={{ base: "80%", md: 0 }}>
         <section
           ref={sec3Ref}
           className="section sec3"
@@ -230,13 +230,13 @@ function App() {
       </Box>
       <Flex
         direction={{ base: "row", md: "column" }}
-        top={{ base: "5%", md: "50%" }}
-        left={{ base: "45%", md: "90%" }}
+        bottom={{ base: 0, md: "50%" }}
+        left={{ base: "50%", md: "95%" }}
         justifyContent={{ base: "center", md: "flex-end" }}
         textAlign="center"
         width="10%"
         position="fixed"
-        transform="translateY(-50%)"
+        transform="translate(-50%, 50%)"
         display="flex"
         alignItems="center"
         mr="20px"
@@ -247,7 +247,7 @@ function App() {
             borderRadius="0"
             borderWidth={currentSlide === 0 ? "4px" : "3px"}
             borderColor="black"
-            backgroundColor={currentSlide === 0 ? "transparent" : "transparent"}
+            backgroundColor={{base: currentSlide === 0 ? "white" : "white",md: currentSlide === 0 ? "transparent" : "transparent"}}
             _hover={{
               backgroundColor:
                 hoveredButton === 0 ? "transparent" : "transparent",
@@ -274,7 +274,7 @@ function App() {
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(1)}
-            backgroundColor={currentSlide === 1 ? "transparent" : "transparent"}
+            backgroundColor={{base: currentSlide === 1 ? "white" : "white",md: currentSlide === 1 ? "transparent" : "transparent"}}
             size={{
               base: `${currentSlide === 1 ? "md" : "sm"}`,
               md: `${currentSlide === 1 ? "lg" : "md"}`,
@@ -291,7 +291,7 @@ function App() {
             borderWidth={currentSlide === 2 ? "4px" : "3px"}
             borderColor="black"
             ml={{ base: "20px", md: 0 }}
-            backgroundColor={currentSlide === 2 ? "transparent" : "transparent"}
+            backgroundColor={{base: currentSlide === 2 ? "white" : "white",md: currentSlide === 2 ? "transparent" : "transparent"}}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(2)}
@@ -311,7 +311,7 @@ function App() {
             borderWidth={currentSlide === 3 ? "4px" : "3px"}
             borderColor="black"
             ml={{ base: "20px", md: 0 }}
-            backgroundColor={currentSlide === 3 ? "transparent" : "transparent"}
+            backgroundColor={{base: currentSlide === 3 ? "white" : "white",md: currentSlide === 3 ? "transparent" : "transparent"}}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(3)}
