@@ -50,7 +50,7 @@ const Treasury = () => {
       </Box>{" "}
       <Box textAlign={{ base: "center", md: "left" }} ml={{md:"10%"}}  marginTop={{md:"20%"}}
              >
-        <Heading as="h1" fontWeight="bold" mb="2" >
+        <Heading as="h1" fontWeight="bold" mb="8" >
           How the treasury works
         </Heading>
         <Box
