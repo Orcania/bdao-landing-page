@@ -271,7 +271,7 @@ const SliderSection = () => {
             }
             boxSize={
               currentSlide === 2
-                ? {  md: "600px" }
+                ? {  md: "650px" }
                 : { md: "380px" }
             }
             backgroundColor="transparent"
