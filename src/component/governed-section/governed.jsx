@@ -59,7 +59,7 @@ const Governed = () => {
             alignItems={{ base: "left", md: "center" }}
           >
             <Text
-              mb={{ base: "4", md: "0" }}
+              mb="4"
               lineHeight="1.2em"
               fontWeight="bold"
             >
@@ -90,7 +90,7 @@ const Governed = () => {
             </Text>
           </Box>
           {showMore && (
-            <Box >
+            < >
               <Text  lineHeight="1.2em" fontWeight="bold">
                 Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
                 libero, id varius lectus mauris vitae tellus. In sollicitudin
@@ -109,14 +109,14 @@ const Governed = () => {
                 onClick={handleShowMore}
                 ml={{ base: "0", md: "0" }}
                 mx="auto"
-                mt={{ base: "30px", md: "30" }}
+                
                 display={{ base: "block", md: "block" }}
                 transition="all 0.2s ease-in-out"
                 _hover={{ color: "gray" }}
               >
                 Read Less
               </Button>
-            </Box>
+            </>
           )}
         </Box>
         <Box
