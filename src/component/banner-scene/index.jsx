@@ -6,7 +6,7 @@ import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 function Model() {
-  const gltf = useLoader(GLTFLoader, "/logo.gltf");
+  const gltf = useLoader(GLTFLoader, "/bdao-landing-page/logo.gltf");
 
   gltf.scene.position.setY(-2.5);
 
