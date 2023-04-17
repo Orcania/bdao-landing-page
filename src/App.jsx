@@ -287,7 +287,7 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Features" placement="top">
+        <Tooltip label="About" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 1 ? "4px" : "3px"}
@@ -335,7 +335,7 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Govern" placement="top">
+        <Tooltip label="Governance" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 3 ? "4px" : "3px"}
@@ -359,7 +359,7 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Voting power" placement="top">
+        <Tooltip label="Utility" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 4 ? "4px" : "3px"}
