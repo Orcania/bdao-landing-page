@@ -24,6 +24,9 @@ function App() {
   const sliderRef = useRef(null);
   const treasuryRef = useRef(null);
   const governedRef = useRef(null);
+  const stakingRef = useRef(null);
+  const contactRef = useRef(null);
+
 
   const [scrollDirection, setScrollDirection] = useState(""); //setting a scroll direction according to user's direction of scroll
 
@@ -54,6 +57,18 @@ function App() {
         break;
       case 3:
         governedRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        break;
+        case 4:
+        stakingRef.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+        break;
+        case 5:
+        contactRef.current.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
@@ -208,6 +223,8 @@ function App() {
       </Box>
       <Box>
         <section ref={sec5Ref} className="section sec5">
+        <div ref={stakingRef} className="section">
+
           <Box className="sec_container" height={{base:"150%",md:"100%"}}>
             <Box className="asd">
               <Box className="asdf">
@@ -215,10 +232,14 @@ function App() {
               </Box>
             </Box>
           </Box>
+          </div>
+
         </section>
       </Box>
       <Box>
         <section ref={sec6Ref} className="section sec6">
+        <div ref={contactRef} className="section">
+
           <Box className="sec_container">
             <Box className="asd">
               <Box className="asdf">
@@ -226,6 +247,7 @@ function App() {
               </Box>
             </Box>
           </Box>
+          </div>
         </section>
       </Box>
       <Flex
@@ -328,6 +350,53 @@ function App() {
             }}
             h={{
               md: `${currentSlide === 3 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
+        <Tooltip label="Staking Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 4 ? "4px" : "3px"}
+            borderColor="black"
+            display={{base:"none",md:"block"}}
+
+            backgroundColor={{base: currentSlide === 4 ? "white" : "white",md: currentSlide === 4 ? "transparent" : "transparent"}}
+            _hover={{
+              backgroundColor:
+                hoveredButton === 4 ? "transparent" : "transparent",
+            }}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(4)}
+            size={{
+              base: `${currentSlide === 4 ? "md" : "sm"}`,
+              md: `${currentSlide ===4 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide === 4 ? 3.5 : 2.5}rem`,
+            }}
+            transition="all 0.2s ease-in-out"
+          />
+        </Tooltip>
+        <Tooltip label="Treasury Section" placement="top">
+          <Button
+            borderRadius="0"
+            borderWidth={currentSlide === 5 ? "4px" : "3px"}
+            borderColor="black"
+            display={{base:"none",md:"block"}}
+
+            ml={{ base: "20px", md: 0 }}
+            backgroundColor={{base: currentSlide === 5 ? "white" : "white",md: currentSlide === 5 ? "transparent" : "transparent"}}
+            _active={{ backgroundColor: "black", transform: "scale(1)" }}
+            mb={8}
+            onClick={() => handleButtonClick(5)}
+            size={{
+              base: `${currentSlide === 5 ? "md" : "sm"}`,
+              md: `${currentSlide === 5 ? "lg" : "md"}`,
+            }}
+            h={{
+              md: `${currentSlide ===5 ? 3.5 : 2.5}rem`,
             }}
             transition="all 0.2s ease-in-out"
           />
