@@ -27,7 +27,6 @@ function App() {
   const stakingRef = useRef(null);
   const contactRef = useRef(null);
 
-
   const [scrollDirection, setScrollDirection] = useState(""); //setting a scroll direction according to user's direction of scroll
 
   const [hoveredButton, setHoveredButton] = useState(-1);
@@ -61,7 +60,7 @@ function App() {
           block: "center",
         });
         break;
-        
+
       case 4:
         sec5Ref.current.scrollIntoView({
           behavior: "smooth",
@@ -69,15 +68,12 @@ function App() {
         });
         break;
 
-        
       case 5:
         sec6Ref.current.scrollIntoView({
-
           behavior: "smooth",
           block: "center",
         });
         break;
-
 
       default:
         break;
@@ -233,31 +229,30 @@ function App() {
       </Box>
       <Box>
         <section ref={sec5Ref} className="section sec5">
-        <div ref={stakingRef} className="section">
-
-          <Box className="sec_container" height={{base:"150%",md:"100%"}}>
-          
-            <Box className="asd">
-              <Box className="asdf">
-                <Staking />
+          <div ref={stakingRef} className="section">
+            <Box
+              className="sec_container"
+              height={{ base: "150%", md: "100%" }}
+            >
+              <Box className="asd">
+                <Box className="asdf">
+                  <Staking />
+                </Box>
               </Box>
             </Box>
-          </Box>
           </div>
-
         </section>
       </Box>
       <Box>
         <section ref={sec6Ref} className="section sec6">
-        <div ref={contactRef} className="section">
-
-          <Box className="sec_container">
-            <Box className="asd">
-              <Box className="asdf">
-                <Contact />
+          <div ref={contactRef} className="section">
+            <Box className="sec_container">
+              <Box className="asd">
+                <Box className="asdf">
+                  <Contact />
+                </Box>
               </Box>
             </Box>
-          </Box>
           </div>
         </section>
       </Box>
@@ -302,7 +297,7 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Features" placement="top">
+        <Tooltip label="About" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 1 ? "4px" : "3px"}
@@ -350,7 +345,7 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Govern" placement="top">
+        <Tooltip label="Governance" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 3 ? "4px" : "3px"}
@@ -375,20 +370,16 @@ function App() {
           />
         </Tooltip>
 
-        <Tooltip label="Voting power" placement="top">
-
+        <Tooltip label="Utility" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 4 ? "4px" : "3px"}
             borderColor="black"
-
-            
             display={{ base: "none", md: "block" }}
             backgroundColor={{
               base: currentSlide === 4 ? "white" : "white",
               md: currentSlide === 4 ? "transparent" : "transparent",
             }}
-
             _hover={{
               backgroundColor:
                 hoveredButton === 4 ? "transparent" : "transparent",
@@ -399,10 +390,7 @@ function App() {
             size={{
               base: `${currentSlide === 4 ? "md" : "sm"}`,
 
-              
-
               md: `${currentSlide === 4 ? "lg" : "md"}`,
-
             }}
             h={{
               md: `${currentSlide === 4 ? 3.5 : 2.5}rem`,
@@ -410,12 +398,11 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Treasury Section" placement="top">        
+        <Tooltip label="Contact" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 5 ? "4px" : "3px"}
             borderColor="black"
-
             display={{ base: "none", md: "block" }}
             backgroundColor={{
               base: currentSlide === 5 ? "white" : "white",
@@ -433,9 +420,8 @@ function App() {
               md: `${currentSlide === 5 ? "lg" : "md"}`,
             }}
             h={{
-              md: `${currentSlide ===5 ? 3.5 : 2.5}rem`,
               md: `${currentSlide === 5 ? 3.5 : 2.5}rem`,
-
+              md: `${currentSlide === 5 ? 3.5 : 2.5}rem`,
             }}
             transition="all 0.2s ease-in-out"
           />
