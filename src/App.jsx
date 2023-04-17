@@ -247,6 +247,8 @@ function App() {
             borderRadius="0"
             borderWidth={currentSlide === 0 ? "4px" : "3px"}
             borderColor="black"
+            display={{base:"none",md:"block"}}
+
             backgroundColor={{base: currentSlide === 0 ? "white" : "white",md: currentSlide === 0 ? "transparent" : "transparent"}}
             _hover={{
               backgroundColor:
@@ -270,6 +272,8 @@ function App() {
             borderRadius="0"
             borderWidth={currentSlide === 1 ? "4px" : "3px"}
             borderColor="black"
+            display={{base:"none",md:"block"}}
+
             ml={{ base: "20px", md: 0 }}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
@@ -290,6 +294,8 @@ function App() {
             borderRadius="0"
             borderWidth={currentSlide === 2 ? "4px" : "3px"}
             borderColor="black"
+            display={{base:"none",md:"block"}}
+
             ml={{ base: "20px", md: 0 }}
             backgroundColor={{base: currentSlide === 2 ? "white" : "white",md: currentSlide === 2 ? "transparent" : "transparent"}}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
@@ -311,6 +317,7 @@ function App() {
             borderWidth={currentSlide === 3 ? "4px" : "3px"}
             borderColor="black"
             ml={{ base: "20px", md: 0 }}
+            display={{base:"none",md:"block"}}
             backgroundColor={{base: currentSlide === 3 ? "white" : "white",md: currentSlide === 3 ? "transparent" : "transparent"}}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}

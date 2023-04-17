@@ -14,7 +14,7 @@ import React from "react";
 import Brick from "../../assets/images/brick.png";
 
 const Header = (content) => {
-  const texts = useBreakpointValue({ base: "center", md: "left" });
+  const texts = useBreakpointValue({ base: "justify", md: "left" });
   const isMobile = useBreakpointValue({ base: true, md: false });
   const handleButtonHover = (event) => {
     const cursor = document.querySelector(".cursor");

@@ -45,7 +45,7 @@ const Governed = () => {
           display={{ md: "flex" }}
           justifyContent="center"
           flexDirection="column"
-          w={{ base: "100%" }}
+          w={{ base: "110%" }}
           mx={{ md: "auto" }}
           pr={10}
         >
@@ -90,7 +90,7 @@ const Governed = () => {
             </Text>
           </Box>
           {showMore && (
-            <Box mb={{base:"40vh",md:0}}>
+            <Box >
               <Text  lineHeight="1.2em" fontWeight="bold">
                 Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
                 libero, id varius lectus mauris vitae tellus. In sollicitudin
