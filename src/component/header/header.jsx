@@ -8,12 +8,38 @@ import {
   Heading,
   Flex,
 } from "@chakra-ui/react";
+
+import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+
 import { useBreakpointValue } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
-import React from "react";
+import React, { useRef } from "react";
+
+import BannerScene from "../banner-scene";
+
 import Brick from "../../assets/images/brick.png";
 
+extend({ OrbitControls });
+
+function Controls() {
+  const controls = useRef();
+  const { camera, gl } = useThree();
+  useFrame(() => controls.current.update());
+  return (
+    <orbitControls
+      ref={controls}
+      args={[camera, gl.domElement]}
+      enableDamping
+      dampingFactor={0.1}
+      rotateSpeed={0.5}
+    />
+  );
+}
+
 const Header = (content) => {
+  const controlsRef = useRef();
+
   const texts = useBreakpointValue({ base: "justify", md: "left" });
   const isMobile = useBreakpointValue({ base: true, md: false });
   const handleButtonHover = (event) => {
@@ -34,14 +60,13 @@ const Header = (content) => {
       justifyContent="center"
       alignItems="center"
     >
-      <Box width={isMobile ? "100%" : "50%"} >
+      <Box width={isMobile ? "100%" : "50%"}>
         <Box
           display="flex"
           flexDirection="column"
           justifyContent="center"
           h="100%"
           textAlign={isMobile ? "center" : "left"}
-          
         >
           <Heading as="h1" fontWeight="bold" fontSize="50px" textAlign={texts}>
             Bricklayer DAO
@@ -52,7 +77,7 @@ const Header = (content) => {
           </Text>
           <Flex justify={isMobile ? "center" : "flex-start"}>
             <Button
-            className={content}
+              className={content}
               mt={4}
               bg="transparent"
               color="black"
@@ -80,18 +105,26 @@ const Header = (content) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          width={{base:"80%",md:"100%"}}
-          height="100%"
+          width={{ base: "80%", md: "100%" }}
+          height="500px"
           ml={isMobile ? "20%" : "0"}
         >
-          <Image
+          <Canvas>
+            {/* <gridHelper args={[20, 20, 0xff0000, "teal"]} /> */}
+            {/* <color attach="background" args={["#282c34"]} /> */}
+            <ambientLight />
+            <Controls />
+            <pointLight position={[10, 10, 10]} />
+            <BannerScene />
+          </Canvas>
+          {/* <Image
             src={Brick}
             alt="Placeholder"
             width="100%"
             height="100%"
             objectFit="cover"
             ml={isMobile ? "0" : "20%"}
-          />
+          /> */}
         </Box>
       </Box>
     </Box>
