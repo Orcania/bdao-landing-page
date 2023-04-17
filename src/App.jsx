@@ -61,18 +61,24 @@ function App() {
           block: "center",
         });
         break;
-        case 4:
-        stakingRef.current.scrollIntoView({
+        
+      case 4:
+        sec5Ref.current.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
         break;
-        case 5:
-        contactRef.current.scrollIntoView({
+
+        
+      case 5:
+        sec6Ref.current.scrollIntoView({
+
           behavior: "smooth",
           block: "center",
         });
         break;
+
+
       default:
         break;
     }
@@ -107,11 +113,15 @@ function App() {
     }
   };
   const handleWheel = (e) => {
+    window.addEventListener("scrollend", () => {
+      console.log("scrollend");
+    });
+
     e.preventDefault();
     const dir = Math.sign(e.deltaY);
 
     let nextIdx = sections.indexOf(currentSection) + dir;
-    console.log("This is the CURRENT SECTION:", currentSection);
+    // console.log("This is the CURRENT SECTION:", currentSection);
     if (nextIdx < 0) nextIdx = 0;
     if (nextIdx >= sections.length) nextIdx = sections.length;
 
@@ -163,7 +173,7 @@ function App() {
   };
   return (
     <ChakraProvider theme={customTheme}>
-      <Box mt={{base:"-20vh"}}>
+      <Box mt={{ base: "-20vh" }}>
         <section ref={sec1Ref} className="section sec1">
           <Box className="sec_container">
             <Box className="asd">
@@ -226,6 +236,7 @@ function App() {
         <div ref={stakingRef} className="section">
 
           <Box className="sec_container" height={{base:"150%",md:"100%"}}>
+          
             <Box className="asd">
               <Box className="asdf">
                 <Staking />
@@ -264,14 +275,16 @@ function App() {
         mr="20px"
         mb={{ base: "10px", md: 0 }}
       >
-        <Tooltip label="Brick Section" placement="top">
+        <Tooltip label="Home" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 0 ? "4px" : "3px"}
             borderColor="black"
-            display={{base:"none",md:"block"}}
-
-            backgroundColor={{base: currentSlide === 0 ? "white" : "white",md: currentSlide === 0 ? "transparent" : "transparent"}}
+            display={{ base: "none", md: "block" }}
+            backgroundColor={{
+              base: currentSlide === 0 ? "white" : "white",
+              md: currentSlide === 0 ? "transparent" : "transparent",
+            }}
             _hover={{
               backgroundColor:
                 hoveredButton === 0 ? "transparent" : "transparent",
@@ -289,18 +302,20 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Slider Section" placement="top">
+        <Tooltip label="Features" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 1 ? "4px" : "3px"}
             borderColor="black"
-            display={{base:"none",md:"block"}}
-
+            display={{ base: "none", md: "block" }}
             ml={{ base: "20px", md: 0 }}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(1)}
-            backgroundColor={{base: currentSlide === 1 ? "white" : "white",md: currentSlide === 1 ? "transparent" : "transparent"}}
+            backgroundColor={{
+              base: currentSlide === 1 ? "white" : "white",
+              md: currentSlide === 1 ? "transparent" : "transparent",
+            }}
             size={{
               base: `${currentSlide === 1 ? "md" : "sm"}`,
               md: `${currentSlide === 1 ? "lg" : "md"}`,
@@ -311,15 +326,17 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Treasury Section" placement="top">
+        <Tooltip label="Treasury" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 2 ? "4px" : "3px"}
             borderColor="black"
-            display={{base:"none",md:"block"}}
-
+            display={{ base: "none", md: "block" }}
             ml={{ base: "20px", md: 0 }}
-            backgroundColor={{base: currentSlide === 2 ? "white" : "white",md: currentSlide === 2 ? "transparent" : "transparent"}}
+            backgroundColor={{
+              base: currentSlide === 2 ? "white" : "white",
+              md: currentSlide === 2 ? "transparent" : "transparent",
+            }}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(2)}
@@ -333,14 +350,17 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Governed Section" placement="top">
+        <Tooltip label="Govern" placement="top">
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 3 ? "4px" : "3px"}
             borderColor="black"
             ml={{ base: "20px", md: 0 }}
-            display={{base:"none",md:"block"}}
-            backgroundColor={{base: currentSlide === 3 ? "white" : "white",md: currentSlide === 3 ? "transparent" : "transparent"}}
+            display={{ base: "none", md: "block" }}
+            backgroundColor={{
+              base: currentSlide === 3 ? "white" : "white",
+              md: currentSlide === 3 ? "transparent" : "transparent",
+            }}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(3)}
@@ -354,14 +374,21 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Staking Section" placement="top">
+
+        <Tooltip label="Voting power" placement="top">
+
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 4 ? "4px" : "3px"}
             borderColor="black"
-            display={{base:"none",md:"block"}}
 
-            backgroundColor={{base: currentSlide === 4 ? "white" : "white",md: currentSlide === 4 ? "transparent" : "transparent"}}
+            
+            display={{ base: "none", md: "block" }}
+            backgroundColor={{
+              base: currentSlide === 4 ? "white" : "white",
+              md: currentSlide === 4 ? "transparent" : "transparent",
+            }}
+
             _hover={{
               backgroundColor:
                 hoveredButton === 4 ? "transparent" : "transparent",
@@ -371,7 +398,11 @@ function App() {
             onClick={() => handleButtonClick(4)}
             size={{
               base: `${currentSlide === 4 ? "md" : "sm"}`,
-              md: `${currentSlide ===4 ? "lg" : "md"}`,
+
+              
+
+              md: `${currentSlide === 4 ? "lg" : "md"}`,
+
             }}
             h={{
               md: `${currentSlide === 4 ? 3.5 : 2.5}rem`,
@@ -379,15 +410,21 @@ function App() {
             transition="all 0.2s ease-in-out"
           />
         </Tooltip>
-        <Tooltip label="Treasury Section" placement="top">
+        <Tooltip label="Treasury Section" placement="top">        
           <Button
             borderRadius="0"
             borderWidth={currentSlide === 5 ? "4px" : "3px"}
             borderColor="black"
-            display={{base:"none",md:"block"}}
 
-            ml={{ base: "20px", md: 0 }}
-            backgroundColor={{base: currentSlide === 5 ? "white" : "white",md: currentSlide === 5 ? "transparent" : "transparent"}}
+            display={{ base: "none", md: "block" }}
+            backgroundColor={{
+              base: currentSlide === 5 ? "white" : "white",
+              md: currentSlide === 5 ? "transparent" : "transparent",
+            }}
+            _hover={{
+              backgroundColor:
+                hoveredButton === 5 ? "transparent" : "transparent",
+            }}
             _active={{ backgroundColor: "black", transform: "scale(1)" }}
             mb={8}
             onClick={() => handleButtonClick(5)}
@@ -397,6 +434,8 @@ function App() {
             }}
             h={{
               md: `${currentSlide ===5 ? 3.5 : 2.5}rem`,
+              md: `${currentSlide === 5 ? 3.5 : 2.5}rem`,
+
             }}
             transition="all 0.2s ease-in-out"
           />
