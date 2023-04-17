@@ -38,6 +38,7 @@ const Contact = () => {
       <br />
       <Box display="flex"  flexDir={{base:"column", md:"row"}}>
         <Box w={{base:"100%",md:"30%"}}>
+        <Text fontSize="17px" fontWeight="bold">Email</Text>
           <Input
             borderRadius="3px"
             focusBorderColor="black"
@@ -48,6 +49,7 @@ const Contact = () => {
           ></Input>
         </Box>
         <Box ml={{base:0, md:"3%"}} w={{base:"100%",md:"30%"}} mt={{base:"20px",md:0}} borderColor="black">
+        <Text fontSize="17px" fontWeight="bold">Username</Text>
           <Input
             borderRadius="3px"
             focusBorderColor="black"
@@ -58,6 +60,7 @@ const Contact = () => {
         </Box>
       </Box>
       <Box w={{base:"100%",md:"63%"}} borderColor="black" mt={{base:"20px",md:"3%"}}>
+      <Text fontSize="17px" fontWeight="bold">Message</Text>
         <Textarea
             borderRadius="3px"
             focusBorderColor="black"
