@@ -15,70 +15,17 @@ function Model() {
 
   model.scene.position.setX(-0.8);
   const { camera, gl: renderer } = useThree();
-  const controlsRef = useRef();
+  const controlsRef = useRef(null);
 
   const sc = 0.65;
 
-  const [rotY, setRotY] = useState(camera.rotation.y);
-  const [isUserInteracting, setIsUserInteracting] = useState(false);
-  // console.log(isUserInteracting);
-  const meshRef = useRef();
-
   useFrame(() => {
-    if (!isUserInteracting) {
-      const n = (rotY + 0.5) % 360;
-
-      const r = (n * Math.PI) / 180;
-
-      const x = Math.cos(r) * 6;
-      const z = Math.sin(r) * 6;
-
-      camera.position.x = x;
-      camera.position.z = z;
-
-      // camera.lookAt(model.scene.position);
-      setRotY(n);
-
-      // setRotation(rotation + delta * 0.1);
-    }
-    if (meshRef.current && !state.pointer.active) {
-      meshRef.current.rotation.y += delta * 0.5;
-    }
+    controlsRef.current.update();
   });
 
-  // Add event listeners to the renderer's domElement property
   useEffect(() => {
-    const domElement = renderer.domElement;
-
-    const handleMouseDown = () => {
-      setIsUserInteracting(true);
-    };
-
-    const handleMouseUp = () => {
-      setIsUserInteracting(false);
-
-      // Update the camera rotation
-      const x = camera.position.x;
-      const z = camera.position.z;
-
-      const angleRad = Math.atan2(z, x);
-      const angleDeg = (angleRad * 180) / Math.PI;
-
-      setRotY(angleDeg);
-    };
-
-    domElement.addEventListener("mousedown", handleMouseDown);
-    domElement.addEventListener("mouseup", handleMouseUp);
-
-    return () => {
-      domElement.removeEventListener("mousedown", handleMouseDown);
-      domElement.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [renderer]);
-
-  useEffect(() => {
-    camera.lookAt(model.scene.position);
-  });
+    camera.lookAt(0, 0, 0);
+  }, []);
 
   return (
     <>
@@ -89,10 +36,9 @@ function Model() {
       />
       <orbitControls
         args={[camera, renderer.domElement]}
-        enableDamping
-        dampingFactor={0.05}
-        rotateSpeed={0.5}
         ref={controlsRef}
+        autoRotate
+        autoRotateSpeed={2} // Set the rotation speed here
       />
     </>
   );
