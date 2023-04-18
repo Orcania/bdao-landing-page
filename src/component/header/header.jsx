@@ -121,7 +121,21 @@ const Header = (content) => {
           width={{ base: "90%", md: "100%" }}
           height={{ base: "400px", md: "600px" }}
         >
-          <Scene />
+          <model-viewer
+            exposure="0.6"
+            loading="eager"
+            class="transparent-bg"
+            data-js-focus-visible=""
+            poster=""
+            src="/bdao-landing-page/logo.gltf"
+            disable-zoom
+            auto-rotate-delay="0"
+            auto-rotate
+            camera-controls
+            rotation-per-second="20deg"
+            style={{ width: "100%", height: "100%" }}
+          ></model-viewer>
+          {/* <Scene /> */}
           {/* <Image
             src={Brick}
             alt="Placeholder"

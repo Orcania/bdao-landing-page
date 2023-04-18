@@ -37,6 +37,7 @@ function Model() {
       <orbitControls
         args={[camera, renderer.domElement]}
         ref={controlsRef}
+        enableZoom={false} // Disable zoom
         autoRotate
         autoRotateSpeed={2} // Set the rotation speed here
       />
