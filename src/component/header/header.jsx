@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 
 import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import { useBreakpointValue } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
@@ -20,26 +20,38 @@ import BannerScene from "../banner-scene";
 
 import Brick from "../../assets/images/brick.png";
 
-extend({ OrbitControls });
+// extend({ OrbitControls });
 
-function Controls() {
-  const controls = useRef();
-  const { camera, gl } = useThree();
-  useFrame(() => controls.current.update());
+// function Controls() {
+//   const controls = useRef();
+//   const { camera, gl } = useThree();
+//   useFrame(() => controls.current.update());
+//   return (
+//     <orbitControls
+//       ref={controls}
+//       args={[camera, gl.domElement]}
+//       enableDamping
+//       dampingFactor={0.1}
+//       rotateSpeed={0.5}
+//     />
+//   );
+// }
+
+function Scene() {
   return (
-    <orbitControls
-      ref={controls}
-      args={[camera, gl.domElement]}
-      enableDamping
-      dampingFactor={0.1}
-      rotateSpeed={0.5}
-    />
+    <Canvas>
+      {/* <gridHelper args={[20, 20, 0xff0000, "teal"]} /> */}
+      {/* <color attach="background" args={["#282c34"]} /> */}
+      <ambientLight intensity={0.5} color={0xad645e} />
+      {/* <Controls /> */}
+      <pointLight position={[10, 10, 10]} intensity={1} />
+      <pointLight position={[10, 10, -10]} intensity={1} />
+      <BannerScene />)
+    </Canvas>
   );
 }
 
 const Header = (content) => {
-  const controlsRef = useRef();
-
   const texts = useBreakpointValue({ base: "justify", md: "left" });
   const isMobile = useBreakpointValue({ base: true, md: false });
   const handleButtonHover = (event) => {
@@ -105,18 +117,11 @@ const Header = (content) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          width={{ base: "80%", md: "100%" }}
-          height="500px"
+          width={{ base: "100%", md: "100%" }}
+          height={{ base: "400px", md: "600px" }}
           ml={isMobile ? "20%" : "0"}
         >
-          <Canvas>
-            {/* <gridHelper args={[20, 20, 0xff0000, "teal"]} /> */}
-            {/* <color attach="background" args={["#282c34"]} /> */}
-            <ambientLight />
-            <Controls />
-            <pointLight position={[10, 10, 10]} />
-            <BannerScene />
-          </Canvas>
+          <Scene />
           {/* <Image
             src={Brick}
             alt="Placeholder"

@@ -1,41 +1,99 @@
 import { createRoot } from "react-dom/client";
 import React, { useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { useEffect } from "react";
+
+extend({ OrbitControls });
 
 function Model() {
-  const gltf = useLoader(GLTFLoader, "/bdao-landing-page/logo.gltf");
+  const model = useLoader(GLTFLoader, "/bdao-landing-page/logo.gltf");
 
-  gltf.scene.position.setY(-2.5);
+  model.scene.position.setX(-0.8);
+  const { camera, gl: renderer } = useThree();
+  const controlsRef = useRef();
 
-  const sc = 0.012;
+  const sc = 0.65;
 
-  return <primitive object={gltf.scene} scale={[sc, sc, sc]} />;
-}
+  const [rotY, setRotY] = useState(camera.rotation.y);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
+  // console.log(isUserInteracting);
 
-function BannerScene(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef();
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (mesh.current.rotation.x += delta));
-  // Return view, these are regular three.js elements expressed in JSX
+  useFrame(() => {
+    if (!isUserInteracting) {
+      const n = (rotY + 0.5) % 360;
+
+      const r = (n * Math.PI) / 180;
+
+      const x = Math.cos(r) * 6;
+      const z = Math.sin(r) * 6;
+
+      camera.position.x = x;
+      camera.position.z = z;
+
+      // camera.lookAt(model.scene.position);
+      setRotY(n);
+
+      // setRotation(rotation + delta * 0.1);
+    }
+  });
+
+  // Add event listeners to the renderer's domElement property
+  useEffect(() => {
+    const domElement = renderer.domElement;
+
+    const handleMouseDown = () => {
+      setIsUserInteracting(true);
+    };
+
+    const handleMouseUp = () => {
+      setIsUserInteracting(false);
+
+      // // Update the camera rotation
+      // const x = camera.position.x;
+      // const y = camera.position.y;
+
+      // const angleRad = Math.atan2(y, x);
+      // const angleDeg = (angleRad * 180) / Math.PI;
+
+      // setRotY(angleDeg);
+    };
+
+    domElement.addEventListener("mousedown", handleMouseDown);
+    domElement.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      domElement.removeEventListener("mousedown", handleMouseDown);
+      domElement.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [renderer]);
+
+  useEffect(() => {
+    camera.lookAt(model.scene.position);
+  });
+
   return (
-    <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? 1.5 : 1}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
-    >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-    </mesh>
+    <>
+      <primitive
+        object={model.scene}
+        scale={[sc, sc, sc]}
+        position={[0, 0, 0]}
+
+        // rotation={[0, rotation, 0]}
+      />
+
+      {/* <orbitControls
+        args={[camera, renderer.domElement]}
+        enableDamping
+        dampingFactor={0.05}
+        rotateSpeed={0.5}
+        ref={controlsRef}
+      /> */}
+    </>
   );
 }
 

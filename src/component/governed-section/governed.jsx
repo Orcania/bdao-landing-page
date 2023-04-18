@@ -34,7 +34,7 @@ const Governed = () => {
     }
   };
   return (
-    <Box display={{ base: "flex", md: "flex" }} justifyContent="center" >
+    <Box display={{ base: "flex", md: "flex" }} justifyContent="center">
       <Flex
         flexDirection={{ base: "column-reverse", md: "row" }} // Set the flexDirection
         width="100%"
@@ -58,11 +58,7 @@ const Governed = () => {
             justifyContent={{ base: "left", md: "space-between" }}
             alignItems={{ base: "left", md: "center" }}
           >
-            <Text
-              mb="4"
-              lineHeight="1.2em"
-              fontWeight="bold"
-            >
+            <Text mb="4" lineHeight="1.2em" fontWeight="bold">
               Bricklayer DAO is governed by elected active participants (AP) who
               hold executive and decision-making roles to benefit the BRICK
               holders’ value. APs will provide managerial guidance which will be
@@ -90,14 +86,15 @@ const Governed = () => {
             </Text>
           </Box>
           {showMore && (
-            < >
-              <Text  lineHeight="1.2em" fontWeight="bold">
-                Sed porttitor, justo ac facilisis elementum, ex lorem vestibulum
-                libero, id varius lectus mauris vitae tellus. In sollicitudin
-                pharetra metus a lacinia. Donec ac odio nunc. Integer interdum
-                feugiat mi, vitae dapibus enim eleifend sed. Suspendisse in
-                justo finibus, rutrum turpis ac, posuere lacus.
+            <>
+              <Text lineHeight="1.2em" fontWeight="bold">
+                APs will be democratically voted on and reviewed by the DAO
+                members on periodic basis. Bricklayer CRE (BCRE) is the
+                overarching entity within the DAO responsible for the management
+                of the APs and Licensed Members as well as administering the
+                incentive program.
               </Text>
+              <br />
               <Button
                 variant="link"
                 textDecor="underline"
@@ -109,7 +106,6 @@ const Governed = () => {
                 onClick={handleShowMore}
                 ml={{ base: "0", md: "0" }}
                 mx="auto"
-                
                 display={{ base: "block", md: "block" }}
                 transition="all 0.2s ease-in-out"
                 _hover={{ color: "gray" }}
@@ -124,8 +120,8 @@ const Governed = () => {
           alignItems="center"
           ml={{ base: "10%", md: 0 }}
           mr={{
-            base:0,
-            md:"15%"
+            base: 0,
+            md: "15%",
           }}
           w={{ base: "70vw", md: "67vw" }}
         >
