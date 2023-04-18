@@ -57,14 +57,14 @@ function Model() {
     const handleMouseUp = () => {
       setIsUserInteracting(false);
 
-      // // Update the camera rotation
-      // const x = camera.position.x;
-      // const y = camera.position.y;
+      // Update the camera rotation
+      const x = camera.position.x;
+      const z = camera.position.z;
 
-      // const angleRad = Math.atan2(y, x);
-      // const angleDeg = (angleRad * 180) / Math.PI;
+      const angleRad = Math.atan2(z, x);
+      const angleDeg = (angleRad * 180) / Math.PI;
 
-      // setRotY(angleDeg);
+      setRotY(angleDeg);
     };
 
     domElement.addEventListener("mousedown", handleMouseDown);
@@ -81,16 +81,21 @@ function Model() {
   });
 
   return (
-    <primitive object={model.scene} scale={[sc, sc, sc]} position={[0, 0, 0]} />
+    <>
+      <primitive
+        object={model.scene}
+        scale={[sc, sc, sc]}
+        position={[0, 0, 0]}
+      />
+      <orbitControls
+        args={[camera, renderer.domElement]}
+        enableDamping
+        dampingFactor={0.05}
+        rotateSpeed={0.5}
+        ref={controlsRef}
+      />
+    </>
   );
 }
-
-//  <orbitControls
-//   args={[camera, renderer.domElement]}
-//   enableDamping
-//   dampingFactor={0.05}
-//   rotateSpeed={0.5}
-//   ref={controlsRef}
-// />
 
 export default Model;
