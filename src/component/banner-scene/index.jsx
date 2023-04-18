@@ -77,24 +77,16 @@ function Model() {
   });
 
   return (
-    <>
-      <primitive
-        object={model.scene}
-        scale={[sc, sc, sc]}
-        position={[0, 0, 0]}
-
-        // rotation={[0, rotation, 0]}
-      />
-
-      {/* <orbitControls
-        args={[camera, renderer.domElement]}
-        enableDamping
-        dampingFactor={0.05}
-        rotateSpeed={0.5}
-        ref={controlsRef}
-      /> */}
-    </>
+    <primitive object={model.scene} scale={[sc, sc, sc]} position={[0, 0, 0]} />
   );
 }
+
+//  <orbitControls
+//   args={[camera, renderer.domElement]}
+//   enableDamping
+//   dampingFactor={0.05}
+//   rotateSpeed={0.5}
+//   ref={controlsRef}
+// />
 
 export default Model;

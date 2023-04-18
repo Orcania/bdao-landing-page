@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
+
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import "./style.scss";
+import "react-toastify/dist/ReactToastify.css";
 // import "./index.js";
 //Chakra imports
 import { ChakraProvider, Tooltip } from "@chakra-ui/react";
@@ -169,6 +172,7 @@ function App() {
   };
   return (
     <ChakraProvider theme={customTheme}>
+      <ToastContainer />
       <Box mt={{ base: "-20vh" }}>
         <section ref={sec1Ref} className="section sec1">
           <Box className="sec_container">
