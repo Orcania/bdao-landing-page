@@ -22,6 +22,7 @@ function Model() {
   const [rotY, setRotY] = useState(camera.rotation.y);
   const [isUserInteracting, setIsUserInteracting] = useState(false);
   // console.log(isUserInteracting);
+  const meshRef = useRef();
 
   useFrame(() => {
     if (!isUserInteracting) {
@@ -39,6 +40,9 @@ function Model() {
       setRotY(n);
 
       // setRotation(rotation + delta * 0.1);
+    }
+    if (meshRef.current && !state.pointer.active) {
+      meshRef.current.rotation.y += delta * 0.5;
     }
   });
 

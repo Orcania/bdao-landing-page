@@ -10,13 +10,16 @@ import {
 } from "@chakra-ui/react";
 
 import { Canvas, extend, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+
+import BannerScene from "../banner-scene";
+
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 import { useBreakpointValue } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa";
 import React, { useRef } from "react";
 
-import BannerScene from "../banner-scene";
 
 import Brick from "../../assets/images/brick.png";
 
@@ -46,7 +49,14 @@ function Scene() {
       {/* <Controls /> */}
       <pointLight position={[10, 10, 10]} intensity={1} />
       <pointLight position={[10, 10, -10]} intensity={1} />
-      <BannerScene />)
+      <BannerScene />
+      <OrbitControls
+        enableZoom={false} // Disable zooming
+        enablePan={false} // Disable panning
+        enableRotate={true} // Enable rotation
+        // Limit the rotation angle (optional)
+         // Limit the rotation angle (optional)
+      />
     </Canvas>
   );
 }
@@ -117,9 +127,9 @@ const Header = (content) => {
           display="flex"
           justifyContent="center"
           alignItems="center"
-          width={{ base: "100%", md: "100%" }}
+          width={{ base: "90%", md: "100%" }}
           height={{ base: "400px", md: "600px" }}
-          ml={isMobile ? "20%" : "0"}
+          
         >
           <Scene />
           {/* <Image
